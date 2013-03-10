@@ -6,8 +6,8 @@ from ezodf import opendoc
 
 ##---CONSTANTS
 
-COUNTER_FILE = '../../res/WiF-AiF-PatiF-Counters.ods'
-
+COUNTER_FILE = '/home/pmeier/Workspace/WIFvassal/res/'\
+               'WiF-AiF-PatiF-Counters.ods'
 
 ##---FUNCTIONS
 
@@ -30,8 +30,8 @@ class Unit(object):
     """unit counter"""
 
     def __init__(self):
-        self.sheet = None
-        self.row = None
+        self.sh_name = None
+        self.sh_row = None
         self.u_loc = None
         self.u_side = None
         self.u_power = None
