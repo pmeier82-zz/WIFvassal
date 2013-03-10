@@ -105,7 +105,8 @@ def write_land_piece(name='test', gpid=None):
 
 if __name__ == '__main__':
     bf = None
-    with open('/home/pmeier/Workspace/WIFvassal/mod/buildFile_base', 'r') as f:
+    with open('/home/pmeier/Workspace/WIFvassal/mod/buildFile_base.xml',
+              'r') as f:
         bf = etree.parse(f)
     GPID.update_from_tree(bf)
 

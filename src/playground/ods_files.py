@@ -32,19 +32,19 @@ class Unit(object):
     def __init__(self):
         self.sh_name = None
         self.sh_row = None
-        self.u_loc = None
-        self.u_side = None
-        self.u_power = None
-        self.u_home = None
-        self.u_class = None
-        self.u_type = None
-        self.u_year = None
-        self.u_time = None
-        self.u_kit = None
-        self.u_cs = None
-        self.u_row = None
-        self.u_col = None
-        self.u_option = None
+        self.loc = None
+        self.side = None
+        self.power = None
+        self.home = None
+        self.clas = None
+        self.type = None
+        self.year = None
+        self.time = None
+        self.kit = None
+        self.cs = None
+        self.row = None
+        self.col = None
+        self.option = None
 
     @staticmethod
     def read_header(sheet):
@@ -66,18 +66,18 @@ class Unit(object):
         # set values
         self.sh_name = sheet.name
         self.sh_row = row_no
-        self.u_side = str(row[header['SIDE']].plaintext())
-        self.u_power = str(row[header['POWER']].plaintext())
-        self.u_home = str(row[header['HOME']].plaintext())
-        self.u_class = str(row[header['CLASS']].plaintext())
-        self.u_type = str(row[header['TYPE']].plaintext())
-        self.u_year = str(row[header['YEAR']].plaintext())
-        self.u_time = int(row[header['TIME']].plaintext())
-        self.u_kit = str(row[header['KIT']].plaintext())
-        self.u_cs = int(row[header['CS']].value)
-        self.u_row = int(row[header['ROW']].value)
-        self.u_col = int(row[header['COL']].value)
-        self.u_option = str(row[header['OPTION']].plaintext())
+        self.side = str(row[header['SIDE']].plaintext())
+        self.power = str(row[header['POWER']].plaintext())
+        self.home = str(row[header['HOME']].plaintext())
+        self.clas = str(row[header['CLASS']].plaintext())
+        self.type = str(row[header['TYPE']].plaintext())
+        self.year = str(row[header['YEAR']].plaintext())
+        self.time = int(row[header['TIME']].plaintext())
+        self.kit = str(row[header['KIT']].plaintext())
+        self.cs = int(row[header['CS']].value)
+        self.row = int(row[header['ROW']].value)
+        self.col = int(row[header['COL']].value)
+        self.option = str(row[header['OPTION']].plaintext())
 
         return header, row
 
@@ -85,13 +85,13 @@ class Unit(object):
         return '{sh_name}#{sh_row} {}'.format(self.__dict__, **self.__dict__)
 
     def __cmp__(self, other):
-        if self.u_cs != other.u_cs:
-            return cmp(self.u_cs, other.u_cs)
+        if self.cs != other.u_cs:
+            return cmp(self.cs, other.u_cs)
         else:
-            if self.u_row != other.u_row:
-                return cmp(self.u_row, other.u_row)
+            if self.row != other.u_row:
+                return cmp(self.row, other.u_row)
             else:
-                return cmp(self.u_col, other.u_col)
+                return cmp(self.col, other.u_col)
 
 
 class LandUnit(Unit):
@@ -100,45 +100,45 @@ class LandUnit(Unit):
     def __init__(self):
         super(LandUnit, self).__init__()
 
-        self.lu_unit = None
-        self.lu_str = None
-        self.lu_rog = None
-        self.lu_mov = None
-        self.lu_cost = None
-        self.lu_size = None
-        self.lu_other = None
-        self.lu_abilities = None
-        self.lu_used_a = None
-        self.lu_aif = None
-        self.lu_used_p = None
-        self.lu_patif = None
-        self.lu_used_pa = None
-        self.lu_aif_patif = None
-        self.lu_col_f = None
-        self.lu_col_b = None
+        self.unit = None
+        self.str = None
+        self.rog = None
+        self.mov = None
+        self.cost = None
+        self.size = None
+        self.other = None
+        self.abilities = None
+        self.used_a = None
+        self.aif = None
+        self.used_p = None
+        self.patif = None
+        self.used_pa = None
+        self.aif_patif = None
+        self.col_f = None
+        self.col_b = None
 
     def update(self, sheet, row_no, header=None):
         # super
         header, row = super(LandUnit, self).update(sheet, row_no, header)
 
         # set values
-        self.lu_unit = str(row[header['UNIT']].plaintext())
-        self.lu_str = int(row[header['STR']].value)
+        self.unit = str(row[header['UNIT']].plaintext())
+        self.str = int(row[header['STR']].value)
         if row[header['ROG']].value:
-            self.lu_rog = int(row[header['ROG']].value)
-        self.lu_mov = int(row[header['MOV']].value)
-        self.lu_cost = int(row[header['COST']].value)
-        self.lu_size = str(row[header['SIZE']].plaintext())
-        self.lu_other = str(row[header['OTHER']].plaintext())
-        self.lu_abilities = str(row[header['ABILITIES']].plaintext())
-        self.lu_used_a = str(row[header['USED A']].plaintext())
-        self.lu_aif = str(row[header['AIF']].plaintext())
-        self.lu_used_p = str(row[header['USED P']].plaintext())
-        self.lu_patif = str(row[header['PatiF']].plaintext())
-        self.lu_used_pa = str(row[header['USED PA']].plaintext())
-        self.lu_aif_patif = str(row[header['AiF + PatiF']].plaintext())
-        self.lu_col_f = str(row[header['FORE COLOR']].plaintext())
-        self.lu_col_b = str(row[header['BACK COLOR']].plaintext())
+            self.rog = int(row[header['ROG']].value)
+        self.mov = int(row[header['MOV']].value)
+        self.cost = int(row[header['COST']].value)
+        self.size = str(row[header['SIZE']].plaintext())
+        self.other = str(row[header['OTHER']].plaintext())
+        self.abilities = str(row[header['ABILITIES']].plaintext())
+        self.used_a = str(row[header['USED A']].plaintext())
+        self.aif = str(row[header['AIF']].plaintext())
+        self.used_p = str(row[header['USED P']].plaintext())
+        self.patif = str(row[header['PatiF']].plaintext())
+        self.used_pa = str(row[header['USED PA']].plaintext())
+        self.aif_patif = str(row[header['AiF + PatiF']].plaintext())
+        self.col_f = str(row[header['FORE COLOR']].plaintext())
+        self.col_b = str(row[header['BACK COLOR']].plaintext())
 
 ##---MAIN
 

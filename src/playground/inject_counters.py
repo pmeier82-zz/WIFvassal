@@ -9,15 +9,15 @@ from xml_parsing import GPIDGenerator, find_stack, PieceSlot
 ##---CONSTANTS
 
 indent = '                        '
-buildFile_base = '/home/pmeier/Workspace/WIFvassal/mod/buildFile_base'
+buildFile_base = '/home/pmeier/Workspace/WIFvassal/mod/buildFile_base.xml'
 buildFile_new = '/home/pmeier/Workspace/WIFvassal/mod/WiFdab/buildFile'
 
 ##---FUNCTIONS
 
 def get_control(u):
-    if u.u_power == 'China':
+    if u.power == 'China':
         return {'Comm China': 'CC',
-                'Nat China': 'CN'}[u.u_home]
+                'Nat China': 'CN'}[u.home]
     else:
         return {'Commonwealth': 'CW',
                 'France': 'FR',
@@ -25,26 +25,26 @@ def get_control(u):
                 'Italy': 'IT',
                 'Japan': 'JP',
                 'USSR': 'RU',
-                'USA': 'US'}[u.u_power]
+                'USA': 'US'}[u.power]
 
 
 def get_type(u):
-    rval = u.u_type
-    if 'Div' in u.lu_size:
-        if u.u_class == 'ART':
-            if u.u_type not in ['AT', 'AA', 'AAA']:
+    rval = u.type
+    if 'Div' in u.size:
+        if u.clas == 'ART':
+            if u.type not in ['AT', 'AA', 'AAA']:
                 rval = rval[0] + rval[1:].lower()
-            if 'mot' in u.lu_other:
+            if 'mot' in u.other:
                 rval = 'Mot ' + rval
-            if 'self-prop' in u.lu_other:
-                if u.u_class == 'AT':
+            if 'self-prop' in u.other:
+                if u.clas == 'AT':
                     rval = 'TD'
                 else:
                     rval = 'SP ' + rval
         else:
             rval = rval[0] + rval[1:].lower()
-    if u.u_type in ['CAV', 'FTR', 'LND', 'NAV', 'ATR', 'CVP', 'SYNTH']:
-        rval += '-{:d}'.format(u.lu_cost)
+    if u.type in ['CAV', 'FTR', 'LND', 'NAV', 'ATR', 'CVP', 'SYNTH']:
+        rval += '-{:d}'.format(u.cost)
     return rval
 
 
@@ -69,16 +69,16 @@ def inject_land(cs_no):
 
         # piece slot
         img_name = 'cs{:02d}_{:02d}_{:02d}.png'.format(
-            cs_no, lu.u_row, lu.u_col)
-        ps = PieceSlot(lu.lu_unit, gpid.get(), img_name)
-        ps.add_trait('mark', ('kit', lu.u_kit))
-        ps.add_trait('mark', ('cs_col', lu.u_col))
-        ps.add_trait('mark', ('cs_row', lu.u_row))
-        ps.add_trait('mark', ('cs_no', lu.u_cs))
-        ps.add_trait('mark', ('MOV', lu.lu_mov))
-        if lu.lu_rog:
-            ps.add_trait('mark', ('ROG', lu.lu_rog))
-        ps.add_trait('mark', ('STR', lu.lu_str))
+            cs_no, lu.row, lu.col)
+        ps = PieceSlot(lu.unit, gpid.get(), img_name)
+        ps.add_trait('mark', ('kit', lu.kit))
+        ps.add_trait('mark', ('cs_col', lu.col))
+        ps.add_trait('mark', ('cs_row', lu.row))
+        ps.add_trait('mark', ('cs_no', lu.cs))
+        ps.add_trait('mark', ('MOV', lu.mov))
+        if lu.rog:
+            ps.add_trait('mark', ('ROG', lu.rog))
+        ps.add_trait('mark', ('STR', lu.str))
         ps.add_trait('prototype', (get_type(lu), ''))
         ps.add_trait('prototype', ('Control' + get_control(lu), ''))
         stack.append(ps.get_xml())
