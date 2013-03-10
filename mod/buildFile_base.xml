@@ -363,7 +363,7 @@ Movement Trail,Change Label,Rotate CW,Rotate CCW,Delete\\\\\\\\	calcProp;type_no
     <VASSAL.build.module.ChartWindow hotkey="" icon="icn_application_view_tile.png" name="Counter Sheets" text="" tooltip="Counter Sheets">
         <VASSAL.build.widget.TabWidget entryName="tabs">
             <VASSAL.build.widget.MapWidget entryName="CS 01">
-                <VASSAL.build.widget.WidgetMap allowMultiple="false" backgroundcolor="204,204,204" buttonName="Map" changeFormat="$message$" color="0,0,0" createFormat="$pieceName$ created in $location$" edgeHeight="0" edgeWidth="0" hotkey="" icon="" launch="false" mapName="Counter Sheet 1" markMoved="Never" markUnmovedIcon="" markUnmovedText="" markUnmovedTooltip="" moveKey="67,715" moveToFormat="$pieceName$ moves $previousLocation$ -&gt; $location$ *" moveWithinFormat="$pieceName$ moves $previousLocation$ -&gt; $location$ *" thickness="3">
+                <VASSAL.build.widget.WidgetMap allowMultiple="false" backgroundcolor="255,255,255" buttonName="Map" changeFormat="$message$" color="204,0,204" createFormat="$pieceName$ created in $location$" edgeHeight="0" edgeWidth="0" hotkey="" icon="" launch="false" mapName="Counter Sheet 1" markMoved="Never" markUnmovedIcon="" markUnmovedText="" markUnmovedTooltip="" moveKey="67,715" moveToFormat="$pieceName$ moves $previousLocation$ -&gt; $location$ *" moveWithinFormat="$pieceName$ moves $previousLocation$ -&gt; $location$ *" thickness="1">
                     <VASSAL.build.module.map.BoardPicker addColumnText="Add column" addRowText="Add row" boardPrompt="Select board" slotHeight="125" slotScale="0.2" slotWidth="350" title="Choose Boards">
                         <setup>Counter Sheet 1BoardPicker		0	0</setup>
                         <VASSAL.build.module.map.boardPicker.Board color="204,204,204" height="803" name="" reversible="false" width="1603">
@@ -380,14 +380,506 @@ Movement Trail,Change Label,Rotate CW,Rotate CCW,Delete\\\\\\\\	calcProp;type_no
                     <VASSAL.build.module.map.StackExpander/>
                     <VASSAL.build.module.map.PieceMover/>
                     <VASSAL.build.module.map.KeyBufferer/>
-                    <VASSAL.build.module.map.CounterDetailViewer bgColor="255,255,255" borderWidth="0" counterReportFormat="" delay="700" display="from top-most layer only" emptyHexReportForma="$LocationName$" fgColor="0,0,0" fontSize="9" graphicsZoom="1.0" hotkey="32,130" layerList="" minDisplayPieces="2" propertyFilter="" showDeck="false" showMoveSelectde="false" showNoStack="false" showNonMovable="false" showgraph="true" showgraphsingle="false" showtext="false" showtextsingle="false" summaryReportFormat="$LocationName$" unrotatePieces="false" version="2" zoomlevel="1.0"/>
+                    <VASSAL.build.module.map.CounterDetailViewer bgColor="255,255,255" borderWidth="2" counterReportFormat="" delay="700" display="from top-most layer only" emptyHexReportForma="$LocationName$" fgColor="0,0,0" fontSize="9" graphicsZoom="2.0" hotkey="32,130" layerList="" minDisplayPieces="1" propertyFilter="" showDeck="false" showMoveSelectde="false" showNoStack="false" showNonMovable="false" showgraph="true" showgraphsingle="false" showtext="false" showtextsingle="false" summaryReportFormat="$LocationName$" unrotatePieces="true" version="2" zoomlevel="2.0"/>
                     <VASSAL.build.module.properties.GlobalProperties/>
                     <VASSAL.build.module.map.SelectionHighlighters/>
                     <VASSAL.build.module.map.Zoomer inButtonText="" inIconName="icn_zoom_in.png" inTooltip="Zoom in" outButtonText="" outIconName="icn_zoom_out.png" outTooltip="Zoom out" pickButtonText="" pickIconName="icn_zoom.png" pickTooltip="Select Zoom" zoomInKey="" zoomLevels="0.5,1.0" zoomOutKey="" zoomPickKey="" zoomStart="2"/>
                     <VASSAL.build.module.map.StackMetrics bottom="40,0" disabled="true" down="37,0" exSepX="6" exSepY="18" top="38,0" unexSepX="2" unexSepY="4" up="39,0"/>
-                    <VASSAL.build.module.map.HighlightLastMoved color="255,0,0" enabled="true" thickness="2"/>
-                    <VASSAL.build.module.map.SetupStack location="4-3" name="LND" useGridLocation="false" x="100" y="100">
-                    </VASSAL.build.module.map.SetupStack>
+                    <VASSAL.build.module.map.HighlightLastMoved color="255,0,0" enabled="false" thickness="2"/>
+                    <VASSAL.build.module.map.SetupStack location="4-3" name="LND" useGridLocation="false" x="100" y="100"/>
+                    <VASSAL.build.module.map.SetupStack location="4-3" name="AIR" useGridLocation="false" x="200" y="200"/>
+                    <VASSAL.build.module.map.SetupStack location="4-3" name="SEA" useGridLocation="false" x="300" y="300"/>
+                </VASSAL.build.widget.WidgetMap>
+            </VASSAL.build.widget.MapWidget>
+            <VASSAL.build.widget.MapWidget entryName="CS 02">
+                <VASSAL.build.widget.WidgetMap allowMultiple="false" backgroundcolor="255,255,255" buttonName="Map" changeFormat="$message$" color="204,0,204" createFormat="$pieceName$ created in $location$" edgeHeight="0" edgeWidth="0" hotkey="" icon="" launch="false" mapName="Counter Sheet 2" markMoved="Never" markUnmovedIcon="" markUnmovedText="" markUnmovedTooltip="" moveKey="67,715" moveToFormat="$pieceName$ moves $previousLocation$ -&gt; $location$ *" moveWithinFormat="$pieceName$ moves $previousLocation$ -&gt; $location$ *" thickness="1">
+                    <VASSAL.build.module.map.BoardPicker addColumnText="Add column" addRowText="Add row" boardPrompt="Select board" slotHeight="125" slotScale="0.2" slotWidth="350" title="Choose Boards">
+                        <setup>Counter Sheet 2BoardPicker		0	0</setup>
+                        <VASSAL.build.module.map.boardPicker.Board color="204,204,204" height="803" name="" reversible="false" width="1603">
+                            <VASSAL.build.module.map.boardPicker.board.SquareGrid color="0,0,0" cornersLegal="false" dotsVisible="false" dx="80.0" dy="80.0" edgesLegal="false" range="Metric" snapTo="true" visible="true" x0="41" y0="41">
+                                <VASSAL.build.module.map.boardPicker.board.mapgrid.SquareGridNumbering color="0,0,0" first="V" fontSize="20" hDescend="false" hDrawOff="0" hLeading="0" hOff="1" hType="N" locationFormat="$gridLocation$" rotateText="0" sep="-" vDescend="false" vDrawOff="30" vLeading="0" vOff="1" vType="N" visible="true"/>
+                            </VASSAL.build.module.map.boardPicker.board.SquareGrid>
+                        </VASSAL.build.module.map.boardPicker.Board>
+                    </VASSAL.build.module.map.BoardPicker>
+                    <VASSAL.build.module.map.ForwardToKeyBuffer/>
+                    <VASSAL.build.module.map.Scroller/>
+                    <VASSAL.build.module.map.ForwardToChatter/>
+                    <VASSAL.build.module.map.MenuDisplayer/>
+                    <VASSAL.build.module.map.MapCenterer/>
+                    <VASSAL.build.module.map.StackExpander/>
+                    <VASSAL.build.module.map.PieceMover/>
+                    <VASSAL.build.module.map.KeyBufferer/>
+                    <VASSAL.build.module.map.CounterDetailViewer bgColor="255,255,255" borderWidth="2" counterReportFormat="" delay="700" display="from top-most layer only" emptyHexReportForma="$LocationName$" fgColor="0,0,0" fontSize="9" graphicsZoom="2.0" hotkey="32,130" layerList="" minDisplayPieces="1" propertyFilter="" showDeck="false" showMoveSelectde="false" showNoStack="false" showNonMovable="false" showgraph="true" showgraphsingle="false" showtext="false" showtextsingle="false" summaryReportFormat="$LocationName$" unrotatePieces="true" version="2" zoomlevel="2.0"/>
+                    <VASSAL.build.module.properties.GlobalProperties/>
+                    <VASSAL.build.module.map.SelectionHighlighters/>
+                    <VASSAL.build.module.map.Zoomer inButtonText="" inIconName="icn_zoom_in.png" inTooltip="Zoom in" outButtonText="" outIconName="icn_zoom_out.png" outTooltip="Zoom out" pickButtonText="" pickIconName="icn_zoom.png" pickTooltip="Select Zoom" zoomInKey="" zoomLevels="0.5,1.0" zoomOutKey="" zoomPickKey="" zoomStart="2"/>
+                    <VASSAL.build.module.map.StackMetrics bottom="40,0" disabled="true" down="37,0" exSepX="6" exSepY="18" top="38,0" unexSepX="2" unexSepY="4" up="39,0"/>
+                    <VASSAL.build.module.map.HighlightLastMoved color="255,0,0" enabled="false" thickness="2"/>
+                    <VASSAL.build.module.map.SetupStack location="4-3" name="LND" useGridLocation="false" x="100" y="100"/>
+                    <VASSAL.build.module.map.SetupStack location="4-3" name="AIR" useGridLocation="false" x="200" y="200"/>
+                    <VASSAL.build.module.map.SetupStack location="4-3" name="SEA" useGridLocation="false" x="300" y="300"/>
+                </VASSAL.build.widget.WidgetMap>
+            </VASSAL.build.widget.MapWidget>
+            <VASSAL.build.widget.MapWidget entryName="CS 03">
+                <VASSAL.build.widget.WidgetMap allowMultiple="false" backgroundcolor="255,255,255" buttonName="Map" changeFormat="$message$" color="204,0,204" createFormat="$pieceName$ created in $location$" edgeHeight="0" edgeWidth="0" hotkey="" icon="" launch="false" mapName="Counter Sheet 3" markMoved="Never" markUnmovedIcon="" markUnmovedText="" markUnmovedTooltip="" moveKey="67,715" moveToFormat="$pieceName$ moves $previousLocation$ -&gt; $location$ *" moveWithinFormat="$pieceName$ moves $previousLocation$ -&gt; $location$ *" thickness="1">
+                    <VASSAL.build.module.map.BoardPicker addColumnText="Add column" addRowText="Add row" boardPrompt="Select board" slotHeight="125" slotScale="0.2" slotWidth="350" title="Choose Boards">
+                        <setup>Counter Sheet 3BoardPicker		0	0</setup>
+                        <VASSAL.build.module.map.boardPicker.Board color="204,204,204" height="803" name="" reversible="false" width="1603">
+                            <VASSAL.build.module.map.boardPicker.board.SquareGrid color="0,0,0" cornersLegal="false" dotsVisible="false" dx="80.0" dy="80.0" edgesLegal="false" range="Metric" snapTo="true" visible="true" x0="41" y0="41">
+                                <VASSAL.build.module.map.boardPicker.board.mapgrid.SquareGridNumbering color="0,0,0" first="V" fontSize="20" hDescend="false" hDrawOff="0" hLeading="0" hOff="1" hType="N" locationFormat="$gridLocation$" rotateText="0" sep="-" vDescend="false" vDrawOff="30" vLeading="0" vOff="1" vType="N" visible="true"/>
+                            </VASSAL.build.module.map.boardPicker.board.SquareGrid>
+                        </VASSAL.build.module.map.boardPicker.Board>
+                    </VASSAL.build.module.map.BoardPicker>
+                    <VASSAL.build.module.map.ForwardToKeyBuffer/>
+                    <VASSAL.build.module.map.Scroller/>
+                    <VASSAL.build.module.map.ForwardToChatter/>
+                    <VASSAL.build.module.map.MenuDisplayer/>
+                    <VASSAL.build.module.map.MapCenterer/>
+                    <VASSAL.build.module.map.StackExpander/>
+                    <VASSAL.build.module.map.PieceMover/>
+                    <VASSAL.build.module.map.KeyBufferer/>
+                    <VASSAL.build.module.map.CounterDetailViewer bgColor="255,255,255" borderWidth="2" counterReportFormat="" delay="700" display="from top-most layer only" emptyHexReportForma="$LocationName$" fgColor="0,0,0" fontSize="9" graphicsZoom="2.0" hotkey="32,130" layerList="" minDisplayPieces="1" propertyFilter="" showDeck="false" showMoveSelectde="false" showNoStack="false" showNonMovable="false" showgraph="true" showgraphsingle="false" showtext="false" showtextsingle="false" summaryReportFormat="$LocationName$" unrotatePieces="true" version="2" zoomlevel="2.0"/>
+                    <VASSAL.build.module.properties.GlobalProperties/>
+                    <VASSAL.build.module.map.SelectionHighlighters/>
+                    <VASSAL.build.module.map.Zoomer inButtonText="" inIconName="icn_zoom_in.png" inTooltip="Zoom in" outButtonText="" outIconName="icn_zoom_out.png" outTooltip="Zoom out" pickButtonText="" pickIconName="icn_zoom.png" pickTooltip="Select Zoom" zoomInKey="" zoomLevels="0.5,1.0" zoomOutKey="" zoomPickKey="" zoomStart="2"/>
+                    <VASSAL.build.module.map.StackMetrics bottom="40,0" disabled="true" down="37,0" exSepX="6" exSepY="18" top="38,0" unexSepX="2" unexSepY="4" up="39,0"/>
+                    <VASSAL.build.module.map.HighlightLastMoved color="255,0,0" enabled="false" thickness="2"/>
+                    <VASSAL.build.module.map.SetupStack location="4-3" name="LND" useGridLocation="false" x="100" y="100"/>
+                    <VASSAL.build.module.map.SetupStack location="4-3" name="AIR" useGridLocation="false" x="200" y="200"/>
+                    <VASSAL.build.module.map.SetupStack location="4-3" name="SEA" useGridLocation="false" x="300" y="300"/>
+                </VASSAL.build.widget.WidgetMap>
+            </VASSAL.build.widget.MapWidget>
+            <VASSAL.build.widget.MapWidget entryName="CS 04">
+                <VASSAL.build.widget.WidgetMap allowMultiple="false" backgroundcolor="255,255,255" buttonName="Map" changeFormat="$message$" color="204,0,204" createFormat="$pieceName$ created in $location$" edgeHeight="0" edgeWidth="0" hotkey="" icon="" launch="false" mapName="Counter Sheet 4" markMoved="Never" markUnmovedIcon="" markUnmovedText="" markUnmovedTooltip="" moveKey="67,715" moveToFormat="$pieceName$ moves $previousLocation$ -&gt; $location$ *" moveWithinFormat="$pieceName$ moves $previousLocation$ -&gt; $location$ *" thickness="1">
+                    <VASSAL.build.module.map.BoardPicker addColumnText="Add column" addRowText="Add row" boardPrompt="Select board" slotHeight="125" slotScale="0.2" slotWidth="350" title="Choose Boards">
+                        <setup>Counter Sheet 4BoardPicker		0	0</setup>
+                        <VASSAL.build.module.map.boardPicker.Board color="204,204,204" height="803" name="" reversible="false" width="1603">
+                            <VASSAL.build.module.map.boardPicker.board.SquareGrid color="0,0,0" cornersLegal="false" dotsVisible="false" dx="80.0" dy="80.0" edgesLegal="false" range="Metric" snapTo="true" visible="true" x0="41" y0="41">
+                                <VASSAL.build.module.map.boardPicker.board.mapgrid.SquareGridNumbering color="0,0,0" first="V" fontSize="20" hDescend="false" hDrawOff="0" hLeading="0" hOff="1" hType="N" locationFormat="$gridLocation$" rotateText="0" sep="-" vDescend="false" vDrawOff="30" vLeading="0" vOff="1" vType="N" visible="true"/>
+                            </VASSAL.build.module.map.boardPicker.board.SquareGrid>
+                        </VASSAL.build.module.map.boardPicker.Board>
+                    </VASSAL.build.module.map.BoardPicker>
+                    <VASSAL.build.module.map.ForwardToKeyBuffer/>
+                    <VASSAL.build.module.map.Scroller/>
+                    <VASSAL.build.module.map.ForwardToChatter/>
+                    <VASSAL.build.module.map.MenuDisplayer/>
+                    <VASSAL.build.module.map.MapCenterer/>
+                    <VASSAL.build.module.map.StackExpander/>
+                    <VASSAL.build.module.map.PieceMover/>
+                    <VASSAL.build.module.map.KeyBufferer/>
+                    <VASSAL.build.module.map.CounterDetailViewer bgColor="255,255,255" borderWidth="2" counterReportFormat="" delay="700" display="from top-most layer only" emptyHexReportForma="$LocationName$" fgColor="0,0,0" fontSize="9" graphicsZoom="2.0" hotkey="32,130" layerList="" minDisplayPieces="1" propertyFilter="" showDeck="false" showMoveSelectde="false" showNoStack="false" showNonMovable="false" showgraph="true" showgraphsingle="false" showtext="false" showtextsingle="false" summaryReportFormat="$LocationName$" unrotatePieces="true" version="2" zoomlevel="2.0"/>
+                    <VASSAL.build.module.properties.GlobalProperties/>
+                    <VASSAL.build.module.map.SelectionHighlighters/>
+                    <VASSAL.build.module.map.Zoomer inButtonText="" inIconName="icn_zoom_in.png" inTooltip="Zoom in" outButtonText="" outIconName="icn_zoom_out.png" outTooltip="Zoom out" pickButtonText="" pickIconName="icn_zoom.png" pickTooltip="Select Zoom" zoomInKey="" zoomLevels="0.5,1.0" zoomOutKey="" zoomPickKey="" zoomStart="2"/>
+                    <VASSAL.build.module.map.StackMetrics bottom="40,0" disabled="true" down="37,0" exSepX="6" exSepY="18" top="38,0" unexSepX="2" unexSepY="4" up="39,0"/>
+                    <VASSAL.build.module.map.HighlightLastMoved color="255,0,0" enabled="false" thickness="2"/>
+                    <VASSAL.build.module.map.SetupStack location="4-3" name="LND" useGridLocation="false" x="100" y="100"/>
+                    <VASSAL.build.module.map.SetupStack location="4-3" name="AIR" useGridLocation="false" x="200" y="200"/>
+                    <VASSAL.build.module.map.SetupStack location="4-3" name="SEA" useGridLocation="false" x="300" y="300"/>
+                </VASSAL.build.widget.WidgetMap>
+            </VASSAL.build.widget.MapWidget>
+            <VASSAL.build.widget.MapWidget entryName="CS 05">
+                <VASSAL.build.widget.WidgetMap allowMultiple="false" backgroundcolor="255,255,255" buttonName="Map" changeFormat="$message$" color="204,0,204" createFormat="$pieceName$ created in $location$" edgeHeight="0" edgeWidth="0" hotkey="" icon="" launch="false" mapName="Counter Sheet 5" markMoved="Never" markUnmovedIcon="" markUnmovedText="" markUnmovedTooltip="" moveKey="67,715" moveToFormat="$pieceName$ moves $previousLocation$ -&gt; $location$ *" moveWithinFormat="$pieceName$ moves $previousLocation$ -&gt; $location$ *" thickness="1">
+                    <VASSAL.build.module.map.BoardPicker addColumnText="Add column" addRowText="Add row" boardPrompt="Select board" slotHeight="125" slotScale="0.2" slotWidth="350" title="Choose Boards">
+                        <setup>Counter Sheet 5BoardPicker		0	0</setup>
+                        <VASSAL.build.module.map.boardPicker.Board color="204,204,204" height="803" name="" reversible="false" width="1603">
+                            <VASSAL.build.module.map.boardPicker.board.SquareGrid color="0,0,0" cornersLegal="false" dotsVisible="false" dx="80.0" dy="80.0" edgesLegal="false" range="Metric" snapTo="true" visible="true" x0="41" y0="41">
+                                <VASSAL.build.module.map.boardPicker.board.mapgrid.SquareGridNumbering color="0,0,0" first="V" fontSize="20" hDescend="false" hDrawOff="0" hLeading="0" hOff="1" hType="N" locationFormat="$gridLocation$" rotateText="0" sep="-" vDescend="false" vDrawOff="30" vLeading="0" vOff="1" vType="N" visible="true"/>
+                            </VASSAL.build.module.map.boardPicker.board.SquareGrid>
+                        </VASSAL.build.module.map.boardPicker.Board>
+                    </VASSAL.build.module.map.BoardPicker>
+                    <VASSAL.build.module.map.ForwardToKeyBuffer/>
+                    <VASSAL.build.module.map.Scroller/>
+                    <VASSAL.build.module.map.ForwardToChatter/>
+                    <VASSAL.build.module.map.MenuDisplayer/>
+                    <VASSAL.build.module.map.MapCenterer/>
+                    <VASSAL.build.module.map.StackExpander/>
+                    <VASSAL.build.module.map.PieceMover/>
+                    <VASSAL.build.module.map.KeyBufferer/>
+                    <VASSAL.build.module.map.CounterDetailViewer bgColor="255,255,255" borderWidth="2" counterReportFormat="" delay="700" display="from top-most layer only" emptyHexReportForma="$LocationName$" fgColor="0,0,0" fontSize="9" graphicsZoom="2.0" hotkey="32,130" layerList="" minDisplayPieces="1" propertyFilter="" showDeck="false" showMoveSelectde="false" showNoStack="false" showNonMovable="false" showgraph="true" showgraphsingle="false" showtext="false" showtextsingle="false" summaryReportFormat="$LocationName$" unrotatePieces="true" version="2" zoomlevel="2.0"/>
+                    <VASSAL.build.module.properties.GlobalProperties/>
+                    <VASSAL.build.module.map.SelectionHighlighters/>
+                    <VASSAL.build.module.map.Zoomer inButtonText="" inIconName="icn_zoom_in.png" inTooltip="Zoom in" outButtonText="" outIconName="icn_zoom_out.png" outTooltip="Zoom out" pickButtonText="" pickIconName="icn_zoom.png" pickTooltip="Select Zoom" zoomInKey="" zoomLevels="0.5,1.0" zoomOutKey="" zoomPickKey="" zoomStart="2"/>
+                    <VASSAL.build.module.map.StackMetrics bottom="40,0" disabled="true" down="37,0" exSepX="6" exSepY="18" top="38,0" unexSepX="2" unexSepY="4" up="39,0"/>
+                    <VASSAL.build.module.map.HighlightLastMoved color="255,0,0" enabled="false" thickness="2"/>
+                    <VASSAL.build.module.map.SetupStack location="4-3" name="LND" useGridLocation="false" x="100" y="100"/>
+                    <VASSAL.build.module.map.SetupStack location="4-3" name="AIR" useGridLocation="false" x="200" y="200"/>
+                    <VASSAL.build.module.map.SetupStack location="4-3" name="SEA" useGridLocation="false" x="300" y="300"/>
+                </VASSAL.build.widget.WidgetMap>
+            </VASSAL.build.widget.MapWidget>
+            <VASSAL.build.widget.MapWidget entryName="CS 06">
+                <VASSAL.build.widget.WidgetMap allowMultiple="false" backgroundcolor="255,255,255" buttonName="Map" changeFormat="$message$" color="204,0,204" createFormat="$pieceName$ created in $location$" edgeHeight="0" edgeWidth="0" hotkey="" icon="" launch="false" mapName="Counter Sheet 6" markMoved="Never" markUnmovedIcon="" markUnmovedText="" markUnmovedTooltip="" moveKey="67,715" moveToFormat="$pieceName$ moves $previousLocation$ -&gt; $location$ *" moveWithinFormat="$pieceName$ moves $previousLocation$ -&gt; $location$ *" thickness="1">
+                    <VASSAL.build.module.map.BoardPicker addColumnText="Add column" addRowText="Add row" boardPrompt="Select board" slotHeight="125" slotScale="0.2" slotWidth="350" title="Choose Boards">
+                        <setup>Counter Sheet 6BoardPicker		0	0</setup>
+                        <VASSAL.build.module.map.boardPicker.Board color="204,204,204" height="803" name="" reversible="false" width="1603">
+                            <VASSAL.build.module.map.boardPicker.board.SquareGrid color="0,0,0" cornersLegal="false" dotsVisible="false" dx="80.0" dy="80.0" edgesLegal="false" range="Metric" snapTo="true" visible="true" x0="41" y0="41">
+                                <VASSAL.build.module.map.boardPicker.board.mapgrid.SquareGridNumbering color="0,0,0" first="V" fontSize="20" hDescend="false" hDrawOff="0" hLeading="0" hOff="1" hType="N" locationFormat="$gridLocation$" rotateText="0" sep="-" vDescend="false" vDrawOff="30" vLeading="0" vOff="1" vType="N" visible="true"/>
+                            </VASSAL.build.module.map.boardPicker.board.SquareGrid>
+                        </VASSAL.build.module.map.boardPicker.Board>
+                    </VASSAL.build.module.map.BoardPicker>
+                    <VASSAL.build.module.map.ForwardToKeyBuffer/>
+                    <VASSAL.build.module.map.Scroller/>
+                    <VASSAL.build.module.map.ForwardToChatter/>
+                    <VASSAL.build.module.map.MenuDisplayer/>
+                    <VASSAL.build.module.map.MapCenterer/>
+                    <VASSAL.build.module.map.StackExpander/>
+                    <VASSAL.build.module.map.PieceMover/>
+                    <VASSAL.build.module.map.KeyBufferer/>
+                    <VASSAL.build.module.map.CounterDetailViewer bgColor="255,255,255" borderWidth="2" counterReportFormat="" delay="700" display="from top-most layer only" emptyHexReportForma="$LocationName$" fgColor="0,0,0" fontSize="9" graphicsZoom="2.0" hotkey="32,130" layerList="" minDisplayPieces="1" propertyFilter="" showDeck="false" showMoveSelectde="false" showNoStack="false" showNonMovable="false" showgraph="true" showgraphsingle="false" showtext="false" showtextsingle="false" summaryReportFormat="$LocationName$" unrotatePieces="true" version="2" zoomlevel="2.0"/>
+                    <VASSAL.build.module.properties.GlobalProperties/>
+                    <VASSAL.build.module.map.SelectionHighlighters/>
+                    <VASSAL.build.module.map.Zoomer inButtonText="" inIconName="icn_zoom_in.png" inTooltip="Zoom in" outButtonText="" outIconName="icn_zoom_out.png" outTooltip="Zoom out" pickButtonText="" pickIconName="icn_zoom.png" pickTooltip="Select Zoom" zoomInKey="" zoomLevels="0.5,1.0" zoomOutKey="" zoomPickKey="" zoomStart="2"/>
+                    <VASSAL.build.module.map.StackMetrics bottom="40,0" disabled="true" down="37,0" exSepX="6" exSepY="18" top="38,0" unexSepX="2" unexSepY="4" up="39,0"/>
+                    <VASSAL.build.module.map.HighlightLastMoved color="255,0,0" enabled="false" thickness="2"/>
+                    <VASSAL.build.module.map.SetupStack location="4-3" name="LND" useGridLocation="false" x="100" y="100"/>
+                    <VASSAL.build.module.map.SetupStack location="4-3" name="AIR" useGridLocation="false" x="200" y="200"/>
+                    <VASSAL.build.module.map.SetupStack location="4-3" name="SEA" useGridLocation="false" x="300" y="300"/>
+                </VASSAL.build.widget.WidgetMap>
+            </VASSAL.build.widget.MapWidget>
+            <VASSAL.build.widget.MapWidget entryName="CS 07">
+                <VASSAL.build.widget.WidgetMap allowMultiple="false" backgroundcolor="255,255,255" buttonName="Map" changeFormat="$message$" color="204,0,204" createFormat="$pieceName$ created in $location$" edgeHeight="0" edgeWidth="0" hotkey="" icon="" launch="false" mapName="Counter Sheet 7" markMoved="Never" markUnmovedIcon="" markUnmovedText="" markUnmovedTooltip="" moveKey="67,715" moveToFormat="$pieceName$ moves $previousLocation$ -&gt; $location$ *" moveWithinFormat="$pieceName$ moves $previousLocation$ -&gt; $location$ *" thickness="1">
+                    <VASSAL.build.module.map.BoardPicker addColumnText="Add column" addRowText="Add row" boardPrompt="Select board" slotHeight="125" slotScale="0.2" slotWidth="350" title="Choose Boards">
+                        <setup>Counter Sheet 7BoardPicker		0	0</setup>
+                        <VASSAL.build.module.map.boardPicker.Board color="204,204,204" height="803" name="" reversible="false" width="1603">
+                            <VASSAL.build.module.map.boardPicker.board.SquareGrid color="0,0,0" cornersLegal="false" dotsVisible="false" dx="80.0" dy="80.0" edgesLegal="false" range="Metric" snapTo="true" visible="true" x0="41" y0="41">
+                                <VASSAL.build.module.map.boardPicker.board.mapgrid.SquareGridNumbering color="0,0,0" first="V" fontSize="20" hDescend="false" hDrawOff="0" hLeading="0" hOff="1" hType="N" locationFormat="$gridLocation$" rotateText="0" sep="-" vDescend="false" vDrawOff="30" vLeading="0" vOff="1" vType="N" visible="true"/>
+                            </VASSAL.build.module.map.boardPicker.board.SquareGrid>
+                        </VASSAL.build.module.map.boardPicker.Board>
+                    </VASSAL.build.module.map.BoardPicker>
+                    <VASSAL.build.module.map.ForwardToKeyBuffer/>
+                    <VASSAL.build.module.map.Scroller/>
+                    <VASSAL.build.module.map.ForwardToChatter/>
+                    <VASSAL.build.module.map.MenuDisplayer/>
+                    <VASSAL.build.module.map.MapCenterer/>
+                    <VASSAL.build.module.map.StackExpander/>
+                    <VASSAL.build.module.map.PieceMover/>
+                    <VASSAL.build.module.map.KeyBufferer/>
+                    <VASSAL.build.module.map.CounterDetailViewer bgColor="255,255,255" borderWidth="2" counterReportFormat="" delay="700" display="from top-most layer only" emptyHexReportForma="$LocationName$" fgColor="0,0,0" fontSize="9" graphicsZoom="2.0" hotkey="32,130" layerList="" minDisplayPieces="1" propertyFilter="" showDeck="false" showMoveSelectde="false" showNoStack="false" showNonMovable="false" showgraph="true" showgraphsingle="false" showtext="false" showtextsingle="false" summaryReportFormat="$LocationName$" unrotatePieces="true" version="2" zoomlevel="2.0"/>
+                    <VASSAL.build.module.properties.GlobalProperties/>
+                    <VASSAL.build.module.map.SelectionHighlighters/>
+                    <VASSAL.build.module.map.Zoomer inButtonText="" inIconName="icn_zoom_in.png" inTooltip="Zoom in" outButtonText="" outIconName="icn_zoom_out.png" outTooltip="Zoom out" pickButtonText="" pickIconName="icn_zoom.png" pickTooltip="Select Zoom" zoomInKey="" zoomLevels="0.5,1.0" zoomOutKey="" zoomPickKey="" zoomStart="2"/>
+                    <VASSAL.build.module.map.StackMetrics bottom="40,0" disabled="true" down="37,0" exSepX="6" exSepY="18" top="38,0" unexSepX="2" unexSepY="4" up="39,0"/>
+                    <VASSAL.build.module.map.HighlightLastMoved color="255,0,0" enabled="false" thickness="2"/>
+                    <VASSAL.build.module.map.SetupStack location="4-3" name="LND" useGridLocation="false" x="100" y="100"/>
+                    <VASSAL.build.module.map.SetupStack location="4-3" name="AIR" useGridLocation="false" x="200" y="200"/>
+                    <VASSAL.build.module.map.SetupStack location="4-3" name="SEA" useGridLocation="false" x="300" y="300"/>
+                </VASSAL.build.widget.WidgetMap>
+            </VASSAL.build.widget.MapWidget>
+            <VASSAL.build.widget.MapWidget entryName="CS 08">
+                <VASSAL.build.widget.WidgetMap allowMultiple="false" backgroundcolor="255,255,255" buttonName="Map" changeFormat="$message$" color="204,0,204" createFormat="$pieceName$ created in $location$" edgeHeight="0" edgeWidth="0" hotkey="" icon="" launch="false" mapName="Counter Sheet 8" markMoved="Never" markUnmovedIcon="" markUnmovedText="" markUnmovedTooltip="" moveKey="67,715" moveToFormat="$pieceName$ moves $previousLocation$ -&gt; $location$ *" moveWithinFormat="$pieceName$ moves $previousLocation$ -&gt; $location$ *" thickness="1">
+                    <VASSAL.build.module.map.BoardPicker addColumnText="Add column" addRowText="Add row" boardPrompt="Select board" slotHeight="125" slotScale="0.2" slotWidth="350" title="Choose Boards">
+                        <setup>Counter Sheet 8BoardPicker		0	0</setup>
+                        <VASSAL.build.module.map.boardPicker.Board color="204,204,204" height="803" name="" reversible="false" width="1603">
+                            <VASSAL.build.module.map.boardPicker.board.SquareGrid color="0,0,0" cornersLegal="false" dotsVisible="false" dx="80.0" dy="80.0" edgesLegal="false" range="Metric" snapTo="true" visible="true" x0="41" y0="41">
+                                <VASSAL.build.module.map.boardPicker.board.mapgrid.SquareGridNumbering color="0,0,0" first="V" fontSize="20" hDescend="false" hDrawOff="0" hLeading="0" hOff="1" hType="N" locationFormat="$gridLocation$" rotateText="0" sep="-" vDescend="false" vDrawOff="30" vLeading="0" vOff="1" vType="N" visible="true"/>
+                            </VASSAL.build.module.map.boardPicker.board.SquareGrid>
+                        </VASSAL.build.module.map.boardPicker.Board>
+                    </VASSAL.build.module.map.BoardPicker>
+                    <VASSAL.build.module.map.ForwardToKeyBuffer/>
+                    <VASSAL.build.module.map.Scroller/>
+                    <VASSAL.build.module.map.ForwardToChatter/>
+                    <VASSAL.build.module.map.MenuDisplayer/>
+                    <VASSAL.build.module.map.MapCenterer/>
+                    <VASSAL.build.module.map.StackExpander/>
+                    <VASSAL.build.module.map.PieceMover/>
+                    <VASSAL.build.module.map.KeyBufferer/>
+                    <VASSAL.build.module.map.CounterDetailViewer bgColor="255,255,255" borderWidth="2" counterReportFormat="" delay="700" display="from top-most layer only" emptyHexReportForma="$LocationName$" fgColor="0,0,0" fontSize="9" graphicsZoom="2.0" hotkey="32,130" layerList="" minDisplayPieces="1" propertyFilter="" showDeck="false" showMoveSelectde="false" showNoStack="false" showNonMovable="false" showgraph="true" showgraphsingle="false" showtext="false" showtextsingle="false" summaryReportFormat="$LocationName$" unrotatePieces="true" version="2" zoomlevel="2.0"/>
+                    <VASSAL.build.module.properties.GlobalProperties/>
+                    <VASSAL.build.module.map.SelectionHighlighters/>
+                    <VASSAL.build.module.map.Zoomer inButtonText="" inIconName="icn_zoom_in.png" inTooltip="Zoom in" outButtonText="" outIconName="icn_zoom_out.png" outTooltip="Zoom out" pickButtonText="" pickIconName="icn_zoom.png" pickTooltip="Select Zoom" zoomInKey="" zoomLevels="0.5,1.0" zoomOutKey="" zoomPickKey="" zoomStart="2"/>
+                    <VASSAL.build.module.map.StackMetrics bottom="40,0" disabled="true" down="37,0" exSepX="6" exSepY="18" top="38,0" unexSepX="2" unexSepY="4" up="39,0"/>
+                    <VASSAL.build.module.map.HighlightLastMoved color="255,0,0" enabled="false" thickness="2"/>
+                    <VASSAL.build.module.map.SetupStack location="4-3" name="LND" useGridLocation="false" x="100" y="100"/>
+                    <VASSAL.build.module.map.SetupStack location="4-3" name="AIR" useGridLocation="false" x="200" y="200"/>
+                    <VASSAL.build.module.map.SetupStack location="4-3" name="SEA" useGridLocation="false" x="300" y="300"/>
+                </VASSAL.build.widget.WidgetMap>
+            </VASSAL.build.widget.MapWidget>
+            <VASSAL.build.widget.MapWidget entryName="CS 09">
+                <VASSAL.build.widget.WidgetMap allowMultiple="false" backgroundcolor="255,255,255" buttonName="Map" changeFormat="$message$" color="204,0,204" createFormat="$pieceName$ created in $location$" edgeHeight="0" edgeWidth="0" hotkey="" icon="" launch="false" mapName="Counter Sheet 9" markMoved="Never" markUnmovedIcon="" markUnmovedText="" markUnmovedTooltip="" moveKey="67,715" moveToFormat="$pieceName$ moves $previousLocation$ -&gt; $location$ *" moveWithinFormat="$pieceName$ moves $previousLocation$ -&gt; $location$ *" thickness="1">
+                    <VASSAL.build.module.map.BoardPicker addColumnText="Add column" addRowText="Add row" boardPrompt="Select board" slotHeight="125" slotScale="0.2" slotWidth="350" title="Choose Boards">
+                        <setup>Counter Sheet 9BoardPicker		0	0</setup>
+                        <VASSAL.build.module.map.boardPicker.Board color="204,204,204" height="803" name="" reversible="false" width="1603">
+                            <VASSAL.build.module.map.boardPicker.board.SquareGrid color="0,0,0" cornersLegal="false" dotsVisible="false" dx="80.0" dy="80.0" edgesLegal="false" range="Metric" snapTo="true" visible="true" x0="41" y0="41">
+                                <VASSAL.build.module.map.boardPicker.board.mapgrid.SquareGridNumbering color="0,0,0" first="V" fontSize="20" hDescend="false" hDrawOff="0" hLeading="0" hOff="1" hType="N" locationFormat="$gridLocation$" rotateText="0" sep="-" vDescend="false" vDrawOff="30" vLeading="0" vOff="1" vType="N" visible="true"/>
+                            </VASSAL.build.module.map.boardPicker.board.SquareGrid>
+                        </VASSAL.build.module.map.boardPicker.Board>
+                    </VASSAL.build.module.map.BoardPicker>
+                    <VASSAL.build.module.map.ForwardToKeyBuffer/>
+                    <VASSAL.build.module.map.Scroller/>
+                    <VASSAL.build.module.map.ForwardToChatter/>
+                    <VASSAL.build.module.map.MenuDisplayer/>
+                    <VASSAL.build.module.map.MapCenterer/>
+                    <VASSAL.build.module.map.StackExpander/>
+                    <VASSAL.build.module.map.PieceMover/>
+                    <VASSAL.build.module.map.KeyBufferer/>
+                    <VASSAL.build.module.map.CounterDetailViewer bgColor="255,255,255" borderWidth="2" counterReportFormat="" delay="700" display="from top-most layer only" emptyHexReportForma="$LocationName$" fgColor="0,0,0" fontSize="9" graphicsZoom="2.0" hotkey="32,130" layerList="" minDisplayPieces="1" propertyFilter="" showDeck="false" showMoveSelectde="false" showNoStack="false" showNonMovable="false" showgraph="true" showgraphsingle="false" showtext="false" showtextsingle="false" summaryReportFormat="$LocationName$" unrotatePieces="true" version="2" zoomlevel="2.0"/>
+                    <VASSAL.build.module.properties.GlobalProperties/>
+                    <VASSAL.build.module.map.SelectionHighlighters/>
+                    <VASSAL.build.module.map.Zoomer inButtonText="" inIconName="icn_zoom_in.png" inTooltip="Zoom in" outButtonText="" outIconName="icn_zoom_out.png" outTooltip="Zoom out" pickButtonText="" pickIconName="icn_zoom.png" pickTooltip="Select Zoom" zoomInKey="" zoomLevels="0.5,1.0" zoomOutKey="" zoomPickKey="" zoomStart="2"/>
+                    <VASSAL.build.module.map.StackMetrics bottom="40,0" disabled="true" down="37,0" exSepX="6" exSepY="18" top="38,0" unexSepX="2" unexSepY="4" up="39,0"/>
+                    <VASSAL.build.module.map.HighlightLastMoved color="255,0,0" enabled="false" thickness="2"/>
+                    <VASSAL.build.module.map.SetupStack location="4-3" name="LND" useGridLocation="false" x="100" y="100"/>
+                    <VASSAL.build.module.map.SetupStack location="4-3" name="AIR" useGridLocation="false" x="200" y="200"/>
+                    <VASSAL.build.module.map.SetupStack location="4-3" name="SEA" useGridLocation="false" x="300" y="300"/>
+                </VASSAL.build.widget.WidgetMap>
+            </VASSAL.build.widget.MapWidget>
+            <VASSAL.build.widget.MapWidget entryName="CS 14">
+                <VASSAL.build.widget.WidgetMap allowMultiple="false" backgroundcolor="255,255,255" buttonName="Map" changeFormat="$message$" color="204,0,204" createFormat="$pieceName$ created in $location$" edgeHeight="0" edgeWidth="0" hotkey="" icon="" launch="false" mapName="Counter Sheet 14" markMoved="Never" markUnmovedIcon="" markUnmovedText="" markUnmovedTooltip="" moveKey="67,715" moveToFormat="$pieceName$ moves $previousLocation$ -&gt; $location$ *" moveWithinFormat="$pieceName$ moves $previousLocation$ -&gt; $location$ *" thickness="1">
+                    <VASSAL.build.module.map.BoardPicker addColumnText="Add column" addRowText="Add row" boardPrompt="Select board" slotHeight="125" slotScale="0.2" slotWidth="350" title="Choose Boards">
+                        <setup>Counter Sheet 14BoardPicker		0	0</setup>
+                        <VASSAL.build.module.map.boardPicker.Board color="204,204,204" height="803" name="" reversible="false" width="1603">
+                            <VASSAL.build.module.map.boardPicker.board.SquareGrid color="0,0,0" cornersLegal="false" dotsVisible="false" dx="80.0" dy="80.0" edgesLegal="false" range="Metric" snapTo="true" visible="true" x0="41" y0="41">
+                                <VASSAL.build.module.map.boardPicker.board.mapgrid.SquareGridNumbering color="0,0,0" first="V" fontSize="20" hDescend="false" hDrawOff="0" hLeading="0" hOff="1" hType="N" locationFormat="$gridLocation$" rotateText="0" sep="-" vDescend="false" vDrawOff="30" vLeading="0" vOff="1" vType="N" visible="true"/>
+                            </VASSAL.build.module.map.boardPicker.board.SquareGrid>
+                        </VASSAL.build.module.map.boardPicker.Board>
+                    </VASSAL.build.module.map.BoardPicker>
+                    <VASSAL.build.module.map.ForwardToKeyBuffer/>
+                    <VASSAL.build.module.map.Scroller/>
+                    <VASSAL.build.module.map.ForwardToChatter/>
+                    <VASSAL.build.module.map.MenuDisplayer/>
+                    <VASSAL.build.module.map.MapCenterer/>
+                    <VASSAL.build.module.map.StackExpander/>
+                    <VASSAL.build.module.map.PieceMover/>
+                    <VASSAL.build.module.map.KeyBufferer/>
+                    <VASSAL.build.module.map.CounterDetailViewer bgColor="255,255,255" borderWidth="2" counterReportFormat="" delay="700" display="from top-most layer only" emptyHexReportForma="$LocationName$" fgColor="0,0,0" fontSize="9" graphicsZoom="2.0" hotkey="32,130" layerList="" minDisplayPieces="1" propertyFilter="" showDeck="false" showMoveSelectde="false" showNoStack="false" showNonMovable="false" showgraph="true" showgraphsingle="false" showtext="false" showtextsingle="false" summaryReportFormat="$LocationName$" unrotatePieces="true" version="2" zoomlevel="2.0"/>
+                    <VASSAL.build.module.properties.GlobalProperties/>
+                    <VASSAL.build.module.map.SelectionHighlighters/>
+                    <VASSAL.build.module.map.Zoomer inButtonText="" inIconName="icn_zoom_in.png" inTooltip="Zoom in" outButtonText="" outIconName="icn_zoom_out.png" outTooltip="Zoom out" pickButtonText="" pickIconName="icn_zoom.png" pickTooltip="Select Zoom" zoomInKey="" zoomLevels="0.5,1.0" zoomOutKey="" zoomPickKey="" zoomStart="2"/>
+                    <VASSAL.build.module.map.StackMetrics bottom="40,0" disabled="true" down="37,0" exSepX="6" exSepY="18" top="38,0" unexSepX="2" unexSepY="4" up="39,0"/>
+                    <VASSAL.build.module.map.HighlightLastMoved color="255,0,0" enabled="false" thickness="2"/>
+                    <VASSAL.build.module.map.SetupStack location="4-3" name="LND" useGridLocation="false" x="100" y="100"/>
+                    <VASSAL.build.module.map.SetupStack location="4-3" name="AIR" useGridLocation="false" x="200" y="200"/>
+                    <VASSAL.build.module.map.SetupStack location="4-3" name="SEA" useGridLocation="false" x="300" y="300"/>
+                </VASSAL.build.widget.WidgetMap>
+            </VASSAL.build.widget.MapWidget>
+            <VASSAL.build.widget.MapWidget entryName="CS 15">
+                <VASSAL.build.widget.WidgetMap allowMultiple="false" backgroundcolor="255,255,255" buttonName="Map" changeFormat="$message$" color="204,0,204" createFormat="$pieceName$ created in $location$" edgeHeight="0" edgeWidth="0" hotkey="" icon="" launch="false" mapName="Counter Sheet 15" markMoved="Never" markUnmovedIcon="" markUnmovedText="" markUnmovedTooltip="" moveKey="67,715" moveToFormat="$pieceName$ moves $previousLocation$ -&gt; $location$ *" moveWithinFormat="$pieceName$ moves $previousLocation$ -&gt; $location$ *" thickness="1">
+                    <VASSAL.build.module.map.BoardPicker addColumnText="Add column" addRowText="Add row" boardPrompt="Select board" slotHeight="125" slotScale="0.2" slotWidth="350" title="Choose Boards">
+                        <setup>Counter Sheet 15BoardPicker		0	0</setup>
+                        <VASSAL.build.module.map.boardPicker.Board color="204,204,204" height="803" name="" reversible="false" width="1603">
+                            <VASSAL.build.module.map.boardPicker.board.SquareGrid color="0,0,0" cornersLegal="false" dotsVisible="false" dx="80.0" dy="80.0" edgesLegal="false" range="Metric" snapTo="true" visible="true" x0="41" y0="41">
+                                <VASSAL.build.module.map.boardPicker.board.mapgrid.SquareGridNumbering color="0,0,0" first="V" fontSize="20" hDescend="false" hDrawOff="0" hLeading="0" hOff="1" hType="N" locationFormat="$gridLocation$" rotateText="0" sep="-" vDescend="false" vDrawOff="30" vLeading="0" vOff="1" vType="N" visible="true"/>
+                            </VASSAL.build.module.map.boardPicker.board.SquareGrid>
+                        </VASSAL.build.module.map.boardPicker.Board>
+                    </VASSAL.build.module.map.BoardPicker>
+                    <VASSAL.build.module.map.ForwardToKeyBuffer/>
+                    <VASSAL.build.module.map.Scroller/>
+                    <VASSAL.build.module.map.ForwardToChatter/>
+                    <VASSAL.build.module.map.MenuDisplayer/>
+                    <VASSAL.build.module.map.MapCenterer/>
+                    <VASSAL.build.module.map.StackExpander/>
+                    <VASSAL.build.module.map.PieceMover/>
+                    <VASSAL.build.module.map.KeyBufferer/>
+                    <VASSAL.build.module.map.CounterDetailViewer bgColor="255,255,255" borderWidth="2" counterReportFormat="" delay="700" display="from top-most layer only" emptyHexReportForma="$LocationName$" fgColor="0,0,0" fontSize="9" graphicsZoom="2.0" hotkey="32,130" layerList="" minDisplayPieces="1" propertyFilter="" showDeck="false" showMoveSelectde="false" showNoStack="false" showNonMovable="false" showgraph="true" showgraphsingle="false" showtext="false" showtextsingle="false" summaryReportFormat="$LocationName$" unrotatePieces="true" version="2" zoomlevel="2.0"/>
+                    <VASSAL.build.module.properties.GlobalProperties/>
+                    <VASSAL.build.module.map.SelectionHighlighters/>
+                    <VASSAL.build.module.map.Zoomer inButtonText="" inIconName="icn_zoom_in.png" inTooltip="Zoom in" outButtonText="" outIconName="icn_zoom_out.png" outTooltip="Zoom out" pickButtonText="" pickIconName="icn_zoom.png" pickTooltip="Select Zoom" zoomInKey="" zoomLevels="0.5,1.0" zoomOutKey="" zoomPickKey="" zoomStart="2"/>
+                    <VASSAL.build.module.map.StackMetrics bottom="40,0" disabled="true" down="37,0" exSepX="6" exSepY="18" top="38,0" unexSepX="2" unexSepY="4" up="39,0"/>
+                    <VASSAL.build.module.map.HighlightLastMoved color="255,0,0" enabled="false" thickness="2"/>
+                    <VASSAL.build.module.map.SetupStack location="4-3" name="LND" useGridLocation="false" x="100" y="100"/>
+                    <VASSAL.build.module.map.SetupStack location="4-3" name="AIR" useGridLocation="false" x="200" y="200"/>
+                    <VASSAL.build.module.map.SetupStack location="4-3" name="SEA" useGridLocation="false" x="300" y="300"/>
+                </VASSAL.build.widget.WidgetMap>
+            </VASSAL.build.widget.MapWidget>
+            <VASSAL.build.widget.MapWidget entryName="CS 18">
+                <VASSAL.build.widget.WidgetMap allowMultiple="false" backgroundcolor="255,255,255" buttonName="Map" changeFormat="$message$" color="204,0,204" createFormat="$pieceName$ created in $location$" edgeHeight="0" edgeWidth="0" hotkey="" icon="" launch="false" mapName="Counter Sheet 18" markMoved="Never" markUnmovedIcon="" markUnmovedText="" markUnmovedTooltip="" moveKey="67,715" moveToFormat="$pieceName$ moves $previousLocation$ -&gt; $location$ *" moveWithinFormat="$pieceName$ moves $previousLocation$ -&gt; $location$ *" thickness="1">
+                    <VASSAL.build.module.map.BoardPicker addColumnText="Add column" addRowText="Add row" boardPrompt="Select board" slotHeight="125" slotScale="0.2" slotWidth="350" title="Choose Boards">
+                        <setup>Counter Sheet 18BoardPicker		0	0</setup>
+                        <VASSAL.build.module.map.boardPicker.Board color="204,204,204" height="803" name="" reversible="false" width="1603">
+                            <VASSAL.build.module.map.boardPicker.board.SquareGrid color="0,0,0" cornersLegal="false" dotsVisible="false" dx="80.0" dy="80.0" edgesLegal="false" range="Metric" snapTo="true" visible="true" x0="41" y0="41">
+                                <VASSAL.build.module.map.boardPicker.board.mapgrid.SquareGridNumbering color="0,0,0" first="V" fontSize="20" hDescend="false" hDrawOff="0" hLeading="0" hOff="1" hType="N" locationFormat="$gridLocation$" rotateText="0" sep="-" vDescend="false" vDrawOff="30" vLeading="0" vOff="1" vType="N" visible="true"/>
+                            </VASSAL.build.module.map.boardPicker.board.SquareGrid>
+                        </VASSAL.build.module.map.boardPicker.Board>
+                    </VASSAL.build.module.map.BoardPicker>
+                    <VASSAL.build.module.map.ForwardToKeyBuffer/>
+                    <VASSAL.build.module.map.Scroller/>
+                    <VASSAL.build.module.map.ForwardToChatter/>
+                    <VASSAL.build.module.map.MenuDisplayer/>
+                    <VASSAL.build.module.map.MapCenterer/>
+                    <VASSAL.build.module.map.StackExpander/>
+                    <VASSAL.build.module.map.PieceMover/>
+                    <VASSAL.build.module.map.KeyBufferer/>
+                    <VASSAL.build.module.map.CounterDetailViewer bgColor="255,255,255" borderWidth="2" counterReportFormat="" delay="700" display="from top-most layer only" emptyHexReportForma="$LocationName$" fgColor="0,0,0" fontSize="9" graphicsZoom="2.0" hotkey="32,130" layerList="" minDisplayPieces="1" propertyFilter="" showDeck="false" showMoveSelectde="false" showNoStack="false" showNonMovable="false" showgraph="true" showgraphsingle="false" showtext="false" showtextsingle="false" summaryReportFormat="$LocationName$" unrotatePieces="true" version="2" zoomlevel="2.0"/>
+                    <VASSAL.build.module.properties.GlobalProperties/>
+                    <VASSAL.build.module.map.SelectionHighlighters/>
+                    <VASSAL.build.module.map.Zoomer inButtonText="" inIconName="icn_zoom_in.png" inTooltip="Zoom in" outButtonText="" outIconName="icn_zoom_out.png" outTooltip="Zoom out" pickButtonText="" pickIconName="icn_zoom.png" pickTooltip="Select Zoom" zoomInKey="" zoomLevels="0.5,1.0" zoomOutKey="" zoomPickKey="" zoomStart="2"/>
+                    <VASSAL.build.module.map.StackMetrics bottom="40,0" disabled="true" down="37,0" exSepX="6" exSepY="18" top="38,0" unexSepX="2" unexSepY="4" up="39,0"/>
+                    <VASSAL.build.module.map.HighlightLastMoved color="255,0,0" enabled="false" thickness="2"/>
+                    <VASSAL.build.module.map.SetupStack location="4-3" name="LND" useGridLocation="false" x="100" y="100"/>
+                    <VASSAL.build.module.map.SetupStack location="4-3" name="AIR" useGridLocation="false" x="200" y="200"/>
+                    <VASSAL.build.module.map.SetupStack location="4-3" name="SEA" useGridLocation="false" x="300" y="300"/>
+                </VASSAL.build.widget.WidgetMap>
+            </VASSAL.build.widget.MapWidget>
+            <VASSAL.build.widget.MapWidget entryName="CS 19">
+                <VASSAL.build.widget.WidgetMap allowMultiple="false" backgroundcolor="255,255,255" buttonName="Map" changeFormat="$message$" color="204,0,204" createFormat="$pieceName$ created in $location$" edgeHeight="0" edgeWidth="0" hotkey="" icon="" launch="false" mapName="Counter Sheet 19" markMoved="Never" markUnmovedIcon="" markUnmovedText="" markUnmovedTooltip="" moveKey="67,715" moveToFormat="$pieceName$ moves $previousLocation$ -&gt; $location$ *" moveWithinFormat="$pieceName$ moves $previousLocation$ -&gt; $location$ *" thickness="1">
+                    <VASSAL.build.module.map.BoardPicker addColumnText="Add column" addRowText="Add row" boardPrompt="Select board" slotHeight="125" slotScale="0.2" slotWidth="350" title="Choose Boards">
+                        <setup>Counter Sheet 19BoardPicker		0	0</setup>
+                        <VASSAL.build.module.map.boardPicker.Board color="204,204,204" height="803" name="" reversible="false" width="1603">
+                            <VASSAL.build.module.map.boardPicker.board.SquareGrid color="0,0,0" cornersLegal="false" dotsVisible="false" dx="80.0" dy="80.0" edgesLegal="false" range="Metric" snapTo="true" visible="true" x0="41" y0="41">
+                                <VASSAL.build.module.map.boardPicker.board.mapgrid.SquareGridNumbering color="0,0,0" first="V" fontSize="20" hDescend="false" hDrawOff="0" hLeading="0" hOff="1" hType="N" locationFormat="$gridLocation$" rotateText="0" sep="-" vDescend="false" vDrawOff="30" vLeading="0" vOff="1" vType="N" visible="true"/>
+                            </VASSAL.build.module.map.boardPicker.board.SquareGrid>
+                        </VASSAL.build.module.map.boardPicker.Board>
+                    </VASSAL.build.module.map.BoardPicker>
+                    <VASSAL.build.module.map.ForwardToKeyBuffer/>
+                    <VASSAL.build.module.map.Scroller/>
+                    <VASSAL.build.module.map.ForwardToChatter/>
+                    <VASSAL.build.module.map.MenuDisplayer/>
+                    <VASSAL.build.module.map.MapCenterer/>
+                    <VASSAL.build.module.map.StackExpander/>
+                    <VASSAL.build.module.map.PieceMover/>
+                    <VASSAL.build.module.map.KeyBufferer/>
+                    <VASSAL.build.module.map.CounterDetailViewer bgColor="255,255,255" borderWidth="2" counterReportFormat="" delay="700" display="from top-most layer only" emptyHexReportForma="$LocationName$" fgColor="0,0,0" fontSize="9" graphicsZoom="2.0" hotkey="32,130" layerList="" minDisplayPieces="1" propertyFilter="" showDeck="false" showMoveSelectde="false" showNoStack="false" showNonMovable="false" showgraph="true" showgraphsingle="false" showtext="false" showtextsingle="false" summaryReportFormat="$LocationName$" unrotatePieces="true" version="2" zoomlevel="2.0"/>
+                    <VASSAL.build.module.properties.GlobalProperties/>
+                    <VASSAL.build.module.map.SelectionHighlighters/>
+                    <VASSAL.build.module.map.Zoomer inButtonText="" inIconName="icn_zoom_in.png" inTooltip="Zoom in" outButtonText="" outIconName="icn_zoom_out.png" outTooltip="Zoom out" pickButtonText="" pickIconName="icn_zoom.png" pickTooltip="Select Zoom" zoomInKey="" zoomLevels="0.5,1.0" zoomOutKey="" zoomPickKey="" zoomStart="2"/>
+                    <VASSAL.build.module.map.StackMetrics bottom="40,0" disabled="true" down="37,0" exSepX="6" exSepY="18" top="38,0" unexSepX="2" unexSepY="4" up="39,0"/>
+                    <VASSAL.build.module.map.HighlightLastMoved color="255,0,0" enabled="false" thickness="2"/>
+                    <VASSAL.build.module.map.SetupStack location="4-3" name="LND" useGridLocation="false" x="100" y="100"/>
+                    <VASSAL.build.module.map.SetupStack location="4-3" name="AIR" useGridLocation="false" x="200" y="200"/>
+                    <VASSAL.build.module.map.SetupStack location="4-3" name="SEA" useGridLocation="false" x="300" y="300"/>
+                </VASSAL.build.widget.WidgetMap>
+            </VASSAL.build.widget.MapWidget>
+            <VASSAL.build.widget.MapWidget entryName="CS 20">
+                <VASSAL.build.widget.WidgetMap allowMultiple="false" backgroundcolor="255,255,255" buttonName="Map" changeFormat="$message$" color="204,0,204" createFormat="$pieceName$ created in $location$" edgeHeight="0" edgeWidth="0" hotkey="" icon="" launch="false" mapName="Counter Sheet 20" markMoved="Never" markUnmovedIcon="" markUnmovedText="" markUnmovedTooltip="" moveKey="67,715" moveToFormat="$pieceName$ moves $previousLocation$ -&gt; $location$ *" moveWithinFormat="$pieceName$ moves $previousLocation$ -&gt; $location$ *" thickness="1">
+                    <VASSAL.build.module.map.BoardPicker addColumnText="Add column" addRowText="Add row" boardPrompt="Select board" slotHeight="125" slotScale="0.2" slotWidth="350" title="Choose Boards">
+                        <setup>Counter Sheet 20BoardPicker		0	0</setup>
+                        <VASSAL.build.module.map.boardPicker.Board color="204,204,204" height="803" name="" reversible="false" width="1603">
+                            <VASSAL.build.module.map.boardPicker.board.SquareGrid color="0,0,0" cornersLegal="false" dotsVisible="false" dx="80.0" dy="80.0" edgesLegal="false" range="Metric" snapTo="true" visible="true" x0="41" y0="41">
+                                <VASSAL.build.module.map.boardPicker.board.mapgrid.SquareGridNumbering color="0,0,0" first="V" fontSize="20" hDescend="false" hDrawOff="0" hLeading="0" hOff="1" hType="N" locationFormat="$gridLocation$" rotateText="0" sep="-" vDescend="false" vDrawOff="30" vLeading="0" vOff="1" vType="N" visible="true"/>
+                            </VASSAL.build.module.map.boardPicker.board.SquareGrid>
+                        </VASSAL.build.module.map.boardPicker.Board>
+                    </VASSAL.build.module.map.BoardPicker>
+                    <VASSAL.build.module.map.ForwardToKeyBuffer/>
+                    <VASSAL.build.module.map.Scroller/>
+                    <VASSAL.build.module.map.ForwardToChatter/>
+                    <VASSAL.build.module.map.MenuDisplayer/>
+                    <VASSAL.build.module.map.MapCenterer/>
+                    <VASSAL.build.module.map.StackExpander/>
+                    <VASSAL.build.module.map.PieceMover/>
+                    <VASSAL.build.module.map.KeyBufferer/>
+                    <VASSAL.build.module.map.CounterDetailViewer bgColor="255,255,255" borderWidth="2" counterReportFormat="" delay="700" display="from top-most layer only" emptyHexReportForma="$LocationName$" fgColor="0,0,0" fontSize="9" graphicsZoom="2.0" hotkey="32,130" layerList="" minDisplayPieces="1" propertyFilter="" showDeck="false" showMoveSelectde="false" showNoStack="false" showNonMovable="false" showgraph="true" showgraphsingle="false" showtext="false" showtextsingle="false" summaryReportFormat="$LocationName$" unrotatePieces="true" version="2" zoomlevel="2.0"/>
+                    <VASSAL.build.module.properties.GlobalProperties/>
+                    <VASSAL.build.module.map.SelectionHighlighters/>
+                    <VASSAL.build.module.map.Zoomer inButtonText="" inIconName="icn_zoom_in.png" inTooltip="Zoom in" outButtonText="" outIconName="icn_zoom_out.png" outTooltip="Zoom out" pickButtonText="" pickIconName="icn_zoom.png" pickTooltip="Select Zoom" zoomInKey="" zoomLevels="0.5,1.0" zoomOutKey="" zoomPickKey="" zoomStart="2"/>
+                    <VASSAL.build.module.map.StackMetrics bottom="40,0" disabled="true" down="37,0" exSepX="6" exSepY="18" top="38,0" unexSepX="2" unexSepY="4" up="39,0"/>
+                    <VASSAL.build.module.map.HighlightLastMoved color="255,0,0" enabled="false" thickness="2"/>
+                    <VASSAL.build.module.map.SetupStack location="4-3" name="LND" useGridLocation="false" x="100" y="100"/>
+                    <VASSAL.build.module.map.SetupStack location="4-3" name="AIR" useGridLocation="false" x="200" y="200"/>
+                    <VASSAL.build.module.map.SetupStack location="4-3" name="SEA" useGridLocation="false" x="300" y="300"/>
+                </VASSAL.build.widget.WidgetMap>
+            </VASSAL.build.widget.MapWidget>
+            <VASSAL.build.widget.MapWidget entryName="CS 21">
+                <VASSAL.build.widget.WidgetMap allowMultiple="false" backgroundcolor="255,255,255" buttonName="Map" changeFormat="$message$" color="204,0,204" createFormat="$pieceName$ created in $location$" edgeHeight="0" edgeWidth="0" hotkey="" icon="" launch="false" mapName="Counter Sheet 21" markMoved="Never" markUnmovedIcon="" markUnmovedText="" markUnmovedTooltip="" moveKey="67,715" moveToFormat="$pieceName$ moves $previousLocation$ -&gt; $location$ *" moveWithinFormat="$pieceName$ moves $previousLocation$ -&gt; $location$ *" thickness="1">
+                    <VASSAL.build.module.map.BoardPicker addColumnText="Add column" addRowText="Add row" boardPrompt="Select board" slotHeight="125" slotScale="0.2" slotWidth="350" title="Choose Boards">
+                        <setup>Counter Sheet 21BoardPicker		0	0</setup>
+                        <VASSAL.build.module.map.boardPicker.Board color="204,204,204" height="803" name="" reversible="false" width="1603">
+                            <VASSAL.build.module.map.boardPicker.board.SquareGrid color="0,0,0" cornersLegal="false" dotsVisible="false" dx="80.0" dy="80.0" edgesLegal="false" range="Metric" snapTo="true" visible="true" x0="41" y0="41">
+                                <VASSAL.build.module.map.boardPicker.board.mapgrid.SquareGridNumbering color="0,0,0" first="V" fontSize="20" hDescend="false" hDrawOff="0" hLeading="0" hOff="1" hType="N" locationFormat="$gridLocation$" rotateText="0" sep="-" vDescend="false" vDrawOff="30" vLeading="0" vOff="1" vType="N" visible="true"/>
+                            </VASSAL.build.module.map.boardPicker.board.SquareGrid>
+                        </VASSAL.build.module.map.boardPicker.Board>
+                    </VASSAL.build.module.map.BoardPicker>
+                    <VASSAL.build.module.map.ForwardToKeyBuffer/>
+                    <VASSAL.build.module.map.Scroller/>
+                    <VASSAL.build.module.map.ForwardToChatter/>
+                    <VASSAL.build.module.map.MenuDisplayer/>
+                    <VASSAL.build.module.map.MapCenterer/>
+                    <VASSAL.build.module.map.StackExpander/>
+                    <VASSAL.build.module.map.PieceMover/>
+                    <VASSAL.build.module.map.KeyBufferer/>
+                    <VASSAL.build.module.map.CounterDetailViewer bgColor="255,255,255" borderWidth="2" counterReportFormat="" delay="700" display="from top-most layer only" emptyHexReportForma="$LocationName$" fgColor="0,0,0" fontSize="9" graphicsZoom="2.0" hotkey="32,130" layerList="" minDisplayPieces="1" propertyFilter="" showDeck="false" showMoveSelectde="false" showNoStack="false" showNonMovable="false" showgraph="true" showgraphsingle="false" showtext="false" showtextsingle="false" summaryReportFormat="$LocationName$" unrotatePieces="true" version="2" zoomlevel="2.0"/>
+                    <VASSAL.build.module.properties.GlobalProperties/>
+                    <VASSAL.build.module.map.SelectionHighlighters/>
+                    <VASSAL.build.module.map.Zoomer inButtonText="" inIconName="icn_zoom_in.png" inTooltip="Zoom in" outButtonText="" outIconName="icn_zoom_out.png" outTooltip="Zoom out" pickButtonText="" pickIconName="icn_zoom.png" pickTooltip="Select Zoom" zoomInKey="" zoomLevels="0.5,1.0" zoomOutKey="" zoomPickKey="" zoomStart="2"/>
+                    <VASSAL.build.module.map.StackMetrics bottom="40,0" disabled="true" down="37,0" exSepX="6" exSepY="18" top="38,0" unexSepX="2" unexSepY="4" up="39,0"/>
+                    <VASSAL.build.module.map.HighlightLastMoved color="255,0,0" enabled="false" thickness="2"/>
+                    <VASSAL.build.module.map.SetupStack location="4-3" name="LND" useGridLocation="false" x="100" y="100"/>
+                    <VASSAL.build.module.map.SetupStack location="4-3" name="AIR" useGridLocation="false" x="200" y="200"/>
+                    <VASSAL.build.module.map.SetupStack location="4-3" name="SEA" useGridLocation="false" x="300" y="300"/>
+                </VASSAL.build.widget.WidgetMap>
+            </VASSAL.build.widget.MapWidget>
+            <VASSAL.build.widget.MapWidget entryName="CS 22">
+                <VASSAL.build.widget.WidgetMap allowMultiple="false" backgroundcolor="255,255,255" buttonName="Map" changeFormat="$message$" color="204,0,204" createFormat="$pieceName$ created in $location$" edgeHeight="0" edgeWidth="0" hotkey="" icon="" launch="false" mapName="Counter Sheet 22" markMoved="Never" markUnmovedIcon="" markUnmovedText="" markUnmovedTooltip="" moveKey="67,715" moveToFormat="$pieceName$ moves $previousLocation$ -&gt; $location$ *" moveWithinFormat="$pieceName$ moves $previousLocation$ -&gt; $location$ *" thickness="1">
+                    <VASSAL.build.module.map.BoardPicker addColumnText="Add column" addRowText="Add row" boardPrompt="Select board" slotHeight="125" slotScale="0.2" slotWidth="350" title="Choose Boards">
+                        <setup>Counter Sheet 22BoardPicker		0	0</setup>
+                        <VASSAL.build.module.map.boardPicker.Board color="204,204,204" height="803" name="" reversible="false" width="1603">
+                            <VASSAL.build.module.map.boardPicker.board.SquareGrid color="0,0,0" cornersLegal="false" dotsVisible="false" dx="80.0" dy="80.0" edgesLegal="false" range="Metric" snapTo="true" visible="true" x0="41" y0="41">
+                                <VASSAL.build.module.map.boardPicker.board.mapgrid.SquareGridNumbering color="0,0,0" first="V" fontSize="20" hDescend="false" hDrawOff="0" hLeading="0" hOff="1" hType="N" locationFormat="$gridLocation$" rotateText="0" sep="-" vDescend="false" vDrawOff="30" vLeading="0" vOff="1" vType="N" visible="true"/>
+                            </VASSAL.build.module.map.boardPicker.board.SquareGrid>
+                        </VASSAL.build.module.map.boardPicker.Board>
+                    </VASSAL.build.module.map.BoardPicker>
+                    <VASSAL.build.module.map.ForwardToKeyBuffer/>
+                    <VASSAL.build.module.map.Scroller/>
+                    <VASSAL.build.module.map.ForwardToChatter/>
+                    <VASSAL.build.module.map.MenuDisplayer/>
+                    <VASSAL.build.module.map.MapCenterer/>
+                    <VASSAL.build.module.map.StackExpander/>
+                    <VASSAL.build.module.map.PieceMover/>
+                    <VASSAL.build.module.map.KeyBufferer/>
+                    <VASSAL.build.module.map.CounterDetailViewer bgColor="255,255,255" borderWidth="2" counterReportFormat="" delay="700" display="from top-most layer only" emptyHexReportForma="$LocationName$" fgColor="0,0,0" fontSize="9" graphicsZoom="2.0" hotkey="32,130" layerList="" minDisplayPieces="1" propertyFilter="" showDeck="false" showMoveSelectde="false" showNoStack="false" showNonMovable="false" showgraph="true" showgraphsingle="false" showtext="false" showtextsingle="false" summaryReportFormat="$LocationName$" unrotatePieces="true" version="2" zoomlevel="2.0"/>
+                    <VASSAL.build.module.properties.GlobalProperties/>
+                    <VASSAL.build.module.map.SelectionHighlighters/>
+                    <VASSAL.build.module.map.Zoomer inButtonText="" inIconName="icn_zoom_in.png" inTooltip="Zoom in" outButtonText="" outIconName="icn_zoom_out.png" outTooltip="Zoom out" pickButtonText="" pickIconName="icn_zoom.png" pickTooltip="Select Zoom" zoomInKey="" zoomLevels="0.5,1.0" zoomOutKey="" zoomPickKey="" zoomStart="2"/>
+                    <VASSAL.build.module.map.StackMetrics bottom="40,0" disabled="true" down="37,0" exSepX="6" exSepY="18" top="38,0" unexSepX="2" unexSepY="4" up="39,0"/>
+                    <VASSAL.build.module.map.HighlightLastMoved color="255,0,0" enabled="false" thickness="2"/>
+                    <VASSAL.build.module.map.SetupStack location="4-3" name="LND" useGridLocation="false" x="100" y="100"/>
+                    <VASSAL.build.module.map.SetupStack location="4-3" name="AIR" useGridLocation="false" x="200" y="200"/>
+                    <VASSAL.build.module.map.SetupStack location="4-3" name="SEA" useGridLocation="false" x="300" y="300"/>
+                </VASSAL.build.widget.WidgetMap>
+            </VASSAL.build.widget.MapWidget>
+            <VASSAL.build.widget.MapWidget entryName="CS 23">
+                <VASSAL.build.widget.WidgetMap allowMultiple="false" backgroundcolor="255,255,255" buttonName="Map" changeFormat="$message$" color="204,0,204" createFormat="$pieceName$ created in $location$" edgeHeight="0" edgeWidth="0" hotkey="" icon="" launch="false" mapName="Counter Sheet 23" markMoved="Never" markUnmovedIcon="" markUnmovedText="" markUnmovedTooltip="" moveKey="67,715" moveToFormat="$pieceName$ moves $previousLocation$ -&gt; $location$ *" moveWithinFormat="$pieceName$ moves $previousLocation$ -&gt; $location$ *" thickness="1">
+                    <VASSAL.build.module.map.BoardPicker addColumnText="Add column" addRowText="Add row" boardPrompt="Select board" slotHeight="125" slotScale="0.2" slotWidth="350" title="Choose Boards">
+                        <setup>Counter Sheet 23BoardPicker		0	0</setup>
+                        <VASSAL.build.module.map.boardPicker.Board color="204,204,204" height="803" name="" reversible="false" width="1603">
+                            <VASSAL.build.module.map.boardPicker.board.SquareGrid color="0,0,0" cornersLegal="false" dotsVisible="false" dx="80.0" dy="80.0" edgesLegal="false" range="Metric" snapTo="true" visible="true" x0="41" y0="41">
+                                <VASSAL.build.module.map.boardPicker.board.mapgrid.SquareGridNumbering color="0,0,0" first="V" fontSize="20" hDescend="false" hDrawOff="0" hLeading="0" hOff="1" hType="N" locationFormat="$gridLocation$" rotateText="0" sep="-" vDescend="false" vDrawOff="30" vLeading="0" vOff="1" vType="N" visible="true"/>
+                            </VASSAL.build.module.map.boardPicker.board.SquareGrid>
+                        </VASSAL.build.module.map.boardPicker.Board>
+                    </VASSAL.build.module.map.BoardPicker>
+                    <VASSAL.build.module.map.ForwardToKeyBuffer/>
+                    <VASSAL.build.module.map.Scroller/>
+                    <VASSAL.build.module.map.ForwardToChatter/>
+                    <VASSAL.build.module.map.MenuDisplayer/>
+                    <VASSAL.build.module.map.MapCenterer/>
+                    <VASSAL.build.module.map.StackExpander/>
+                    <VASSAL.build.module.map.PieceMover/>
+                    <VASSAL.build.module.map.KeyBufferer/>
+                    <VASSAL.build.module.map.CounterDetailViewer bgColor="255,255,255" borderWidth="2" counterReportFormat="" delay="700" display="from top-most layer only" emptyHexReportForma="$LocationName$" fgColor="0,0,0" fontSize="9" graphicsZoom="2.0" hotkey="32,130" layerList="" minDisplayPieces="1" propertyFilter="" showDeck="false" showMoveSelectde="false" showNoStack="false" showNonMovable="false" showgraph="true" showgraphsingle="false" showtext="false" showtextsingle="false" summaryReportFormat="$LocationName$" unrotatePieces="true" version="2" zoomlevel="2.0"/>
+                    <VASSAL.build.module.properties.GlobalProperties/>
+                    <VASSAL.build.module.map.SelectionHighlighters/>
+                    <VASSAL.build.module.map.Zoomer inButtonText="" inIconName="icn_zoom_in.png" inTooltip="Zoom in" outButtonText="" outIconName="icn_zoom_out.png" outTooltip="Zoom out" pickButtonText="" pickIconName="icn_zoom.png" pickTooltip="Select Zoom" zoomInKey="" zoomLevels="0.5,1.0" zoomOutKey="" zoomPickKey="" zoomStart="2"/>
+                    <VASSAL.build.module.map.StackMetrics bottom="40,0" disabled="true" down="37,0" exSepX="6" exSepY="18" top="38,0" unexSepX="2" unexSepY="4" up="39,0"/>
+                    <VASSAL.build.module.map.HighlightLastMoved color="255,0,0" enabled="false" thickness="2"/>
+                    <VASSAL.build.module.map.SetupStack location="4-3" name="LND" useGridLocation="false" x="100" y="100"/>
+                    <VASSAL.build.module.map.SetupStack location="4-3" name="AIR" useGridLocation="false" x="200" y="200"/>
+                    <VASSAL.build.module.map.SetupStack location="4-3" name="SEA" useGridLocation="false" x="300" y="300"/>
+                </VASSAL.build.widget.WidgetMap>
+            </VASSAL.build.widget.MapWidget>
+            <VASSAL.build.widget.MapWidget entryName="CS 24">
+                <VASSAL.build.widget.WidgetMap allowMultiple="false" backgroundcolor="255,255,255" buttonName="Map" changeFormat="$message$" color="204,0,204" createFormat="$pieceName$ created in $location$" edgeHeight="0" edgeWidth="0" hotkey="" icon="" launch="false" mapName="Counter Sheet 24" markMoved="Never" markUnmovedIcon="" markUnmovedText="" markUnmovedTooltip="" moveKey="67,715" moveToFormat="$pieceName$ moves $previousLocation$ -&gt; $location$ *" moveWithinFormat="$pieceName$ moves $previousLocation$ -&gt; $location$ *" thickness="1">
+                    <VASSAL.build.module.map.BoardPicker addColumnText="Add column" addRowText="Add row" boardPrompt="Select board" slotHeight="125" slotScale="0.2" slotWidth="350" title="Choose Boards">
+                        <setup>Counter Sheet 24BoardPicker		0	0</setup>
+                        <VASSAL.build.module.map.boardPicker.Board color="204,204,204" height="803" name="" reversible="false" width="1603">
+                            <VASSAL.build.module.map.boardPicker.board.SquareGrid color="0,0,0" cornersLegal="false" dotsVisible="false" dx="80.0" dy="80.0" edgesLegal="false" range="Metric" snapTo="true" visible="true" x0="41" y0="41">
+                                <VASSAL.build.module.map.boardPicker.board.mapgrid.SquareGridNumbering color="0,0,0" first="V" fontSize="20" hDescend="false" hDrawOff="0" hLeading="0" hOff="1" hType="N" locationFormat="$gridLocation$" rotateText="0" sep="-" vDescend="false" vDrawOff="30" vLeading="0" vOff="1" vType="N" visible="true"/>
+                            </VASSAL.build.module.map.boardPicker.board.SquareGrid>
+                        </VASSAL.build.module.map.boardPicker.Board>
+                    </VASSAL.build.module.map.BoardPicker>
+                    <VASSAL.build.module.map.ForwardToKeyBuffer/>
+                    <VASSAL.build.module.map.Scroller/>
+                    <VASSAL.build.module.map.ForwardToChatter/>
+                    <VASSAL.build.module.map.MenuDisplayer/>
+                    <VASSAL.build.module.map.MapCenterer/>
+                    <VASSAL.build.module.map.StackExpander/>
+                    <VASSAL.build.module.map.PieceMover/>
+                    <VASSAL.build.module.map.KeyBufferer/>
+                    <VASSAL.build.module.map.CounterDetailViewer bgColor="255,255,255" borderWidth="2" counterReportFormat="" delay="700" display="from top-most layer only" emptyHexReportForma="$LocationName$" fgColor="0,0,0" fontSize="9" graphicsZoom="2.0" hotkey="32,130" layerList="" minDisplayPieces="1" propertyFilter="" showDeck="false" showMoveSelectde="false" showNoStack="false" showNonMovable="false" showgraph="true" showgraphsingle="false" showtext="false" showtextsingle="false" summaryReportFormat="$LocationName$" unrotatePieces="true" version="2" zoomlevel="2.0"/>
+                    <VASSAL.build.module.properties.GlobalProperties/>
+                    <VASSAL.build.module.map.SelectionHighlighters/>
+                    <VASSAL.build.module.map.Zoomer inButtonText="" inIconName="icn_zoom_in.png" inTooltip="Zoom in" outButtonText="" outIconName="icn_zoom_out.png" outTooltip="Zoom out" pickButtonText="" pickIconName="icn_zoom.png" pickTooltip="Select Zoom" zoomInKey="" zoomLevels="0.5,1.0" zoomOutKey="" zoomPickKey="" zoomStart="2"/>
+                    <VASSAL.build.module.map.StackMetrics bottom="40,0" disabled="true" down="37,0" exSepX="6" exSepY="18" top="38,0" unexSepX="2" unexSepY="4" up="39,0"/>
+                    <VASSAL.build.module.map.HighlightLastMoved color="255,0,0" enabled="false" thickness="2"/>
+                    <VASSAL.build.module.map.SetupStack location="4-3" name="LND" useGridLocation="false" x="100" y="100"/>
                     <VASSAL.build.module.map.SetupStack location="4-3" name="AIR" useGridLocation="false" x="200" y="200"/>
                     <VASSAL.build.module.map.SetupStack location="4-3" name="SEA" useGridLocation="false" x="300" y="300"/>
                 </VASSAL.build.widget.WidgetMap>
@@ -419,5 +911,5 @@ Movement Trail,Change Label,Rotate CW,Rotate CCW,Delete\\\\\\\\	calcProp;type_no
     </VASSAL.build.module.turn.TurnTracker>
     <VASSAL.build.module.Inventory centerOnPiece="true" drawPieces="true" foldersOnly="false" forwardKeystroke="false" groupBy="CurrentBoard,LocationName" hotkey="" icon="" include="{face_down_Active==true}" leafFormat="$PieceName$" name="[fd] Inventory" nonLeafFormat="$PropertyValue$" pieceZoom="0.5" showMenu="false" sides="" sortFormat="$PieceName$" sortPieces="true" sorting="alpha" text="(fd) units" tooltip="inventory of face down pieces"/>
     <VASSAL.build.module.GlobalKeyCommand buttonHotkey="" buttonText="" deckCount="-1" filter="{FaceDown_Active == true}" hotkey="70,130" icon="/images/keyCommand.gif" name="Final Reorganisation" reportFormat="" reportSingle="false" singleMap="true" tooltip="put all counters face up"/>
-    <VASSAL.build.module.GlobalKeyCommand buttonHotkey="70,195" buttonText="CTRL" deckCount="0" filter="" hotkey="67,130" icon="" name="test" reportFormat="$pieceName$ xx" reportSingle="false" singleMap="true" tooltip=""/>
+    <VASSAL.build.module.GlobalKeyCommand buttonHotkey="70,195" buttonText="" deckCount="0" filter="" hotkey="67,130" icon="icon_counter.png" name="Remove Counters" reportFormat="$pieceName$ xx" reportSingle="false" singleMap="true" tooltip="Remove all counters to the counter sheets."/>
 </VASSAL.launch.BasicModule>
