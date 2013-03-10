@@ -53,10 +53,10 @@ def inject_land(cs_no):
 
     # init build file
     bf = None
-    with open(buildFile, 'r') as f:
+    with open(buildFile_base, 'r') as f:
         bf = etree.parse(f)
     gpid = GPIDGenerator(bf)
-    stack = find_stack(bf, cs_no, 'LAND')
+    stack = find_stack(bf, cs_no, 'LND')
 
     # init ods file
     LAND = get_sheet('Land')

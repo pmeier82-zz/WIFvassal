@@ -1,0 +1,423 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VASSAL.launch.BasicModule VassalVersion="3.2.2" description="" name="World in Flames" nextPieceSlotId="94" version="0.1">
+    <VASSAL.build.module.BasicCommandEncoder/>
+    <VASSAL.build.module.Documentation>
+        <VASSAL.build.module.documentation.AboutScreen fileName="wif_yahoo.png" title="About Module"/>
+        <VASSAL.build.module.documentation.HelpFile fileName="Intro.html" fileType="archive" title="Quick Start"/>
+    </VASSAL.build.module.Documentation>
+    <VASSAL.build.module.GlobalOptions autoReport="Use Preferences Setting" centerOnMove="Use Preferences Setting" nonOwnerUnmaskable="Never" playerIdFormat="$PlayerName$" promptString="Opponents can unmask my pieces">
+        <VASSAL.preferences.BooleanPreference default="false" desc="Scenario only encompases two maps (relevant for End of Action rolls)" name="game_two_map" tab="World in Flames"/>
+        <option name="stepIcon">icn_control_fastforward.png</option>
+        <option name="undoIcon">icn_arrow_undo.png</option>
+        <option name="stepHotKey">34,0</option>
+        <option name="serverControlsIcon">icn_connect.png</option>
+        <option name="serverControlsHotKey">83,520</option>
+    </VASSAL.build.module.GlobalOptions>
+    <VASSAL.build.module.Chatter/>
+    <VASSAL.build.module.properties.GlobalProperties>
+        <VASSAL.build.module.properties.GlobalProperty initialValue="1" isNumeric="true" max="null" min="null" name="control_num_" wrap="false"/>
+        <VASSAL.build.module.properties.GlobalProperty initialValue="2" isNumeric="true" max="null" min="null" name="control_num_CC" wrap="false"/>
+        <VASSAL.build.module.properties.GlobalProperty initialValue="3" isNumeric="true" max="null" min="null" name="control_num_CN" wrap="false"/>
+        <VASSAL.build.module.properties.GlobalProperty initialValue="4" isNumeric="true" max="null" min="null" name="control_num_CW" wrap="false"/>
+        <VASSAL.build.module.properties.GlobalProperty initialValue="5" isNumeric="true" max="null" min="null" name="control_num_FR" wrap="false"/>
+        <VASSAL.build.module.properties.GlobalProperty initialValue="6" isNumeric="true" max="null" min="null" name="control_num_FV" wrap="false"/>
+        <VASSAL.build.module.properties.GlobalProperty initialValue="7" isNumeric="true" max="null" min="null" name="control_num_GE" wrap="false"/>
+        <VASSAL.build.module.properties.GlobalProperty initialValue="8" isNumeric="true" max="null" min="null" name="control_num_IT" wrap="false"/>
+        <VASSAL.build.module.properties.GlobalProperty initialValue="9" isNumeric="true" max="null" min="null" name="control_num_JP" wrap="false"/>
+        <VASSAL.build.module.properties.GlobalProperty initialValue="10" isNumeric="true" max="null" min="null" name="control_num_RU" wrap="false"/>
+        <VASSAL.build.module.properties.GlobalProperty initialValue="11" isNumeric="true" max="null" min="null" name="control_num_US" wrap="false"/>
+        <VASSAL.build.module.properties.GlobalProperty description="" initialValue="1" isNumeric="true" max="null" min="null" name="type_num_" wrap="false"/>
+        <VASSAL.build.module.properties.GlobalProperty initialValue="2" isNumeric="true" max="null" min="null" name="type_num_SUPP" wrap="false"/>
+        <VASSAL.build.module.properties.GlobalProperty initialValue="3" isNumeric="true" max="null" min="null" name="type_num_HQ-A" wrap="false"/>
+        <VASSAL.build.module.properties.GlobalProperty initialValue="4" isNumeric="true" max="null" min="null" name="type_num_HQ-I" wrap="false"/>
+        <VASSAL.build.module.properties.GlobalProperty initialValue="5" isNumeric="true" max="null" min="null" name="type_num_ARM" wrap="false"/>
+        <VASSAL.build.module.properties.GlobalProperty initialValue="6" isNumeric="true" max="null" min="null" name="type_num_MECH" wrap="false"/>
+        <VASSAL.build.module.properties.GlobalProperty initialValue="7" isNumeric="true" max="null" min="null" name="type_num_MOT" wrap="false"/>
+        <VASSAL.build.module.properties.GlobalProperty initialValue="8" isNumeric="true" max="null" min="null" name="type_num_INF" wrap="false"/>
+        <VASSAL.build.module.properties.GlobalProperty initialValue="9" isNumeric="true" max="null" min="null" name="type_num_MIL" wrap="false"/>
+        <VASSAL.build.module.properties.GlobalProperty initialValue="10" isNumeric="true" max="null" min="null" name="type_num_TERR" wrap="false"/>
+        <VASSAL.build.module.properties.GlobalProperty initialValue="11" isNumeric="true" max="null" min="null" name="type_num_GARR" wrap="false"/>
+        <VASSAL.build.module.properties.GlobalProperty initialValue="12" isNumeric="true" max="null" min="null" name="type_num_MTN" wrap="false"/>
+        <VASSAL.build.module.properties.GlobalProperty initialValue="13" isNumeric="true" max="null" min="null" name="type_num_MAR" wrap="false"/>
+        <VASSAL.build.module.properties.GlobalProperty initialValue="14" isNumeric="true" max="null" min="null" name="type_num_PARA" wrap="false"/>
+        <VASSAL.build.module.properties.GlobalProperty initialValue="15" isNumeric="true" max="null" min="null" name="type_num_CAV-2" wrap="false"/>
+        <VASSAL.build.module.properties.GlobalProperty initialValue="16" isNumeric="true" max="null" min="null" name="type_num_CAV-3" wrap="false"/>
+        <VASSAL.build.module.properties.GlobalProperty initialValue="17" isNumeric="true" max="null" min="null" name="type_num_PART" wrap="false"/>
+        <VASSAL.build.module.properties.GlobalProperty initialValue="18" isNumeric="true" max="null" min="null" name="type_num_Arm" wrap="false"/>
+        <VASSAL.build.module.properties.GlobalProperty initialValue="19" isNumeric="true" max="null" min="null" name="type_num_Mech" wrap="false"/>
+        <VASSAL.build.module.properties.GlobalProperty initialValue="20" isNumeric="true" max="null" min="null" name="type_num_Mot" wrap="false"/>
+        <VASSAL.build.module.properties.GlobalProperty initialValue="21" isNumeric="true" max="null" min="null" name="type_num_Eng" wrap="false"/>
+        <VASSAL.build.module.properties.GlobalProperty initialValue="22" isNumeric="true" max="null" min="null" name="type_num_Inf" wrap="false"/>
+        <VASSAL.build.module.properties.GlobalProperty initialValue="23" isNumeric="true" max="null" min="null" name="type_num_Mtn" wrap="false"/>
+        <VASSAL.build.module.properties.GlobalProperty initialValue="24" isNumeric="true" max="null" min="null" name="type_num_Mar" wrap="false"/>
+        <VASSAL.build.module.properties.GlobalProperty initialValue="25" isNumeric="true" max="null" min="null" name="type_num_Para" wrap="false"/>
+        <VASSAL.build.module.properties.GlobalProperty initialValue="26" isNumeric="true" max="null" min="null" name="type_num_Ski" wrap="false"/>
+        <VASSAL.build.module.properties.GlobalProperty initialValue="27" isNumeric="true" max="null" min="null" name="type_num_Cav-1" wrap="false"/>
+        <VASSAL.build.module.properties.GlobalProperty initialValue="28" isNumeric="true" max="null" min="null" name="type_num_Cav-2" wrap="false"/>
+        <VASSAL.build.module.properties.GlobalProperty initialValue="29" isNumeric="true" max="null" min="null" name="type_num_Art" wrap="false"/>
+        <VASSAL.build.module.properties.GlobalProperty initialValue="30" isNumeric="true" max="null" min="null" name="type_num_Mot Art" wrap="false"/>
+        <VASSAL.build.module.properties.GlobalProperty initialValue="31" isNumeric="true" max="null" min="null" name="type_num_SP Art" wrap="false"/>
+        <VASSAL.build.module.properties.GlobalProperty initialValue="32" isNumeric="true" max="null" min="null" name="type_num_AT" wrap="false"/>
+        <VASSAL.build.module.properties.GlobalProperty initialValue="33" isNumeric="true" max="null" min="null" name="type_num_Mot AT" wrap="false"/>
+        <VASSAL.build.module.properties.GlobalProperty initialValue="34" isNumeric="true" max="null" min="null" name="type_num_TD" wrap="false"/>
+        <VASSAL.build.module.properties.GlobalProperty initialValue="35" isNumeric="true" max="null" min="null" name="type_num_AA" wrap="false"/>
+        <VASSAL.build.module.properties.GlobalProperty initialValue="36" isNumeric="true" max="null" min="null" name="type_num_Mot AA" wrap="false"/>
+        <VASSAL.build.module.properties.GlobalProperty initialValue="37" isNumeric="true" max="null" min="null" name="type_num_AAA" wrap="false"/>
+        <VASSAL.build.module.properties.GlobalProperty initialValue="38" isNumeric="true" max="null" min="null" name="type_num_Mot AAA" wrap="false"/>
+        <VASSAL.build.module.properties.GlobalProperty initialValue="39" isNumeric="true" max="null" min="null" name="type_num_FORT-3" wrap="false"/>
+        <VASSAL.build.module.properties.GlobalProperty initialValue="40" isNumeric="true" max="null" min="null" name="type_num_FORT-2" wrap="false"/>
+        <VASSAL.build.module.properties.GlobalProperty initialValue="41" isNumeric="true" max="null" min="null" name="type_num_FORT-1" wrap="false"/>
+        <VASSAL.build.module.properties.GlobalProperty initialValue="42" isNumeric="true" max="null" min="null" name="type_num_FTR-2" wrap="false"/>
+        <VASSAL.build.module.properties.GlobalProperty initialValue="43" isNumeric="true" max="null" min="null" name="type_num_FTR-3" wrap="false"/>
+        <VASSAL.build.module.properties.GlobalProperty initialValue="44" isNumeric="true" max="null" min="null" name="type_num_LND-2" wrap="false"/>
+        <VASSAL.build.module.properties.GlobalProperty initialValue="45" isNumeric="true" max="null" min="null" name="type_num_LND-3" wrap="false"/>
+        <VASSAL.build.module.properties.GlobalProperty initialValue="46" isNumeric="true" max="null" min="null" name="type_num_LND-4" wrap="false"/>
+        <VASSAL.build.module.properties.GlobalProperty initialValue="47" isNumeric="true" max="null" min="null" name="type_num_NAV-2" wrap="false"/>
+        <VASSAL.build.module.properties.GlobalProperty initialValue="48" isNumeric="true" max="null" min="null" name="type_num_NAV-3" wrap="false"/>
+        <VASSAL.build.module.properties.GlobalProperty initialValue="49" isNumeric="true" max="null" min="null" name="type_num_NAV-4" wrap="false"/>
+        <VASSAL.build.module.properties.GlobalProperty initialValue="50" isNumeric="true" max="null" min="null" name="type_num_ATR-3" wrap="false"/>
+        <VASSAL.build.module.properties.GlobalProperty initialValue="51" isNumeric="true" max="null" min="null" name="type_num_ATR-4" wrap="false"/>
+        <VASSAL.build.module.properties.GlobalProperty initialValue="52" isNumeric="true" max="null" min="null" name="type_num_CVP-0" wrap="false"/>
+        <VASSAL.build.module.properties.GlobalProperty initialValue="53" isNumeric="true" max="null" min="null" name="type_num_CVP-1" wrap="false"/>
+        <VASSAL.build.module.properties.GlobalProperty initialValue="54" isNumeric="true" max="null" min="null" name="type_num_CVP-2" wrap="false"/>
+        <VASSAL.build.module.properties.GlobalProperty initialValue="55" isNumeric="true" max="null" min="null" name="type_num_SUB" wrap="false"/>
+        <VASSAL.build.module.properties.GlobalProperty initialValue="56" isNumeric="true" max="null" min="null" name="type_num_AMPH" wrap="false"/>
+        <VASSAL.build.module.properties.GlobalProperty initialValue="57" isNumeric="true" max="null" min="null" name="type_num_CVL-4" wrap="false"/>
+        <VASSAL.build.module.properties.GlobalProperty initialValue="58" isNumeric="true" max="null" min="null" name="type_num_CVL-6" wrap="false"/>
+        <VASSAL.build.module.properties.GlobalProperty initialValue="59" isNumeric="true" max="null" min="null" name="type_num_CV-5" wrap="false"/>
+        <VASSAL.build.module.properties.GlobalProperty initialValue="60" isNumeric="true" max="null" min="null" name="type_num_CV-6" wrap="false"/>
+        <VASSAL.build.module.properties.GlobalProperty initialValue="61" isNumeric="true" max="null" min="null" name="type_num_BB" wrap="false"/>
+        <VASSAL.build.module.properties.GlobalProperty initialValue="62" isNumeric="true" max="null" min="null" name="type_num_CA" wrap="false"/>
+        <VASSAL.build.module.properties.GlobalProperty initialValue="63" isNumeric="true" max="null" min="null" name="type_num_CL" wrap="false"/>
+        <VASSAL.build.module.properties.GlobalProperty initialValue="64" isNumeric="true" max="null" min="null" name="type_num_CX" wrap="false"/>
+        <VASSAL.build.module.properties.GlobalProperty initialValue="65" isNumeric="true" max="null" min="null" name="type_num_TRS" wrap="false"/>
+        <VASSAL.build.module.properties.GlobalProperty initialValue="66" isNumeric="true" max="null" min="null" name="type_num_ASW-2" wrap="false"/>
+        <VASSAL.build.module.properties.GlobalProperty initialValue="67" isNumeric="true" max="null" min="null" name="type_num_ASW-3" wrap="false"/>
+        <VASSAL.build.module.properties.GlobalProperty initialValue="68" isNumeric="true" max="null" min="null" name="type_num_FROG" wrap="false"/>
+        <VASSAL.build.module.properties.GlobalProperty initialValue="69" isNumeric="true" max="null" min="null" name="type_num_SYNTH-7" wrap="false"/>
+        <VASSAL.build.module.properties.GlobalProperty initialValue="70" isNumeric="true" max="null" min="null" name="type_num_SYNTH-8" wrap="false"/>
+        <VASSAL.build.module.properties.GlobalProperty initialValue="71" isNumeric="true" max="null" min="null" name="type_num_SYNTH-9" wrap="false"/>
+        <VASSAL.build.module.properties.GlobalProperty initialValue="72" isNumeric="true" max="null" min="null" name="type_num_SYNTH-10" wrap="false"/>
+    </VASSAL.build.module.properties.GlobalProperties>
+    <VASSAL.build.module.Map allowMultiple="true" backgroundcolor="255,255,255" buttonName="Map" changeFormat="$message$" color="204,0,204" createFormat="$pieceName$ created in $location$ * $playerName$" edgeHeight="0" edgeWidth="0" hotkey="" icon="" launch="false" mapName="Main Map" markMoved="Always" markUnmovedIcon="icon_moved.png" markUnmovedText="" markUnmovedTooltip="Mark all pieces on this map as not moved" moveKey="" moveToFormat="$pieceName$ :: $previousLocation$($previousMap$) &gt;&gt; $location$($mapName$) * $playerName$" moveWithinFormat="$pieceName$ :: $previousLocation$ &gt;&gt; $location$ * $playerName$" thickness="5">
+        <VASSAL.build.module.map.BoardPicker addColumnText="Add column" addRowText="Add row" boardPrompt="Select board" slotHeight="150" slotScale="0.02" slotWidth="150" title="offset_africa">
+            <VASSAL.build.module.map.boardPicker.Board image="map_europe-indexed.png" name="Europe" reversible="false">
+                <VASSAL.build.module.map.boardPicker.board.ZonedGrid>
+                    <VASSAL.build.module.map.boardPicker.board.HexGrid color="102,102,102" cornersLegal="false" dotsVisible="false" dx="87.03651497465934" dy="99.0" edgesLegal="true" sideways="true" snapTo="true" visible="true" x0="-30" y0="0">
+                        <VASSAL.build.module.map.boardPicker.board.mapgrid.HexGridNumbering color="0,0,0" first="V" fontSize="16" hDescend="true" hDrawOff="0" hLeading="1" hOff="-1" hType="N" locationFormat="#$gridLocation$" rotateText="270" sep="" stagger="true" vDescend="true" vDrawOff="-35" vLeading="1" vOff="0" vType="N" visible="false"/>
+                    </VASSAL.build.module.map.boardPicker.board.HexGrid>
+                    <VASSAL.build.module.map.boardPicker.board.mapgrid.ZonedGridHighlighter/>
+                    <VASSAL.build.module.map.boardPicker.board.mapgrid.Zone highlightProperty="" locationFormat="$name$" name="offboard" path="0,0;1930,0;1930,1159;1832,1048;1783,1073;1734,1043;1685,1073;1635,1044;1584,1075;1534,1043;1487,1072;1434,1044;1388,1074;1335,1044;1288,1074;1236,1045;1188,1071;1138,1045;1089,1072;1040,1046;990,1073;939,1042;891,1073;694,1073;644,1045;598,1072;543,1044;495,1073;444,1042;397,1072;346,1045;295,1073;248,1044;199,1073;149,1046;98,1073;48,1054;48,405;319,406;318,271;67,271;65,405;48,403;49,31;579,30;579,48;65,47;65,245;604,246;604,49;577,48;581,30;1830,32;1833,467;1832,515;1779,554;1782,607;1831,637;1830,694;1782,723;1781,781;1829,812;1829,871;1780,902;1781,954;1830,985;1832,1048;1930,1160;0,1160" useHighlight="false" useParentGrid="false"/>
+                </VASSAL.build.module.map.boardPicker.board.ZonedGrid>
+            </VASSAL.build.module.map.boardPicker.Board>
+            <VASSAL.build.module.map.boardPicker.Board image="map_asia-indexed.png" name="Asia" reversible="false"/>
+            <VASSAL.build.module.map.boardPicker.Board image="map_america_mini-indexed.png" name="America-Mini" reversible="false"/>
+            <VASSAL.build.module.map.boardPicker.Board image="map_africa-indexed.png" name="Africa" reversible="false"/>
+            <VASSAL.build.module.map.boardPicker.Board image="map_scandinavia-indexed.png" name="Scandinavia" reversible="false">
+                <VASSAL.build.module.map.boardPicker.board.ZonedGrid>
+                    <VASSAL.build.module.map.boardPicker.board.HexGrid color="102,102,102" cornersLegal="false" dotsVisible="false" dx="87.0231175150378" dy="99.1" edgesLegal="true" sideways="true" snapTo="true" visible="true" x0="-29" y0="-1">
+                        <VASSAL.build.module.map.boardPicker.board.mapgrid.HexGridNumbering color="0,0,0" first="V" fontSize="16" hDescend="true" hDrawOff="0" hLeading="1" hOff="-1" hType="N" locationFormat="SC#$gridLocation$" rotateText="270" sep="" stagger="true" vDescend="true" vDrawOff="-35" vLeading="1" vOff="0" vType="N" visible="false"/>
+                    </VASSAL.build.module.map.boardPicker.board.HexGrid>
+                    <VASSAL.build.module.map.boardPicker.board.mapgrid.ZonedGridHighlighter/>
+                    <VASSAL.build.module.map.boardPicker.board.mapgrid.Zone highlightProperty="" locationFormat="$name$" name="offboard" path="0,0;1930,0;1930,1159;1832,1048;1783,1073;1734,1043;1685,1073;1635,1044;1584,1075;1534,1043;1487,1072;1434,1044;1388,1074;1335,1044;1288,1074;1236,1045;1188,1071;1138,1045;1089,1072;1040,1046;990,1073;939,1042;891,1073;694,1073;644,1045;598,1072;543,1044;495,1073;444,1042;397,1072;346,1045;295,1073;248,1044;199,1073;149,1046;98,1073;48,1054;48,405;319,406;318,271;67,271;65,405;48,403;49,31;579,30;579,48;65,47;65,245;604,246;604,49;577,48;581,30;1830,32;1833,467;1832,515;1779,554;1782,607;1831,637;1830,694;1782,723;1781,781;1829,812;1829,871;1780,902;1781,954;1830,985;1832,1048;1930,1160;0,1160" useHighlight="false" useParentGrid="false"/>
+                    <VASSAL.build.module.map.boardPicker.board.mapgrid.Zone highlightProperty="" locationFormat="$name$ $gridLocation$" name="Norvegian Sea" path="577,28;583,47;64,47;64,247;603,245;603,152;642,348;595,377;594,434;545,463;544,522;594,550;593,610;543,637;544,697;495,727;495,782;445,814;395,783;347,812;348,867;297,897;247,870;198,902;199,958;150,983;148,1046;148,1046;99,1074;50,1049;50,1049;47,30;47,30;47,30;47,30" useHighlight="false" useParentGrid="false"/>
+                    <VASSAL.build.module.map.boardPicker.board.mapgrid.Zone highlightProperty="" locationFormat="$name$" name="Arctic Ocean" path="605,47;580,48;575,30;1829,28;1833,465;1785,437;1735,468;1683,437;1683,376;1632,350;1584,377;1535,349;1535,291;1484,263;1435,290;1385,263;1338,289;1288,264;1289,203;1240,175;1188,204;1139,175;1139,117;1089,87;1041,117;990,88;939,118;940,176;890,202;891,261;840,291;792,261;741,291;691,262;643,292;643,349;605,162" useHighlight="false" useParentGrid="false"/>
+                    <VASSAL.build.module.map.boardPicker.board.mapgrid.Zone highlightProperty="" locationFormat="$name$" name="Baltic Sea" path="740,1042;742,987;791,958;842,986;841,1041;893,1074;691,1074" useHighlight="false" useParentGrid="false"/>
+                    <VASSAL.build.module.map.boardPicker.board.mapgrid.Zone highlightProperty="" locationFormat="$name$" name="Baltic Sea" path="891,726;940,697;990,725;990,783;940,813;891,784" useHighlight="false" useParentGrid="false"/>
+                </VASSAL.build.module.map.boardPicker.board.ZonedGrid>
+            </VASSAL.build.module.map.boardPicker.Board>
+        </VASSAL.build.module.map.BoardPicker>
+        <VASSAL.build.module.map.StackMetrics bottom="40,0" disabled="false" down="37,0" exSepX="6" exSepY="30" top="38,0" unexSepX="3" unexSepY="6" up="39,0"/>
+        <VASSAL.build.module.map.ForwardToKeyBuffer/>
+        <VASSAL.build.module.map.Scroller/>
+        <VASSAL.build.module.map.ForwardToChatter/>
+        <VASSAL.build.module.map.MenuDisplayer/>
+        <VASSAL.build.module.map.MapCenterer/>
+        <VASSAL.build.module.map.StackExpander/>
+        <VASSAL.build.module.map.PieceMover/>
+        <VASSAL.build.module.map.KeyBufferer/>
+        <VASSAL.build.module.map.CounterDetailViewer bgColor="204,204,204" borderWidth="2" counterReportFormat="$PieceName$" delay="700" display="from top-most layer only" emptyHexReportForma="$LocationName$" fgColor="0,0,0" fontSize="9" graphicsZoom="1.0" hotkey="32,130" layerList="" minDisplayPieces="1" propertyFilter="" showDeck="false" showMoveSelectde="false" showNoStack="false" showNonMovable="false" showgraph="true" showgraphsingle="false" showtext="true" showtextsingle="false" summaryReportFormat="$LocationName$ [STR: $sum(STR)$]" unrotatePieces="true" version="2" zoomlevel="1.0"/>
+        <VASSAL.build.module.properties.GlobalProperties/>
+        <VASSAL.build.module.map.SelectionHighlighters>
+            <VASSAL.build.module.map.SelectionHighlighter color="0,204,204" image="icon_fp_us.png" match="{home==&quot;US&quot;}" name="US" thickness="2" useImage="true" xoffset="-30" yoffset="-30"/>
+        </VASSAL.build.module.map.SelectionHighlighters>
+        <VASSAL.build.module.map.HighlightLastMoved color="255,0,0" enabled="true" thickness="5"/>
+        <VASSAL.build.module.map.GlobalMap buttonText="" color="0,0,0" hotkey="79,195" icon="/images/overview.gif" scale="0.03" tooltip="Show/Hide overview window"/>
+        <VASSAL.build.module.map.Zoomer inButtonText="" inIconName="icn_zoom_in.png" inTooltip="Zoom in" outButtonText="" outIconName="icn_zoom_out.png" outTooltip="Zoom out" pickButtonText="" pickIconName="icn_zoom.png" pickTooltip="Select Zoom" zoomInKey="" zoomLevels="0.1,0.25,0.5,1.0,1.5" zoomOutKey="" zoomPickKey="" zoomStart="2"/>
+        <VASSAL.build.module.map.HidePiecesButton buttonText="" hiddenIcon="" hotkey="" showingIcon="" tooltip="Hide all pieces on this map"/>
+        <VASSAL.build.module.map.LayeredPieceCollection layerOrder="bottom,unit,marker" property="map_layer">
+            <VASSAL.build.module.map.LayerControl command="Rotate Layer Order Up" hotkey="" icon="icn_60.png" layers="" skip="true" text="" tooltip="Rotate Layers Up"/>
+            <VASSAL.build.module.map.LayerControl command="Rotate Layer Order Down" hotkey="" icon="icn_43.png" layers="" skip="true" text="" tooltip="Rotate Layers Down"/>
+            <VASSAL.build.module.map.LayerControl command="Reset All Layers" hotkey="" icon="icn_arrow_redo.png" layers="" skip="true" text="" tooltip="Reset Layers"/>
+        </VASSAL.build.module.map.LayeredPieceCollection>
+        <VASSAL.build.module.map.LOS_Thread drawRange="true" global="Always" hideCounters="true" hideOpacity="50" hotkey="" iconName="icn_find.png" label="" persistence="Always" persistentIconName="icn_eye.png" rangeBg="0,0,0" rangeFg="255,255,255" report="$playerId$ Checked LOS from $FromLocation$ to $ToLocation$ [$Range$]" round="Nearest whole number" scale="0" snapEnd="true" snapStart="true" threadName="" tooltip="Distance"/>
+        <VASSAL.build.module.map.MassKeyCommand buttonHotkey="" buttonText="" deckCount="-1" filter="{map_layer == &quot;marker&quot;}" hotkey="88,130" icon="icn_bin.png" name="delete markers" reportFormat="" reportSingle="true" singleMap="true" tooltip="Delete Markers"/>
+        <VASSAL.build.module.ToolbarMenu description="" hotkey="" icon="icn_disk.png" menuItems="Save Map as Picture,Save Map as Text" text="" tooltip="Save Map"/>
+        <VASSAL.build.module.map.ImageSaver buttonText="Save Map as Picture" hotkey="" icon="icn_picture_save.png" tooltip="Save Map as Picture"/>
+        <VASSAL.build.module.map.TextSaver buttonText="Save Map as Text" hotkey="" icon="icn_script_save.png" tooltip="Save Map as Text"/>
+    </VASSAL.build.module.Map>
+    <VASSAL.build.module.gamepieceimage.GamePieceImageDefinitions>
+        <VASSAL.build.module.gamepieceimage.ColorManager>
+            <VASSAL.build.module.gamepieceimage.ColorSwatch color="255,255,0" name="CN"/>
+            <VASSAL.build.module.gamepieceimage.ColorSwatch color="0,138,255" name="CW"/>
+            <VASSAL.build.module.gamepieceimage.ColorSwatch color="189,255,247" name="FR"/>
+            <VASSAL.build.module.gamepieceimage.ColorSwatch color="173,170,173" name="GE"/>
+            <VASSAL.build.module.gamepieceimage.ColorSwatch color="189,255,0" name="IT"/>
+            <VASSAL.build.module.gamepieceimage.ColorSwatch color="255,0,0" name="JP"/>
+            <VASSAL.build.module.gamepieceimage.ColorSwatch color="255,162,0" name="RU"/>
+            <VASSAL.build.module.gamepieceimage.ColorSwatch color="148,207,0" name="US"/>
+        </VASSAL.build.module.gamepieceimage.ColorManager>
+        <VASSAL.build.module.gamepieceimage.FontManager>
+            <VASSAL.build.module.gamepieceimage.FontStyle name="Default" style="Dialog,0,12,false"/>
+        </VASSAL.build.module.gamepieceimage.FontManager>
+        <VASSAL.build.module.gamepieceimage.GamePieceLayoutsContainer>
+            <VASSAL.build.module.gamepieceimage.GamePieceLayout border="Plain" height="72" layout="" name="PlainBG" width="72">
+                <VASSAL.build.module.gamepieceimage.GamePieceImage bgColor="CN" borderColor="BLACK" name="BG_CN" props=""/>
+                <VASSAL.build.module.gamepieceimage.GamePieceImage bgColor="CW" borderColor="BLACK" name="BG_CW" props=""/>
+                <VASSAL.build.module.gamepieceimage.GamePieceImage bgColor="FR" borderColor="BLACK" name="BG_FR" props=""/>
+                <VASSAL.build.module.gamepieceimage.GamePieceImage bgColor="GE" borderColor="BLACK" name="BG_GE" props=""/>
+                <VASSAL.build.module.gamepieceimage.GamePieceImage bgColor="IT" borderColor="BLACK" name="BG_IT" props=""/>
+                <VASSAL.build.module.gamepieceimage.GamePieceImage bgColor="JP" borderColor="BLACK" name="BG_JP" props=""/>
+                <VASSAL.build.module.gamepieceimage.GamePieceImage bgColor="RU" borderColor="BLACK" name="BG_RU" props=""/>
+                <VASSAL.build.module.gamepieceimage.GamePieceImage bgColor="US" borderColor="BLACK" name="BG_US" props=""/>
+                <VASSAL.build.module.gamepieceimage.GamePieceImage bgColor="WHITE" borderColor="BLACK" name="BG_W" props=""/>
+                <VASSAL.build.module.gamepieceimage.GamePieceImage bgColor="CLEAR" borderColor="BLACK" name="BG_C" props=""/>
+            </VASSAL.build.module.gamepieceimage.GamePieceLayout>
+            <VASSAL.build.module.gamepieceimage.GamePieceLayout border="None" height="72" layout="Image;;Specified in individual images|TypeImg;Center;0;-5;0;true,Box;20;20;Oval;5|BGCost;Center;-20;20;0;true,Box;20;20;Oval;5|BGTime;Center;20;20;0;true,Text;Default;Specified in individual images;;;;;;false|LBLCost;Center;-20;20;0;true,Text;Default;Specified in individual images;;;;;;false|LBLTime;Center;20;20;0;true" name="TypeLayer" width="72">
+                <VASSAL.build.module.gamepieceimage.GamePieceImage bgColor="CLEAR" borderColor="BLACK" name="layer_SUPP" props="Image;TypeImg;Center;icon_supp.png,Box;BGCost;Center;GREEN;GRAY,Box;BGTime;Center;WHITE;BLACK,Text;LBLCost;Center;BLACK;CLEAR;3;RED,Text;LBLTime;Center;BLACK;CLEAR;2;RED"/>
+                <VASSAL.build.module.gamepieceimage.GamePieceImage bgColor="CLEAR" borderColor="BLACK" name="layer_HQ-A" props="Image;TypeImg;Center;icon_hq_a.png,Box;BGCost;Center;GREEN;GRAY,Box;BGTime;Center;WHITE;BLACK,Text;LBLCost;Center;BLACK;CLEAR;8;RED,Text;LBLTime;Center;BLACK;CLEAR;4;RED"/>
+                <VASSAL.build.module.gamepieceimage.GamePieceImage bgColor="CLEAR" borderColor="BLACK" name="layer_HQ-I" props="Image;TypeImg;Center;icon_hq_i.png,Box;BGCost;Center;GREEN;GRAY,Box;BGTime;Center;WHITE;BLACK,Text;LBLCost;Center;BLACK;CLEAR;5;RED,Text;LBLTime;Center;BLACK;CLEAR;3;RED"/>
+                <VASSAL.build.module.gamepieceimage.GamePieceImage bgColor="CLEAR" borderColor="BLACK" name="layer_ARM" props="Image;TypeImg;Center;icon_arm.png,Box;BGCost;Center;GREEN;GRAY,Box;BGTime;Center;WHITE;BLACK,Text;LBLCost;Center;BLACK;CLEAR;6;RED,Text;LBLTime;Center;BLACK;CLEAR;4;RED"/>
+                <VASSAL.build.module.gamepieceimage.GamePieceImage bgColor="CLEAR" borderColor="BLACK" name="layer_MECH" props="Image;TypeImg;Center;icon_mech.png,Box;BGCost;Center;GREEN;GRAY,Box;BGTime;Center;WHITE;BLACK,Text;LBLCost;Center;BLACK;CLEAR;5;RED,Text;LBLTime;Center;BLACK;CLEAR;3;RED"/>
+                <VASSAL.build.module.gamepieceimage.GamePieceImage bgColor="CLEAR" borderColor="BLACK" name="layer_MOT" props="Image;TypeImg;Center;icon_mot.png,Box;BGCost;Center;GREEN;GRAY,Box;BGTime;Center;WHITE;BLACK,Text;LBLCost;Center;BLACK;CLEAR;4;RED,Text;LBLTime;Center;BLACK;CLEAR;3;RED"/>
+                <VASSAL.build.module.gamepieceimage.GamePieceImage bgColor="CLEAR" borderColor="BLACK" name="layer_INF" props="Image;TypeImg;Center;icon_inf.png,Box;BGCost;Center;GREEN;GRAY,Box;BGTime;Center;WHITE;BLACK,Text;LBLCost;Center;BLACK;CLEAR;3;RED,Text;LBLTime;Center;BLACK;CLEAR;2;RED"/>
+                <VASSAL.build.module.gamepieceimage.GamePieceImage bgColor="CLEAR" borderColor="BLACK" name="layer_MIL" props="Image;TypeImg;Center;icon_mil.png,Box;BGCost;Center;GREEN;GRAY,Box;BGTime;Center;WHITE;BLACK,Text;LBLCost;Center;BLACK;CLEAR;2;RED,Text;LBLTime;Center;BLACK;CLEAR;1;RED"/>
+                <VASSAL.build.module.gamepieceimage.GamePieceImage bgColor="CLEAR" borderColor="BLACK" name="layer_TERR" props="Image;TypeImg;Center;icon_terr.png,Box;BGCost;Center;GREEN;GRAY,Box;BGTime;Center;WHITE;BLACK,Text;LBLCost;Center;BLACK;CLEAR;2;RED,Text;LBLTime;Center;BLACK;CLEAR;1;RED"/>
+                <VASSAL.build.module.gamepieceimage.GamePieceImage bgColor="CLEAR" borderColor="BLACK" name="layer_GARR" props="Image;TypeImg;Center;icon_garr.png,Box;BGCost;Center;GREEN;GRAY,Box;BGTime;Center;WHITE;BLACK,Text;LBLCost;Center;BLACK;CLEAR;2;RED,Text;LBLTime;Center;BLACK;CLEAR;2;RED"/>
+                <VASSAL.build.module.gamepieceimage.GamePieceImage bgColor="CLEAR" borderColor="BLACK" name="layer_MTN" props="Image;TypeImg;Center;icon_mnt.png,Box;BGCost;Center;GREEN;GRAY,Box;BGTime;Center;WHITE;BLACK,Text;LBLCost;Center;BLACK;CLEAR;4;RED,Text;LBLTime;Center;BLACK;CLEAR;3;RED"/>
+                <VASSAL.build.module.gamepieceimage.GamePieceImage bgColor="CLEAR" borderColor="BLACK" name="layer_MAR" props="Image;TypeImg;Center;icon_mar.png,Box;BGCost;Center;GREEN;GRAY,Box;BGTime;Center;WHITE;BLACK,Text;LBLCost;Center;BLACK;CLEAR;5;RED,Text;LBLTime;Center;BLACK;CLEAR;3;RED"/>
+                <VASSAL.build.module.gamepieceimage.GamePieceImage bgColor="CLEAR" borderColor="BLACK" name="layer_PARA" props="Image;TypeImg;Center;icon_para.png,Box;BGCost;Center;GREEN;GRAY,Box;BGTime;Center;WHITE;BLACK,Text;LBLCost;Center;BLACK;CLEAR;5;RED,Text;LBLTime;Center;BLACK;CLEAR;4;RED"/>
+                <VASSAL.build.module.gamepieceimage.GamePieceImage bgColor="CLEAR" borderColor="BLACK" name="layer_CAV-2" props="Image;TypeImg;Center;icon_cav.png,Box;BGCost;Center;GREEN;GRAY,Box;BGTime;Center;WHITE;BLACK,Text;LBLCost;Center;BLACK;CLEAR;2;RED,Text;LBLTime;Center;BLACK;CLEAR;3;RED"/>
+                <VASSAL.build.module.gamepieceimage.GamePieceImage bgColor="CLEAR" borderColor="BLACK" name="layer_CAV-3" props="Image;TypeImg;Center;icon_cav.png,Box;BGCost;Center;GREEN;GRAY,Box;BGTime;Center;WHITE;BLACK,Text;LBLCost;Center;BLACK;CLEAR;3;RED,Text;LBLTime;Center;BLACK;CLEAR;3;RED"/>
+                <VASSAL.build.module.gamepieceimage.GamePieceImage bgColor="CLEAR" borderColor="BLACK" name="layer_PART" props="Image;TypeImg;Center;icon_part.png,Box;BGCost;Center;GREEN;GRAY,Box;BGTime;Center;WHITE;BLACK,Text;LBLCost;Center;BLACK;CLEAR;-;RED,Text;LBLTime;Center;BLACK;CLEAR;-;RED"/>
+                <VASSAL.build.module.gamepieceimage.GamePieceImage bgColor="CLEAR" borderColor="BLACK" name="layer_Arm" props="Image;TypeImg;Center;icon_arm.png,Box;BGCost;Center;GREEN;GRAY,Box;BGTime;Center;WHITE;BLACK,Text;LBLCost;Center;BLACK;CLEAR;4;RED,Text;LBLTime;Center;BLACK;CLEAR;4;RED"/>
+                <VASSAL.build.module.gamepieceimage.GamePieceImage bgColor="CLEAR" borderColor="BLACK" name="layer_Mech" props="Image;TypeImg;Center;icon_mech.png,Box;BGCost;Center;GREEN;GRAY,Box;BGTime;Center;WHITE;BLACK,Text;LBLCost;Center;BLACK;CLEAR;3;RED,Text;LBLTime;Center;BLACK;CLEAR;3;RED"/>
+                <VASSAL.build.module.gamepieceimage.GamePieceImage bgColor="CLEAR" borderColor="BLACK" name="layer_Mot" props="Image;TypeImg;Center;icon_mot.png,Box;BGCost;Center;GREEN;GRAY,Box;BGTime;Center;WHITE;BLACK,Text;LBLCost;Center;BLACK;CLEAR;2;RED,Text;LBLTime;Center;BLACK;CLEAR;3;RED"/>
+                <VASSAL.build.module.gamepieceimage.GamePieceImage bgColor="CLEAR" borderColor="BLACK" name="layer_Eng" props="Image;TypeImg;Center;icon_eng.png,Box;BGCost;Center;GREEN;GRAY,Box;BGTime;Center;WHITE;BLACK,Text;LBLCost;Center;BLACK;CLEAR;3;RED,Text;LBLTime;Center;BLACK;CLEAR;5;RED"/>
+                <VASSAL.build.module.gamepieceimage.GamePieceImage bgColor="CLEAR" borderColor="BLACK" name="layer_Inf" props="Image;TypeImg;Center;icon_inf.png,Box;BGCost;Center;GREEN;GRAY,Box;BGTime;Center;WHITE;BLACK,Text;LBLCost;Center;BLACK;CLEAR;2;RED,Text;LBLTime;Center;BLACK;CLEAR;2;RED"/>
+                <VASSAL.build.module.gamepieceimage.GamePieceImage bgColor="CLEAR" borderColor="BLACK" name="layer_Mtn" props="Image;TypeImg;Center;icon_mnt.png,Box;BGCost;Center;GREEN;GRAY,Box;BGTime;Center;WHITE;BLACK,Text;LBLCost;Center;BLACK;CLEAR;2;RED,Text;LBLTime;Center;BLACK;CLEAR;3;RED"/>
+                <VASSAL.build.module.gamepieceimage.GamePieceImage bgColor="CLEAR" borderColor="BLACK" name="layer_Mar" props="Image;TypeImg;Center;icon_mar.png,Box;BGCost;Center;GREEN;GRAY,Box;BGTime;Center;WHITE;BLACK,Text;LBLCost;Center;BLACK;CLEAR;3;RED,Text;LBLTime;Center;BLACK;CLEAR;3;RED"/>
+                <VASSAL.build.module.gamepieceimage.GamePieceImage bgColor="CLEAR" borderColor="BLACK" name="layer_Para" props="Image;TypeImg;Center;icon_para.png,Box;BGCost;Center;GREEN;GRAY,Box;BGTime;Center;WHITE;BLACK,Text;LBLCost;Center;BLACK;CLEAR;3;RED,Text;LBLTime;Center;BLACK;CLEAR;4;RED"/>
+                <VASSAL.build.module.gamepieceimage.GamePieceImage bgColor="CLEAR" borderColor="BLACK" name="layer_Ski" props="Image;TypeImg;Center;icon_ski.png,Box;BGCost;Center;GREEN;GRAY,Box;BGTime;Center;WHITE;BLACK,Text;LBLCost;Center;BLACK;CLEAR;2;RED,Text;LBLTime;Center;BLACK;CLEAR;3;RED"/>
+                <VASSAL.build.module.gamepieceimage.GamePieceImage bgColor="CLEAR" borderColor="BLACK" name="layer_Cav-1" props="Image;TypeImg;Center;icon_cav.png,Box;BGCost;Center;GREEN;GRAY,Box;BGTime;Center;WHITE;BLACK,Text;LBLCost;Center;BLACK;CLEAR;1;RED,Text;LBLTime;Center;BLACK;CLEAR;3;RED"/>
+                <VASSAL.build.module.gamepieceimage.GamePieceImage bgColor="CLEAR" borderColor="BLACK" name="layer_Cav-2" props="Image;TypeImg;Center;icon_cav.png,Box;BGCost;Center;GREEN;GRAY,Box;BGTime;Center;WHITE;BLACK,Text;LBLCost;Center;BLACK;CLEAR;2;RED,Text;LBLTime;Center;BLACK;CLEAR;3;RED"/>
+                <VASSAL.build.module.gamepieceimage.GamePieceImage bgColor="CLEAR" borderColor="BLACK" name="layer_Art" props="Image;TypeImg;Center;icon_art.png,Box;BGCost;Center;GREEN;GRAY,Box;BGTime;Center;WHITE;BLACK,Text;LBLCost;Center;BLACK;CLEAR;4;RED,Text;LBLTime;Center;BLACK;CLEAR;3;RED"/>
+                <VASSAL.build.module.gamepieceimage.GamePieceImage bgColor="CLEAR" borderColor="BLACK" name="layer_Mot Art" props="Image;TypeImg;Center;icon_art_mot.png,Box;BGCost;Center;GREEN;GRAY,Box;BGTime;Center;WHITE;BLACK,Text;LBLCost;Center;BLACK;CLEAR;5;RED,Text;LBLTime;Center;BLACK;CLEAR;3;RED"/>
+                <VASSAL.build.module.gamepieceimage.GamePieceImage bgColor="CLEAR" borderColor="BLACK" name="layer_SP Art" props="Image;TypeImg;Center;icon_art_sp.png,Box;BGCost;Center;GREEN;GRAY,Box;BGTime;Center;WHITE;BLACK,Text;LBLCost;Center;BLACK;CLEAR;6;RED,Text;LBLTime;Center;BLACK;CLEAR;3;RED"/>
+                <VASSAL.build.module.gamepieceimage.GamePieceImage bgColor="CLEAR" borderColor="BLACK" name="layer_AT" props="Image;TypeImg;Center;icon_at.png,Box;BGCost;Center;GREEN;GRAY,Box;BGTime;Center;WHITE;BLACK,Text;LBLCost;Center;BLACK;CLEAR;3;RED,Text;LBLTime;Center;BLACK;CLEAR;3;RED"/>
+                <VASSAL.build.module.gamepieceimage.GamePieceImage bgColor="CLEAR" borderColor="BLACK" name="layer_Mot AT" props="Image;TypeImg;Center;icon_at_mot.png,Box;BGCost;Center;GREEN;GRAY,Box;BGTime;Center;WHITE;BLACK,Text;LBLCost;Center;BLACK;CLEAR;4;RED,Text;LBLTime;Center;BLACK;CLEAR;3;RED"/>
+                <VASSAL.build.module.gamepieceimage.GamePieceImage bgColor="CLEAR" borderColor="BLACK" name="layer_TD" props="Image;TypeImg;Center;icon_at_sp.png,Box;BGCost;Center;GREEN;GRAY,Box;BGTime;Center;WHITE;BLACK,Text;LBLCost;Center;BLACK;CLEAR;5;RED,Text;LBLTime;Center;BLACK;CLEAR;4;RED"/>
+                <VASSAL.build.module.gamepieceimage.GamePieceImage bgColor="CLEAR" borderColor="BLACK" name="layer_AA" props="Image;TypeImg;Center;icon_aa.png,Box;BGCost;Center;GREEN;GRAY,Box;BGTime;Center;WHITE;BLACK,Text;LBLCost;Center;BLACK;CLEAR;4;RED,Text;LBLTime;Center;BLACK;CLEAR;3;RED"/>
+                <VASSAL.build.module.gamepieceimage.GamePieceImage bgColor="CLEAR" borderColor="BLACK" name="layer_Mot AA" props="Image;TypeImg;Center;icon_aa_mot.png,Box;BGCost;Center;GREEN;GRAY,Box;BGTime;Center;WHITE;BLACK,Text;LBLCost;Center;BLACK;CLEAR;5;RED,Text;LBLTime;Center;BLACK;CLEAR;3;RED"/>
+                <VASSAL.build.module.gamepieceimage.GamePieceImage bgColor="CLEAR" borderColor="BLACK" name="layer_AAA" props="Image;TypeImg;Center;icon_aaa.png,Box;BGCost;Center;GREEN;GRAY,Box;BGTime;Center;WHITE;BLACK,Text;LBLCost;Center;BLACK;CLEAR;4;RED,Text;LBLTime;Center;BLACK;CLEAR;3;RED"/>
+                <VASSAL.build.module.gamepieceimage.GamePieceImage bgColor="CLEAR" borderColor="BLACK" name="layer_Mot AAA" props="Image;TypeImg;Center;icon_aaa_mot.png,Box;BGCost;Center;GREEN;GRAY,Box;BGTime;Center;WHITE;BLACK,Text;LBLCost;Center;BLACK;CLEAR;5;RED,Text;LBLTime;Center;BLACK;CLEAR;3;RED"/>
+                <VASSAL.build.module.gamepieceimage.GamePieceImage bgColor="CLEAR" borderColor="BLACK" name="layer_FORT-3" props="Image;TypeImg;Center;icon_fort.png,Box;BGCost;Center;GREEN;GRAY,Box;BGTime;Center;WHITE;BLACK,Text;LBLCost;Center;BLACK;CLEAR;5;RED,Text;LBLTime;Center;BLACK;CLEAR;5;RED"/>
+                <VASSAL.build.module.gamepieceimage.GamePieceImage bgColor="CLEAR" borderColor="BLACK" name="layer_FORT-2" props="Image;TypeImg;Center;icon_fort.png,Box;BGCost;Center;GREEN;GRAY,Box;BGTime;Center;WHITE;BLACK,Text;LBLCost;Center;BLACK;CLEAR;4;RED,Text;LBLTime;Center;BLACK;CLEAR;5;RED"/>
+                <VASSAL.build.module.gamepieceimage.GamePieceImage bgColor="CLEAR" borderColor="BLACK" name="layer_FORT-1" props="Image;TypeImg;Center;icon_fort.png,Box;BGCost;Center;GREEN;GRAY,Box;BGTime;Center;WHITE;BLACK,Text;LBLCost;Center;BLACK;CLEAR;2;RED,Text;LBLTime;Center;BLACK;CLEAR;5;RED"/>
+                <VASSAL.build.module.gamepieceimage.GamePieceImage bgColor="CLEAR" borderColor="BLACK" name="layer_FTR-2" props="Image;TypeImg;Center;icon_ftr.png,Box;BGCost;Center;GREEN;GRAY,Box;BGTime;Center;WHITE;BLACK,Text;LBLCost;Center;BLACK;CLEAR;2;RED,Text;LBLTime;Center;BLACK;CLEAR;2;RED"/>
+                <VASSAL.build.module.gamepieceimage.GamePieceImage bgColor="CLEAR" borderColor="BLACK" name="layer_FTR-3" props="Image;TypeImg;Center;icon_ftr.png,Box;BGCost;Center;GREEN;GRAY,Box;BGTime;Center;WHITE;BLACK,Text;LBLCost;Center;BLACK;CLEAR;3;RED,Text;LBLTime;Center;BLACK;CLEAR;3;RED"/>
+                <VASSAL.build.module.gamepieceimage.GamePieceImage bgColor="CLEAR" borderColor="BLACK" name="layer_LND-2" props="Image;TypeImg;Center;icon_lnd.png,Box;BGCost;Center;GREEN;GRAY,Box;BGTime;Center;WHITE;BLACK,Text;LBLCost;Center;BLACK;CLEAR;2;RED,Text;LBLTime;Center;BLACK;CLEAR;2;RED"/>
+                <VASSAL.build.module.gamepieceimage.GamePieceImage bgColor="CLEAR" borderColor="BLACK" name="layer_LND-3" props="Image;TypeImg;Center;icon_lnd.png,Box;BGCost;Center;GREEN;GRAY,Box;BGTime;Center;WHITE;BLACK,Text;LBLCost;Center;BLACK;CLEAR;3;RED,Text;LBLTime;Center;BLACK;CLEAR;3;RED"/>
+                <VASSAL.build.module.gamepieceimage.GamePieceImage bgColor="CLEAR" borderColor="BLACK" name="layer_LND-4" props="Image;TypeImg;Center;icon_lnd.png,Box;BGCost;Center;GREEN;GRAY,Box;BGTime;Center;WHITE;BLACK,Text;LBLCost;Center;BLACK;CLEAR;4;RED,Text;LBLTime;Center;BLACK;CLEAR;4;RED"/>
+                <VASSAL.build.module.gamepieceimage.GamePieceImage bgColor="CLEAR" borderColor="BLACK" name="layer_NAV-2" props="Image;TypeImg;Center;icon_nav.png,Box;BGCost;Center;GREEN;GRAY,Box;BGTime;Center;WHITE;BLACK,Text;LBLCost;Center;BLACK;CLEAR;2;RED,Text;LBLTime;Center;BLACK;CLEAR;2;RED"/>
+                <VASSAL.build.module.gamepieceimage.GamePieceImage bgColor="CLEAR" borderColor="BLACK" name="layer_NAV-3" props="Image;TypeImg;Center;icon_nav.png,Box;BGCost;Center;GREEN;GRAY,Box;BGTime;Center;WHITE;BLACK,Text;LBLCost;Center;BLACK;CLEAR;3;RED,Text;LBLTime;Center;BLACK;CLEAR;3;RED"/>
+                <VASSAL.build.module.gamepieceimage.GamePieceImage bgColor="CLEAR" borderColor="BLACK" name="layer_NAV-4" props="Image;TypeImg;Center;icon_nav.png,Box;BGCost;Center;GREEN;GRAY,Box;BGTime;Center;WHITE;BLACK,Text;LBLCost;Center;BLACK;CLEAR;4;RED,Text;LBLTime;Center;BLACK;CLEAR;4;RED"/>
+                <VASSAL.build.module.gamepieceimage.GamePieceImage bgColor="CLEAR" borderColor="BLACK" name="layer_ATR-3" props="Image;TypeImg;Center;icon_atr.png,Box;BGCost;Center;GREEN;GRAY,Box;BGTime;Center;WHITE;BLACK,Text;LBLCost;Center;BLACK;CLEAR;3;RED,Text;LBLTime;Center;BLACK;CLEAR;3;RED"/>
+                <VASSAL.build.module.gamepieceimage.GamePieceImage bgColor="CLEAR" borderColor="BLACK" name="layer_ATR-4" props="Image;TypeImg;Center;icon_atr.png,Box;BGCost;Center;GREEN;GRAY,Box;BGTime;Center;WHITE;BLACK,Text;LBLCost;Center;BLACK;CLEAR;4;RED,Text;LBLTime;Center;BLACK;CLEAR;4;RED"/>
+                <VASSAL.build.module.gamepieceimage.GamePieceImage bgColor="CLEAR" borderColor="BLACK" name="layer_CVP-0" props="Image;TypeImg;Center;icon_ftr.png,Box;BGCost;Center;GREEN;GRAY,Box;BGTime;Center;WHITE;BLACK,Text;LBLCost;Center;BLACK;CLEAR;0;RED,Text;LBLTime;Center;BLACK;CLEAR;0;RED"/>
+                <VASSAL.build.module.gamepieceimage.GamePieceImage bgColor="CLEAR" borderColor="BLACK" name="layer_CVP-1" props="Image;TypeImg;Center;icon_ftr.png,Box;BGCost;Center;GREEN;GRAY,Box;BGTime;Center;WHITE;BLACK,Text;LBLCost;Center;BLACK;CLEAR;1;RED,Text;LBLTime;Center;BLACK;CLEAR;1;RED"/>
+                <VASSAL.build.module.gamepieceimage.GamePieceImage bgColor="CLEAR" borderColor="BLACK" name="layer_CVP-2" props="Image;TypeImg;Center;icon_ftr.png,Box;BGCost;Center;GREEN;GRAY,Box;BGTime;Center;WHITE;BLACK,Text;LBLCost;Center;BLACK;CLEAR;2;RED,Text;LBLTime;Center;BLACK;CLEAR;2;RED"/>
+                <VASSAL.build.module.gamepieceimage.GamePieceImage bgColor="CLEAR" borderColor="BLACK" name="layer_SYNTH-7" props="Image;TypeImg;Center;icon_syth.png,Box;BGCost;Center;GREEN;GRAY,Box;BGTime;Center;WHITE;BLACK,Text;LBLCost;Center;BLACK;CLEAR;7;RED,Text;LBLTime;Center;BLACK;CLEAR;6;RED"/>
+                <VASSAL.build.module.gamepieceimage.GamePieceImage bgColor="CLEAR" borderColor="BLACK" name="layer_SYNTH-8" props="Image;TypeImg;Center;icon_syth.png,Box;BGCost;Center;GREEN;GRAY,Box;BGTime;Center;WHITE;BLACK,Text;LBLCost;Center;BLACK;CLEAR;8;RED,Text;LBLTime;Center;BLACK;CLEAR;6;RED"/>
+                <VASSAL.build.module.gamepieceimage.GamePieceImage bgColor="CLEAR" borderColor="BLACK" name="layer_SYNTH-9" props="Image;TypeImg;Center;icon_syth.png,Box;BGCost;Center;GREEN;GRAY,Box;BGTime;Center;WHITE;BLACK,Text;LBLCost;Center;BLACK;CLEAR;9;RED,Text;LBLTime;Center;BLACK;CLEAR;6;RED"/>
+                <VASSAL.build.module.gamepieceimage.GamePieceImage bgColor="CLEAR" borderColor="BLACK" name="layer_SYNTH-10" props="Image;TypeImg;Center;icon_syth.png,Box;BGCost;Center;GREEN;GRAY,Box;BGTime;Center;WHITE;BLACK,Text;LBLCost;Center;BLACK;CLEAR;10;RED,Text;LBLTime;Center;BLACK;CLEAR;6;RED"/>
+            </VASSAL.build.module.gamepieceimage.GamePieceLayout>
+            <VASSAL.build.module.gamepieceimage.GamePieceLayout border="None" height="72" layout="Image;;Specified in individual images|TypeImg;Center;0;-5;0;true,Box;30;20;Rounded Rectangle;5|BGCost;Center;-15;20;0;true,Box;20;20;Oval;5|BGTime;Center;20;20;0;true,Text;Default;Specified in individual images;;;;;;false|LBLCost;Center;-20;20;0;true,Text;Default;Specified in individual images;;;;;;false|LBLTime;Center;20;20;0;true" name="TypeSeaLayer" width="72">
+                <VASSAL.build.module.gamepieceimage.GamePieceImage bgColor="CLEAR" borderColor="BLACK" name="layer_SUB" props="Image;TypeImg;Center;icon_sub.png,Box;BGCost;Center;GREEN;BLACK,Box;BGTime;Center;WHITE;BLACK,Text;LBLCost;Center;BLACK;CLEAR;1/;RED,Text;LBLTime;Center;BLACK;CLEAR;3;RED"/>
+                <VASSAL.build.module.gamepieceimage.GamePieceImage bgColor="CLEAR" borderColor="BLACK" name="layer_AMPH" props="Image;TypeImg;Center;icon_amph.png,Box;BGCost;Center;GREEN;BLACK,Box;BGTime;Center;WHITE;BLACK,Text;LBLCost;Center;BLACK;CLEAR;3/;RED,Text;LBLTime;Center;BLACK;CLEAR;4;RED"/>
+                <VASSAL.build.module.gamepieceimage.GamePieceImage bgColor="CLEAR" borderColor="BLACK" name="layer_CVL-4" props="Image;TypeImg;Center;icon_cv.png,Box;BGCost;Center;GREEN;BLACK,Box;BGTime;Center;WHITE;BLACK,Text;LBLCost;Center;BLACK;CLEAR;1/;RED,Text;LBLTime;Center;BLACK;CLEAR;4;RED"/>
+                <VASSAL.build.module.gamepieceimage.GamePieceImage bgColor="CLEAR" borderColor="BLACK" name="layer_CVL-6" props="Image;TypeImg;Center;icon_cv.png,Box;BGCost;Center;GREEN;BLACK,Box;BGTime;Center;WHITE;BLACK,Text;LBLCost;Center;BLACK;CLEAR;1/;RED,Text;LBLTime;Center;BLACK;CLEAR;6;RED"/>
+                <VASSAL.build.module.gamepieceimage.GamePieceImage bgColor="CLEAR" borderColor="BLACK" name="layer_CV-5" props="Image;TypeImg;Center;icon_cv.png,Box;BGCost;Center;GREEN;BLACK,Box;BGTime;Center;WHITE;BLACK,Text;LBLCost;Center;BLACK;CLEAR;2/;RED,Text;LBLTime;Center;BLACK;CLEAR;5;RED"/>
+                <VASSAL.build.module.gamepieceimage.GamePieceImage bgColor="CLEAR" borderColor="BLACK" name="layer_CV-6" props="Image;TypeImg;Center;icon_cv.png,Box;BGCost;Center;GREEN;BLACK,Box;BGTime;Center;WHITE;BLACK,Text;LBLCost;Center;BLACK;CLEAR;2/;RED,Text;LBLTime;Center;BLACK;CLEAR;6;RED"/>
+                <VASSAL.build.module.gamepieceimage.GamePieceImage bgColor="CLEAR" borderColor="BLACK" name="layer_BB" props="Image;TypeImg;Center;icon_bb.png,Box;BGCost;Center;GREEN;BLACK,Box;BGTime;Center;WHITE;BLACK,Text;LBLCost;Center;BLACK;CLEAR;2/;RED,Text;LBLTime;Center;BLACK;CLEAR;6;RED"/>
+                <VASSAL.build.module.gamepieceimage.GamePieceImage bgColor="CLEAR" borderColor="BLACK" name="layer_CA" props="Image;TypeImg;Center;icon_ca.png,Box;BGCost;Center;GREEN;BLACK,Box;BGTime;Center;WHITE;BLACK,Text;LBLCost;Center;BLACK;CLEAR;1/;RED,Text;LBLTime;Center;BLACK;CLEAR;5;RED"/>
+                <VASSAL.build.module.gamepieceimage.GamePieceImage bgColor="CLEAR" borderColor="BLACK" name="layer_CL" props="Image;TypeImg;Center;icon_ca.png,Box;BGCost;Center;GREEN;BLACK,Box;BGTime;Center;WHITE;BLACK,Text;LBLCost;Center;BLACK;CLEAR;1/;RED,Text;LBLTime;Center;BLACK;CLEAR;5;RED"/>
+                <VASSAL.build.module.gamepieceimage.GamePieceImage bgColor="CLEAR" borderColor="BLACK" name="layer_CX" props="Image;TypeImg;Center;icon_ca.png,Box;BGCost;Center;GREEN;BLACK,Box;BGTime;Center;WHITE;BLACK,Text;LBLCost;Center;BLACK;CLEAR;1/;RED,Text;LBLTime;Center;BLACK;CLEAR;5;RED"/>
+                <VASSAL.build.module.gamepieceimage.GamePieceImage bgColor="CLEAR" borderColor="BLACK" name="layer_TRS" props="Image;TypeImg;Center;icon_trs.png,Box;BGCost;Center;GREEN;BLACK,Box;BGTime;Center;WHITE;BLACK,Text;LBLCost;Center;BLACK;CLEAR;2/;RED,Text;LBLTime;Center;BLACK;CLEAR;3;RED"/>
+                <VASSAL.build.module.gamepieceimage.GamePieceImage bgColor="CLEAR" borderColor="BLACK" name="layer_ASW-2" props="Image;TypeImg;Center;icon_ca.png,Box;BGCost;Center;GREEN;BLACK,Box;BGTime;Center;WHITE;BLACK,Text;LBLCost;Center;BLACK;CLEAR;1/;RED,Text;LBLTime;Center;BLACK;CLEAR;2;RED"/>
+                <VASSAL.build.module.gamepieceimage.GamePieceImage bgColor="CLEAR" borderColor="BLACK" name="layer_ASW-3" props="Image;TypeImg;Center;icon_ca.png,Box;BGCost;Center;GREEN;BLACK,Box;BGTime;Center;WHITE;BLACK,Text;LBLCost;Center;BLACK;CLEAR;1/;RED,Text;LBLTime;Center;BLACK;CLEAR;3;RED"/>
+                <VASSAL.build.module.gamepieceimage.GamePieceImage bgColor="CLEAR" borderColor="BLACK" name="layer_FROG" props="Image;TypeImg;Center;icon_sub.png,Box;BGCost;Center;GREEN;BLACK,Box;BGTime;Center;WHITE;BLACK,Text;LBLCost;Center;BLACK;CLEAR;1/;RED,Text;LBLTime;Center;BLACK;CLEAR;3;RED"/>
+            </VASSAL.build.module.gamepieceimage.GamePieceLayout>
+        </VASSAL.build.module.gamepieceimage.GamePieceLayoutsContainer>
+    </VASSAL.build.module.gamepieceimage.GamePieceImageDefinitions>
+    <VASSAL.build.module.PrototypesContainer>
+        <VASSAL.build.module.PrototypeDefinition name="Base">+/null/label;76,130;Change Label;10;;0,0,0;t;0;c;0;b;c;$pieceName$ ($label$);Dialog;0;0;TextLabel;	piece;;;;/	null;0;0;</VASSAL.build.module.PrototypeDefinition>
+        <VASSAL.build.module.PrototypeDefinition name="ControlBase">+/null/submenu;Control;Mask Counter,Show Indicator,Change Control	emb2;Show Indicator;2;;;2;;;2;;;;1;false;-40;0;,flag_s_cc.png,flag_s_cn.png,flag_s_cw.png,flag_s_fr.png,flag_s_fv.png,flag_s_ge.png,flag_s_it.png,flag_s_jp.png,flag_s_ru.png,flag_s_us.png;,,,,,,,,,,;false;control_indicator;;;true;control_no;1;1;false;73,130;;\	emb2;Activate;2;;;2;;;2;;;;1;false;0;0;,,,,,,,,,,;,CC +,CN +,CW +,FR +,FV +,GE +,IT +,JP +,RU +,US +;false;control_name;;;true;control_no;1;1;true;65,130;;\\	emb2;;2;;;2;;;2;;;;1;false;0;0;,BG_CN,BG_CN,BG_CW,BG_FR,BG_FR,BG_GE,BG_IT,BG_JP,BG_RU,BG_US;,,,,,,,,,,;false;control_bg;;;true;control_no;1;1;false;80,130;;\\\	calcProp;control_no;{GetProperty("control_num_"+$control$)}\\\\	obs;80,130;;Mask Counter;B;?;player:\\\\\	piece;;;;/	-1;-1;-1;false\	1;1;1;false\\	-1;-1;-1;false\\\	\\\\	null;\\\\\	null;0;0;</VASSAL.build.module.PrototypeDefinition>
+        <VASSAL.build.module.PrototypeDefinition name="ControlCC">+/null/prototype;ControlBase	mark;control\	piece;;;;/	CC\	null;0;0;</VASSAL.build.module.PrototypeDefinition>
+        <VASSAL.build.module.PrototypeDefinition name="ControlCN">+/null/prototype;ControlBase	mark;control\	piece;;;;/	CN\	null;0;0;</VASSAL.build.module.PrototypeDefinition>
+        <VASSAL.build.module.PrototypeDefinition name="ControlCW">+/null/prototype;ControlBase	mark;control\	piece;;;;/	CW\	null;0;0;</VASSAL.build.module.PrototypeDefinition>
+        <VASSAL.build.module.PrototypeDefinition name="ControlFR">+/null/prototype;ControlBase	PROP;control;false,0,100,false;Change Control:78\,130:E\,Change control Free\/Vichy France\:\,FR\\,FV\	piece;;;;/	FR\	null;0;0;</VASSAL.build.module.PrototypeDefinition>
+        <VASSAL.build.module.PrototypeDefinition name="ControlGE">+/null/prototype;ControlBase	mark;control\	piece;;;;/	GE\	null;0;0;</VASSAL.build.module.PrototypeDefinition>
+        <VASSAL.build.module.PrototypeDefinition name="ControlIT">+/null/prototype;ControlBase	mark;control\	piece;;;;/	IT\	null;276;0;</VASSAL.build.module.PrototypeDefinition>
+        <VASSAL.build.module.PrototypeDefinition name="ControlJP">+/null/prototype;ControlBase	mark;control\	piece;;;;/	JP\	null;0;0;</VASSAL.build.module.PrototypeDefinition>
+        <VASSAL.build.module.PrototypeDefinition name="ControlRU">+/null/prototype;ControlBase	mark;control\	piece;;;;/	RU\	null;0;0;</VASSAL.build.module.PrototypeDefinition>
+        <VASSAL.build.module.PrototypeDefinition name="ControlUS">+/null/prototype;ControlBase	mark;control\	piece;;;;/	US\	null;0;0;</VASSAL.build.module.PrototypeDefinition>
+        <VASSAL.build.module.PrototypeDefinition name="ControlMinor">+/null/prototype;ControlBase	PROP;control;false,0,100,false;Change Control:78\,130:E\,Set controling major power\:\,\\,CC\\,CN\\,CW\\,FR\\,FV\\,GE\\,IT\\,JP\\,RU\\,US\	piece;;;;/	\	null;0;0;</VASSAL.build.module.PrototypeDefinition>
+        <VASSAL.build.module.PrototypeDefinition name="ForcePool">+/null/submenu;Force Pool;Reinforcements,Destroyed,Repair,Reserve,Construction	sendto;Counter Sheet;67,130;{"Counter Sheet "+$cs_no$};;-20;-20;;;80;80;$cs_col$;$cs_row$;Counter Sheet;L;;;;$cs_row$-$cs_col$\	sendto;Reserve;82,130;{forcepool_map};;0;0;;;;0;0;0;Reserve;Z;Reserve Pool;;;\\	sendto;Construction;69,130;{forcepool_map};;0;0;;;;0;0;0;Construction;Z;Construction Pool;;;\\\	sendto;Repair;87,130;{forcepool_map};;0;0;;;;0;0;0;Repair;Z;Repair Pool;;;\\\\	sendto;Destroyed;88,130;{forcepool_map};;0;0;;;;0;0;0;Destroyed;Z;Destroyed;;;\\\\\	sendto;Reinforcements;89,130;{forcepool_map};;0;0;;;;0;0;0;Reinforcements;Z;Production - Deploy;;;\\\\\\	calcProp;forcepool_map;{If(control == "", "Minor Force Pool", control+" Force Pool")}\\\\\\\	piece;;;;/	;;\	;;\\	;;\\\	;;\\\\	;;\\\\\	;;\\\\\\	\\\\\\\	null;310;0;</VASSAL.build.module.PrototypeDefinition>
+        <VASSAL.build.module.PrototypeDefinition name="Unit">+/null/rotate;6;93,130;91,130;Rotate CW;Rotate CCW;;;	emb2;Flip;2;;;2;;;2;;;;1;false;35;0;layer_fd.png;[fd] +;false;face_down;;;false;;1;1;false;70,130;;\	emb2;;2;;;2;;;2;;;;;false;0;0;BG_C,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,;+ ?,+ SUPP,+ HQ-A,+ HQ-I,+ ARM,+ MECH,+ MOT,+ INF,+ MIL,+ TERR,+ GARR,+ MTN,+ MAR,+ PARA,+ CAV,+ CAV,+ PART,+ Arm,+ Mech,+ Mot,+ Eng,+ Inf,+ Mtn,+ Mar,+ Para,+ Ski,+ Cav,+ Cav,+ Art,+ Mot Art,+ SP Art,+ AT,+ Mot AT,+ TD,+ AA,+ Mot AA,+ AAA,+ Mot AAA,+ FORT,+ FORT,+ FORT,+ FTR,+ FTR,+ LND,+ LND,+ LND,+ NAV,+ NAV,+ NAV,+ ATR,+ ATR,+ CVP,+ CVP,+ CVP,+ SUB,+ AMPH,+ CVL,+ CVL,+ CV,+ CVL,+ BB,+ CA,+ CL,+ CX,+ TRS,+ ASW,+ ASW,+ FROG,+ SYNTH,+ SYNTH,+ SYNTH,+ SYNTH;false;type_name;;;true;type_no;1;1;true;80,130;;\\	emb2;;2;;;2;;;2;;;;;false;0;0;BG_C,layer_SUPP,layer_HQ-A,layer_HQ-I,layer_ARM,layer_MECH,layer_MOT,layer_INF,layer_MIL,layer_TERR,layer_GARR,layer_MTN,layer_MAR,layer_PARA,layer_CAV-2,
+layer_CAV-3,layer_PART,layer_Arm,layer_Mech,layer_Mot,layer_Eng,layer_Inf,layer_Mtn,layer_Mar,layer_Para,layer_Ski,layer_Cav-1,layer_Cav-2,layer_Art,layer_Mot Art,layer_SP Art,layer_AT,layer_Mot AT,layer_TD,layer_AA,layer_Mot AA,layer_AAA,layer_Mot AAA,layer_FORT-3,layer_FORT-2,layer_FORT-1,layer_FTR-2,layer_FTR-3,layer_LND-2,layer_LND-3,layer_LND-4,layer_NAV-2,layer_NAV-3,layer_NAV-4,layer_ATR-3,layer_ATR-4,layer_CVP-0,layer_CVP-1,layer_CVP-2,layer_SUB,layer_AMPH,layer_CVL-4,layer_CVL-6,layer_CV-5,layer_CV-6,layer_BB,layer_CA,layer_CL,layer_CX,layer_TRS,layer_ASW-2,layer_ASW-3,layer_FROG,layer_SYNTH-7,layer_SYNTH-8,layer_SYNTH-9,layer_SYNTH-10;,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,;false;type_mask;;;true;type_no;1;1;false;80,130;;\\\	footprint;84,130;Movement Trail;false;true;10;255,255,0;255,0,255;100;33;20;30;3.0\\\\	markmoved;layer_moved.png;23;-35;Mark Moved;77,130\\\\\	prototype;ForcePool\\\\\\	prototype;Base\\\\\\\	submenu;Unit Menu;Face Down,Backside,Mark Moved,
+Movement Trail,Change Label,Rotate CW,Rotate CCW,Delete\\\\\\\\	calcProp;type_no;{GetProperty("type_num_"+$type$)}\\\\\\\\\	piece;;;;/0	-1;-1;-1;false\	1;1;;true\\	-1;-1;;true\\\	true;;0\\\\	false\\\\\	\\\\\\	\\\\\\\	\\\\\\\\	\\\\\\\\\	null;288;36;</VASSAL.build.module.PrototypeDefinition>
+        <VASSAL.build.module.PrototypeDefinition name="Air">+/null/prototype;Unit	piece;;;;/	null;0;0;</VASSAL.build.module.PrototypeDefinition>
+        <VASSAL.build.module.PrototypeDefinition name="Land">+/null/prototype;Unit	piece;;;;/	null;0;0;</VASSAL.build.module.PrototypeDefinition>
+        <VASSAL.build.module.PrototypeDefinition name="Sea">+/null/prototype;Unit	piece;;;;/	null;234;0;</VASSAL.build.module.PrototypeDefinition>
+        <VASSAL.build.module.PrototypeDefinition name="SUPP">+/null/mark;BT	mark;BP\	mark;type\\	prototype;Land\\\	piece;;;;/2	3\	SUPP\\	\\\	null;0;0;</VASSAL.build.module.PrototypeDefinition>
+        <VASSAL.build.module.PrototypeDefinition name="HQ-A">+/null/mark;BT	mark;BP\	mark;type\\	prototype;Land\\\	piece;;;;/4	8\	HQ-A\\	\\\	null;272;17;</VASSAL.build.module.PrototypeDefinition>
+        <VASSAL.build.module.PrototypeDefinition name="HQ-I">+/null/mark;BT	mark;BP\	mark;type\\	prototype;Land\\\	piece;;;;/3	5\	HQ-I\\	\\\	null;271;17;</VASSAL.build.module.PrototypeDefinition>
+        <VASSAL.build.module.PrototypeDefinition name="ARM">+/null/mark;BT	mark;BP\	mark;type\\	prototype;Land\\\	piece;;;;/4	6\	ARM\\	\\\	null;270;17;</VASSAL.build.module.PrototypeDefinition>
+        <VASSAL.build.module.PrototypeDefinition name="MECH">+/null/mark;BT	mark;BP\	mark;type\\	prototype;Land\\\	piece;;;;/3	5\	MECH\\	\\\	null;270;17;</VASSAL.build.module.PrototypeDefinition>
+        <VASSAL.build.module.PrototypeDefinition name="MOT">+/null/mark;BT	mark;BP\	mark;type\\	prototype;Land\\\	piece;;;;/3	4\	MOT\\	\\\	null;272;17;</VASSAL.build.module.PrototypeDefinition>
+        <VASSAL.build.module.PrototypeDefinition name="INF">+/null/mark;BT	mark;BP\	mark;type\\	prototype;Land\\\	piece;;;;/2	3\	INF\\	\\\	null;0;0;</VASSAL.build.module.PrototypeDefinition>
+        <VASSAL.build.module.PrototypeDefinition name="MIL">+/null/mark;BT	mark;BP\	mark;type\\	prototype;Land\\\	piece;;;;/1	2\	MIL\\	\\\	null;268;17;</VASSAL.build.module.PrototypeDefinition>
+        <VASSAL.build.module.PrototypeDefinition name="TERR">+/null/mark;BT	mark;BP\	mark;type\\	prototype;Land\\\	piece;;;;/1	2\	TERR\\	\\\	null;268;17;</VASSAL.build.module.PrototypeDefinition>
+        <VASSAL.build.module.PrototypeDefinition name="GARR">+/null/mark;BT	mark;BP\	mark;type\\	prototype;Land\\\	piece;;;;/2	2\	GARR\\	\\\	null;272;36;</VASSAL.build.module.PrototypeDefinition>
+        <VASSAL.build.module.PrototypeDefinition name="MTN">+/null/mark;BT	mark;BP\	mark;type\\	prototype;Land\\\	piece;;;;/3	4\	MTN\\	\\\	null;0;0;</VASSAL.build.module.PrototypeDefinition>
+        <VASSAL.build.module.PrototypeDefinition name="MAR">+/null/mark;BT	mark;BP\	mark;type\\	prototype;Land\\\	piece;;;;/3	5\	MAR\\	\\\	null;0;0;</VASSAL.build.module.PrototypeDefinition>
+        <VASSAL.build.module.PrototypeDefinition name="PARA">+/null/mark;BT	mark;BP\	mark;type\\	prototype;Land\\\	piece;;;;/4	5\	PARA\\	\\\	null;270;17;</VASSAL.build.module.PrototypeDefinition>
+        <VASSAL.build.module.PrototypeDefinition name="CAV-2">+/null/mark;BT	mark;BP\	mark;type\\	prototype;Land\\\	piece;;;;/3	2\	CAV-2\\	\\\	null;0;0;</VASSAL.build.module.PrototypeDefinition>
+        <VASSAL.build.module.PrototypeDefinition name="CAV-3">+/null/mark;BT	mark;BP\	mark;type\\	prototype;Land\\\	piece;;;;/3	3\	CAV-3\\	\\\	null;0;0;</VASSAL.build.module.PrototypeDefinition>
+        <VASSAL.build.module.PrototypeDefinition name="PART">+/null/mark;type	prototype;Land\	piece;;;;/PART	\	null;272;17;</VASSAL.build.module.PrototypeDefinition>
+        <VASSAL.build.module.PrototypeDefinition name="Arm">+/null/mark;BT	mark;BP\	mark;type\\	prototype;Land\\\	piece;;;;/4	4\	Arm\\	\\\	null;270;17;</VASSAL.build.module.PrototypeDefinition>
+        <VASSAL.build.module.PrototypeDefinition name="Mech">+/null/mark;BT	mark;BP\	mark;type\\	prototype;Land\\\	piece;;;;/3	3\	Mech\\	\\\	null;269;17;</VASSAL.build.module.PrototypeDefinition>
+        <VASSAL.build.module.PrototypeDefinition name="Mot">+/null/mark;BT	mark;BP\	mark;type\\	prototype;Land\\\	piece;;;;/3	2\	Mot\\	\\\	null;272;17;</VASSAL.build.module.PrototypeDefinition>
+        <VASSAL.build.module.PrototypeDefinition name="Eng">+/null/mark;BT	mark;BP\	mark;type\\	prototype;Land\\\	piece;;;;/5	3\	Eng\\	\\\	null;269;17;</VASSAL.build.module.PrototypeDefinition>
+        <VASSAL.build.module.PrototypeDefinition name="Inf">+/null/mark;BT	mark;BP\	mark;type\\	prototype;Land\\\	piece;;;;/2	2\	Inf\\	\\\	null;268;17;</VASSAL.build.module.PrototypeDefinition>
+        <VASSAL.build.module.PrototypeDefinition name="Mtn">+/null/mark;BT	mark;BP\	mark;type\\	prototype;Land\\\	piece;;;;/3	2\	Mtn\\	\\\	null;269;36;</VASSAL.build.module.PrototypeDefinition>
+        <VASSAL.build.module.PrototypeDefinition name="Mar">+/null/mark;BT	mark;BP\	mark;type\\	prototype;Land\\\	piece;;;;/3	3\	Mar\\	\\\	null;270;17;</VASSAL.build.module.PrototypeDefinition>
+        <VASSAL.build.module.PrototypeDefinition name="Para">+/null/mark;BT	mark;BP\	mark;type\\	prototype;Land\\\	piece;;;;/4	3\	Para\\	\\\	null;271;17;</VASSAL.build.module.PrototypeDefinition>
+        <VASSAL.build.module.PrototypeDefinition name="Ski">+/null/mark;BT	mark;BP\	mark;type\\	prototype;Land\\\	piece;;;;/3	2\	Ski\\	\\\	null;271;17;</VASSAL.build.module.PrototypeDefinition>
+        <VASSAL.build.module.PrototypeDefinition name="Cav-1">+/null/mark;BT	mark;BP\	mark;type\\	prototype;Land\\\	piece;;;;/3	1\	Cav-1\\	\\\	null;268;17;</VASSAL.build.module.PrototypeDefinition>
+        <VASSAL.build.module.PrototypeDefinition name="Cav-2">+/null/mark;BT	mark;BP\	mark;type\\	prototype;Land\\\	piece;;;;/3	2\	Cav-2\\	\\\	null;272;17;</VASSAL.build.module.PrototypeDefinition>
+        <VASSAL.build.module.PrototypeDefinition name="Art">+/null/mark;BT	mark;BP\	mark;type\\	prototype;Land\\\	piece;;;;/3	4\	Art\\	\\\	null;272;17;</VASSAL.build.module.PrototypeDefinition>
+        <VASSAL.build.module.PrototypeDefinition name="Mot Art">+/null/mark;BT	mark;BP\	mark;type\\	prototype;Land\\\	piece;;;;/3	5\	Mot Art\\	\\\	null;268;17;</VASSAL.build.module.PrototypeDefinition>
+        <VASSAL.build.module.PrototypeDefinition name="SP Art">+/null/mark;BT	mark;BP\	mark;type\\	prototype;Land\\\	piece;;;;/3	6\	SP Art\\	\\\	null;275;17;</VASSAL.build.module.PrototypeDefinition>
+        <VASSAL.build.module.PrototypeDefinition name="AT">+/null/mark;BT	mark;BP\	mark;type\\	prototype;Land\\\	piece;;;;/3	3\	AT\\	\\\	null;273;17;</VASSAL.build.module.PrototypeDefinition>
+        <VASSAL.build.module.PrototypeDefinition name="Mot AT">+/null/mark;BT	mark;BP\	mark;type\\	prototype;Land\\\	piece;;;;/3	4\	Mot AT\\	\\\	null;273;17;</VASSAL.build.module.PrototypeDefinition>
+        <VASSAL.build.module.PrototypeDefinition name="TD">+/null/mark;BT	mark;BP\	mark;type\\	prototype;Land\\\	piece;;;;/4	5\	TD\\	\\\	null;274;17;</VASSAL.build.module.PrototypeDefinition>
+        <VASSAL.build.module.PrototypeDefinition name="AA">+/null/mark;BT	mark;BP\	mark;type\\	prototype;Land\\\	piece;;;;/3	4\	AA\\	\\\	null;267;17;</VASSAL.build.module.PrototypeDefinition>
+        <VASSAL.build.module.PrototypeDefinition name="Mot AA">+/null/mark;BT	mark;BP\	mark;type\\	prototype;Land\\\	piece;;;;/3	5\	Mot AA\\	\\\	null;267;17;</VASSAL.build.module.PrototypeDefinition>
+        <VASSAL.build.module.PrototypeDefinition name="AAA">+/null/mark;BT	mark;BP\	mark;type\\	prototype;Land\\\	piece;;;;/3	4\	AAA\\	\\\	null;267;17;</VASSAL.build.module.PrototypeDefinition>
+        <VASSAL.build.module.PrototypeDefinition name="Mot AAA">+/null/mark;BT	mark;BP\	mark;type\\	prototype;Land\\\	piece;;;;/3	5\	Mot AAA\\	\\\	null;267;17;</VASSAL.build.module.PrototypeDefinition>
+        <VASSAL.build.module.PrototypeDefinition name="FORT-3">+/null/mark;BT	mark;BP\	mark;type\\	prototype;Land\\\	piece;;;;/5	5\	FORT-3\\	\\\	null;274;17;</VASSAL.build.module.PrototypeDefinition>
+        <VASSAL.build.module.PrototypeDefinition name="FORT-2">+/null/mark;BT	mark;BP\	mark;type\\	prototype;Land\\\	piece;;;;/5	4\	FORT-2\\	\\\	null;274;17;</VASSAL.build.module.PrototypeDefinition>
+        <VASSAL.build.module.PrototypeDefinition name="FORT-1">+/null/mark;BT	mark;BP\	mark;type\\	prototype;Land\\\	piece;;;;/5	2\	FORT-1\\	\\\	null;276;17;</VASSAL.build.module.PrototypeDefinition>
+        <VASSAL.build.module.PrototypeDefinition name="FTR-2">+/null/mark;BT	mark;BP\	mark;type\\	prototype;Air\\\	piece;;;;/2	2\	FTR-2\\	\\\	null;274;17;</VASSAL.build.module.PrototypeDefinition>
+        <VASSAL.build.module.PrototypeDefinition name="FTR-3">+/null/mark;BT	mark;BP\	mark;type\\	prototype;Air\\\	piece;;;;/3	3\	FTR-3\\	\\\	null;272;17;</VASSAL.build.module.PrototypeDefinition>
+        <VASSAL.build.module.PrototypeDefinition name="LND-2">+/null/mark;BT	mark;BP\	mark;type\\	prototype;Air\\\	piece;;;;/2	2\	LND-2\\	\\\	null;0;0;</VASSAL.build.module.PrototypeDefinition>
+        <VASSAL.build.module.PrototypeDefinition name="LND-3">+/null/mark;BT	mark;BP\	mark;type\\	prototype;Air\\\	piece;;;;/3	3\	LND-3\\	\\\	null;272;17;</VASSAL.build.module.PrototypeDefinition>
+        <VASSAL.build.module.PrototypeDefinition name="LND-4">+/null/mark;BT	mark;BP\	mark;type\\	prototype;Air\\\	piece;;;;/4	4\	LND-4\\	\\\	null;272;17;</VASSAL.build.module.PrototypeDefinition>
+        <VASSAL.build.module.PrototypeDefinition name="NAV-2">+/null/mark;BT	mark;BP\	mark;type\\	prototype;Air\\\	piece;;;;/2	2\	NAV-2\\	\\\	null;272;17;</VASSAL.build.module.PrototypeDefinition>
+        <VASSAL.build.module.PrototypeDefinition name="NAV-3">+/null/mark;BT	mark;BP\	mark;type\\	prototype;Air\\\	piece;;;;/3	3\	NAV-3\\	\\\	null;273;17;</VASSAL.build.module.PrototypeDefinition>
+        <VASSAL.build.module.PrototypeDefinition name="NAV-4">+/null/mark;BT	mark;BP\	mark;type\\	prototype;Air\\\	piece;;;;/4	4\	NAV-4\\	\\\	null;273;17;</VASSAL.build.module.PrototypeDefinition>
+        <VASSAL.build.module.PrototypeDefinition name="ATR-3">+/null/mark;BT	mark;BP\	mark;type\\	prototype;Air\\\	piece;;;;/3	3\	ATR-3\\	\\\	null;273;17;</VASSAL.build.module.PrototypeDefinition>
+        <VASSAL.build.module.PrototypeDefinition name="ATR-4">+/null/mark;BT	mark;BP\	mark;type\\	prototype;Air\\\	piece;;;;/4	4\	ATR-4\\	\\\	null;272;17;</VASSAL.build.module.PrototypeDefinition>
+        <VASSAL.build.module.PrototypeDefinition name="CVP-0">+/null/mark;BT	mark;BP\	mark;type\\	prototype;Air\\\	piece;;;;/0	0\	CVP-0\\	\\\	null;0;0;</VASSAL.build.module.PrototypeDefinition>
+        <VASSAL.build.module.PrototypeDefinition name="CVP-1">+/null/mark;BT	mark;BP\	mark;type\\	prototype;Air\\\	piece;;;;/1	1\	CVP-1\\	\\\	null;272;17;</VASSAL.build.module.PrototypeDefinition>
+        <VASSAL.build.module.PrototypeDefinition name="CVP-2">+/null/mark;BT	mark;BP\	mark;type\\	prototype;Air\\\	piece;;;;/2	2\	CVP-2\\	\\\	null;272;17;</VASSAL.build.module.PrototypeDefinition>
+        <VASSAL.build.module.PrototypeDefinition name="SUB">+/null/mark;BT	mark;BP\	mark;type\\	prototype;Sea\\\	piece;;;;/3	1\	SUB\\	\\\	null;272;17;</VASSAL.build.module.PrototypeDefinition>
+        <VASSAL.build.module.PrototypeDefinition name="AMPH">+/null/mark;BT	mark;BP\	mark;type\\	prototype;Sea\\\	piece;;;;/4	3\	AMPH\\	\\\	null;270;17;</VASSAL.build.module.PrototypeDefinition>
+        <VASSAL.build.module.PrototypeDefinition name="CVL-4">+/null/mark;BT	mark;BP\	mark;type\\	prototype;Sea\\\	piece;;;;/4	1\	CVL-4\\	\\\	null;272;17;</VASSAL.build.module.PrototypeDefinition>
+        <VASSAL.build.module.PrototypeDefinition name="CVL-6">+/null/mark;BT	mark;BP\	mark;type\\	prototype;Sea\\\	piece;;;;/6	1\	CVL-6\\	\\\	null;272;17;</VASSAL.build.module.PrototypeDefinition>
+        <VASSAL.build.module.PrototypeDefinition name="CV-5">+/null/mark;BT	mark;BP\	mark;type\\	prototype;Sea\\\	piece;;;;/5	2\	CV-5\\	\\\	null;272;17;</VASSAL.build.module.PrototypeDefinition>
+        <VASSAL.build.module.PrototypeDefinition name="CV-6">+/null/mark;BT	mark;BP\	mark;type\\	prototype;Sea\\\	piece;;;;/6	2\	CV-6\\	\\\	null;272;17;</VASSAL.build.module.PrototypeDefinition>
+        <VASSAL.build.module.PrototypeDefinition name="BB">+/null/mark;BT	mark;BP\	mark;type\\	prototype;Sea\\\	piece;;;;/6	2\	BB\\	\\\	null;270;17;</VASSAL.build.module.PrototypeDefinition>
+        <VASSAL.build.module.PrototypeDefinition name="CA">+/null/mark;BT	mark;BP\	mark;type\\	prototype;Sea\\\	piece;;;;/5	1\	CA\\	\\\	null;267;17;</VASSAL.build.module.PrototypeDefinition>
+        <VASSAL.build.module.PrototypeDefinition name="CL">+/null/mark;BT	mark;BP\	mark;type\\	prototype;Sea\\\	piece;;;;/5	1\	CL\\	\\\	null;267;17;</VASSAL.build.module.PrototypeDefinition>
+        <VASSAL.build.module.PrototypeDefinition name="CX">+/null/mark;BT	mark;BP\	mark;type\\	prototype;Sea\\\	piece;;;;/5	1\	CX\\	\\\	null;267;17;</VASSAL.build.module.PrototypeDefinition>
+        <VASSAL.build.module.PrototypeDefinition name="TRS">+/null/mark;BT	mark;BP\	mark;type\\	prototype;Sea\\\	piece;;;;/3	2\	TRS\\	\\\	null;267;17;</VASSAL.build.module.PrototypeDefinition>
+        <VASSAL.build.module.PrototypeDefinition name="ASW-2">+/null/mark;BT	mark;BP\	mark;type\\	prototype;Sea\\\	piece;;;;/2	1\	ASW-2\\	\\\	null;0;0;</VASSAL.build.module.PrototypeDefinition>
+        <VASSAL.build.module.PrototypeDefinition name="ASW-3">+/null/mark;BT	mark;BP\	mark;type\\	prototype;Sea\\\	piece;;;;/3	1\	ASW-3\\	\\\	null;273;17;</VASSAL.build.module.PrototypeDefinition>
+        <VASSAL.build.module.PrototypeDefinition name="FROG">+/null/mark;BT	mark;BP\	mark;type\\	prototype;Sea\\\	piece;;;;/3	1\	FROG\\	\\\	null;273;17;</VASSAL.build.module.PrototypeDefinition>
+        <VASSAL.build.module.PrototypeDefinition name="SYNTH-7">+/null/mark;BT	mark;BP\	mark;type\\	prototype;Land\\\	piece;;;;/6	7\	SYNTH-7\\	\\\	null;272;17;</VASSAL.build.module.PrototypeDefinition>
+        <VASSAL.build.module.PrototypeDefinition name="SYNTH-8">+/null/mark;BT	mark;BP\	mark;type\\	prototype;Land\\\	piece;;;;/6	8\	SYNTH-8\\	\\\	null;276;17;</VASSAL.build.module.PrototypeDefinition>
+        <VASSAL.build.module.PrototypeDefinition name="SYNTH-9">+/null/mark;BT	mark;BP\	mark;type\\	prototype;Land\\\	piece;;;;/6	9\	SYNTH-9\\	\\\	null;276;17;</VASSAL.build.module.PrototypeDefinition>
+        <VASSAL.build.module.PrototypeDefinition name="SYNTH-10">+/null/mark;BT	mark;BP\	mark;type\\	prototype;Land\\\	piece;;;;/6	10\	SYNTH-10\\	\\\	null;276;17;</VASSAL.build.module.PrototypeDefinition>
+    </VASSAL.build.module.PrototypesContainer>
+    <VASSAL.build.module.PieceWindow hidden="false" hotkey="" icon="icn_brick.png" text="" tooltip="Show/Hide the Pieces window">
+        <VASSAL.build.widget.TabWidget>
+            <VASSAL.build.widget.PanelWidget entryName="panel" fixed="true" nColumns="4" vert="true">
+                <VASSAL.build.widget.PieceSlot entryName="piece 1" gpid="11" height="85" width="92">+/null/label;;Change Label;10;;0,0,0;t;0;c;0;b;c;$pieceName$ ($label$);Dialog;0;0;TextLabel;	prototype;SUPP\	prototype;ControlUS\\	piece;;;BG_W;piece 1/control: $control$($control_no$); type: $type$($type_no$)	\	\\	null;0;-13;11</VASSAL.build.widget.PieceSlot>
+                <VASSAL.build.widget.PieceSlot entryName="piece 2" gpid="23" height="13" width="89">+/null/label;;Change Label;10;;0,0,0;t;0;c;0;b;c;$pieceName$ ($label$);Dialog;0;0;TextLabel;	prototype;ControlFR\	piece;;;BG_CN;piece 2/control: $control$($control_no$); type: $type$($type_no$)	\	null;0;0;23</VASSAL.build.widget.PieceSlot>
+            </VASSAL.build.widget.PanelWidget>
+        </VASSAL.build.widget.TabWidget>
+    </VASSAL.build.module.PieceWindow>
+    <VASSAL.build.module.ChartWindow hotkey="" icon="icn_application_view_tile.png" name="Counter Sheets" text="" tooltip="Counter Sheets">
+        <VASSAL.build.widget.TabWidget entryName="tabs">
+            <VASSAL.build.widget.MapWidget entryName="CS 01">
+                <VASSAL.build.widget.WidgetMap allowMultiple="false" backgroundcolor="204,204,204" buttonName="Map" changeFormat="$message$" color="0,0,0" createFormat="$pieceName$ created in $location$" edgeHeight="0" edgeWidth="0" hotkey="" icon="" launch="false" mapName="Counter Sheet 1" markMoved="Never" markUnmovedIcon="" markUnmovedText="" markUnmovedTooltip="" moveKey="" moveToFormat="$pieceName$ moves $previousLocation$ -&gt; $location$ *" moveWithinFormat="$pieceName$ moves $previousLocation$ -&gt; $location$ *" thickness="3">
+                    <VASSAL.build.module.map.BoardPicker addColumnText="Add column" addRowText="Add row" boardPrompt="Select board" slotHeight="125" slotScale="0.2" slotWidth="350" title="Choose Boards">
+                        <setup>Counter Sheet 1BoardPicker		0	0</setup>
+                        <VASSAL.build.module.map.boardPicker.Board color="204,204,204" height="803" name="" reversible="false" width="1603">
+                            <VASSAL.build.module.map.boardPicker.board.SquareGrid color="0,0,0" cornersLegal="false" dotsVisible="false" dx="80.0" dy="80.0" edgesLegal="false" range="Metric" snapTo="true" visible="true" x0="41" y0="41">
+                                <VASSAL.build.module.map.boardPicker.board.mapgrid.SquareGridNumbering color="0,0,0" first="V" fontSize="20" hDescend="false" hDrawOff="0" hLeading="0" hOff="1" hType="N" locationFormat="$gridLocation$" rotateText="0" sep="-" vDescend="false" vDrawOff="30" vLeading="0" vOff="1" vType="N" visible="true"/>
+                            </VASSAL.build.module.map.boardPicker.board.SquareGrid>
+                        </VASSAL.build.module.map.boardPicker.Board>
+                    </VASSAL.build.module.map.BoardPicker>
+                    <VASSAL.build.module.map.ForwardToKeyBuffer/>
+                    <VASSAL.build.module.map.Scroller/>
+                    <VASSAL.build.module.map.ForwardToChatter/>
+                    <VASSAL.build.module.map.MenuDisplayer/>
+                    <VASSAL.build.module.map.MapCenterer/>
+                    <VASSAL.build.module.map.StackExpander/>
+                    <VASSAL.build.module.map.PieceMover/>
+                    <VASSAL.build.module.map.KeyBufferer/>
+                    <VASSAL.build.module.map.CounterDetailViewer bgColor="255,255,255" borderWidth="0" counterReportFormat="" delay="700" display="from top-most layer only" emptyHexReportForma="$LocationName$" fgColor="0,0,0" fontSize="9" graphicsZoom="1.0" hotkey="32,130" layerList="" minDisplayPieces="2" propertyFilter="" showDeck="false" showMoveSelectde="false" showNoStack="false" showNonMovable="false" showgraph="true" showgraphsingle="false" showtext="false" showtextsingle="false" summaryReportFormat="$LocationName$" unrotatePieces="false" version="2" zoomlevel="1.0"/>
+                    <VASSAL.build.module.properties.GlobalProperties/>
+                    <VASSAL.build.module.map.SelectionHighlighters/>
+                    <VASSAL.build.module.map.Zoomer inButtonText="" inIconName="icn_zoom_in.png" inTooltip="Zoom in" outButtonText="" outIconName="icn_zoom_out.png" outTooltip="Zoom out" pickButtonText="" pickIconName="icn_zoom.png" pickTooltip="Select Zoom" zoomInKey="" zoomLevels="0.5,1.0" zoomOutKey="" zoomPickKey="" zoomStart="2"/>
+                    <VASSAL.build.module.map.StackMetrics bottom="40,0" disabled="true" down="37,0" exSepX="6" exSepY="18" top="38,0" unexSepX="2" unexSepY="4" up="39,0"/>
+                    <VASSAL.build.module.map.HighlightLastMoved color="255,0,0" enabled="true" thickness="2"/>
+                    <VASSAL.build.module.map.SetupStack location="4-3" name="LND" useGridLocation="false" x="100" y="100">
+                    </VASSAL.build.module.map.SetupStack>
+                    <VASSAL.build.module.map.SetupStack location="4-3" name="AIR" useGridLocation="false" x="200" y="200"/>
+                    <VASSAL.build.module.map.SetupStack location="4-3" name="SEA" useGridLocation="false" x="300" y="300"/>
+                </VASSAL.build.widget.WidgetMap>
+            </VASSAL.build.widget.MapWidget>
+        </VASSAL.build.widget.TabWidget>
+    </VASSAL.build.module.ChartWindow>
+    <VASSAL.i18n.Language/>
+    <VASSAL.build.module.DiceButton addToTotal="0" hotkey="" icon="/images/die.gif" nDice="1" nSides="10" name="1d10" plus="0" prompt="false" reportFormat="** $name$ = $result$ *** &lt;$PlayerName$&gt;" reportTotal="false" sortDice="false" text="1d10" tooltip="1d10"/>
+    <VASSAL.build.module.DiceButton addToTotal="0" hotkey="" icon="/images/die.gif" nDice="2" nSides="10" name="2d10" plus="0" prompt="false" reportFormat="** $name$ = $result$ *** &lt;$PlayerName$&gt;" reportTotal="true" sortDice="false" text="2d10" tooltip="2d10"/>
+    <VASSAL.build.module.DiceButton addToTotal="0" hotkey="" icon="/images/die.gif" nDice="3" nSides="10" name="nDs" plus="0" prompt="true" reportFormat="** $nDice$D$nSides$+$plus$ ++$addToTotal$ = $result$ *** &lt;$PlayerName$&gt;" reportTotal="true" sortDice="true" text="nDs" tooltip="nDs"/>
+    <VASSAL.build.module.NotesWindow buttonText="" hotkey="" icon="icn_note_edit.png" tooltip="Notes"/>
+    <VASSAL.build.module.turn.TurnTracker buttonText="Year/Month" buttonTooltip="1939 Jan/Feb" hotkey="" icon="" length="-1" lengthStyle="Maximum" name="Year/Month" nexthotkey="" prevhotkey="" reportFormat="* &lt;$playerId$&gt; Turn updated to $newTurn$" tooltip="Right-click to configure" turnFormat="$level1$ $level2$">
+        <VASSAL.build.module.turn.CounterTurnLevel incr="1" loop="false" loopLimit="-1" name="Year" property="turnYear" start="1939" turnFormat="$value$">
+            <VASSAL.build.module.turn.ListTurnLevel configFirst="false" configList="false" list="Jan/Feb,Mar/Apr,May/Jun,Jul/Aug,Sep/Oct,Nov/Dec" name="Month" property="turnMonths" turnFormat="$value$"/>
+        </VASSAL.build.module.turn.CounterTurnLevel>
+    </VASSAL.build.module.turn.TurnTracker>
+    <VASSAL.build.module.turn.TurnTracker buttonText="Initiative" buttonTooltip="Allied +2" hotkey="" icon="" length="-1" lengthStyle="Maximum" name="Initiative" nexthotkey="" prevhotkey="" reportFormat="* &lt;$playerId$&gt; Inititative updated to $newTurn$" tooltip="Right-click to configure" turnFormat="$level1$">
+        <VASSAL.build.module.turn.ListTurnLevel configFirst="false" configList="false" list="Allied +2,Allied +1,Both 0,Axis +1,Axis +2" name="Initiative" property="turnInitiative" turnFormat="$value$"/>
+    </VASSAL.build.module.turn.TurnTracker>
+    <VASSAL.build.module.turn.TurnTracker buttonText="Impulse(Side)" buttonTooltip=" Allied" hotkey="" icon="" length="-1" lengthStyle="Maximum" name="Impulse(Side)" nexthotkey="" prevhotkey="" reportFormat="* &lt;$playerId$&gt; Impulse(Side) updated to $newTurn$" tooltip="Right-click to configure" turnFormat="$level2$ $level1$">
+        <VASSAL.build.module.turn.ListTurnLevel configFirst="false" configList="false" list="Allied,Axis" name="Impulse(Side)" property="turnImpSide" turnFormat="$value$"/>
+    </VASSAL.build.module.turn.TurnTracker>
+    <VASSAL.build.module.turn.TurnTracker buttonText="Impulse(No)" buttonTooltip="1" hotkey="" icon="" length="-1" lengthStyle="Maximum" name="Impulse(No)" nexthotkey="" prevhotkey="" reportFormat="* &lt;$playerId$&gt; Impulse(No) updated to $newTurn$" tooltip="Right-click to configure" turnFormat="$level1$">
+        <VASSAL.build.module.turn.CounterTurnLevel incr="1" loop="true" loopLimit="14" name="Impulse(No)" property="turnImpNo" start="1" turnFormat="$value$"/>
+    </VASSAL.build.module.turn.TurnTracker>
+    <VASSAL.build.module.turn.TurnTracker buttonText="Stage" buttonTooltip="Reinforcement Stage" hotkey="" icon="" length="-1" lengthStyle="Maximum" name="Stage" nexthotkey="" prevhotkey="" reportFormat="* &lt;$playerId$&gt; Stage updated to $newTurn$" tooltip="Right-click to configure" turnFormat="$level1$">
+        <VASSAL.build.module.turn.ListTurnLevel configFirst="false" configList="true" list="Reinforcement Stage,Lending Resources Stage,Inititative Stage,Determine Weather,Declare War,Choose Action,Port Attacks,Naval Air Missions,Naval Movement,Your Naval Combat,Opponent's Naval Combat,Strategic Bombardment,Carpet Bombing,Ground Strike Missions,Rail Movement,Land Movement,Air Transport,Debark Land Units at Sea,Invasions,Paradrops,Land Combat,Air Rebases,Reorganization,End of Action,Partisans,US Entry,Return to Base,Final Reorganization,Production,Intelligence,Conquest,Allied Minor Support,Mutual Peace,Vichy Declaration,Liberation,Surrender,Victory Check,Factory Destruction" name="turn stage" property="turnImpStage" turnFormat="$value$"/>
+        <VASSAL.build.module.turn.TurnGlobalHotkey hotkey="48,195" match="{turnImpNo&gt;4 &amp;&amp; turnImpStage==&quot;End of Action&quot;}" name="End of Action" reportFormat="triggering EoA check"/>
+    </VASSAL.build.module.turn.TurnTracker>
+    <VASSAL.build.module.Inventory centerOnPiece="true" drawPieces="true" foldersOnly="false" forwardKeystroke="false" groupBy="CurrentBoard,LocationName" hotkey="" icon="icon_fd.png" include="{FaceDown_Active==true}" leafFormat="$PieceName$" name="inventory of face down units" nonLeafFormat="$PropertyValue$" pieceZoom="0.5" showMenu="false" sides="" sortFormat="$PieceName$" sortPieces="true" sorting="alpha" text="(fd) units" tooltip="inventory of face down pieces"/>
+    <VASSAL.build.module.GlobalKeyCommand buttonHotkey="" buttonText="" deckCount="-1" filter="{FaceDown_Active == true}" hotkey="70,130" icon="/images/keyCommand.gif" name="Final Reorganisation" reportFormat="" reportSingle="false" singleMap="true" tooltip="put all counters face up"/>
+    <VASSAL.build.module.GlobalKeyCommand buttonHotkey="70,195" buttonText="CTRL" deckCount="0" filter="" hotkey="67,130" icon="" name="test" reportFormat="$pieceName$ xx" reportSingle="false" singleMap="true" tooltip=""/>
+</VASSAL.launch.BasicModule>
