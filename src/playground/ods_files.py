@@ -1,4 +1,7 @@
+# -*- coding: utf-8 -*-
 # ODS handling for the counter excel file by p.forno
+# changelog:
+# * making it unicode safe
 
 ##---IMPORTS
 
@@ -6,8 +9,7 @@ from ezodf import opendoc
 
 ##---CONSTANTS
 
-COUNTER_FILE = '/home/pmeier/Workspace/WIFvassal/res/'\
-               'WiF-AiF-PatiF-Counters.ods'
+COUNTER_FILE = '/home/pmeier/Workspace/WIFvassal/res/WiF-AiF-PatiF-Counters.ods'
 
 ##---FUNCTIONS
 
@@ -18,7 +20,7 @@ def get_sheet(sheet_name):
 
 
 def counter_sheet_row_idx_set(sheet, cs):
-    """yield the row set of a counter sheet"""
+    """yield the row set for a counter sheet"""
 
     header = Unit.read_header(sheet)
     col_cs = sheet.column(header['CS'])
@@ -67,25 +69,28 @@ class Unit(object):
         # set values
         self.sh_name = sheet.name
         self.sh_row = row_no
-        self.side = self.xml_str(row[header['SIDE']].plaintext())
-        self.power = self.xml_str(row[header['POWER']].plaintext())
-        self.home = self.xml_str(row[header['HOME']].plaintext())
-        self.clas = self.xml_str(row[header['CLASS']].plaintext())
-        self.type = self.xml_str(row[header['TYPE']].plaintext())
-        self.name = self.xml_str(row[header['NAME']].plaintext())
-        self.year = self.xml_str(row[header['YEAR']].plaintext())
-        self.cost = self.xml_int(row[header['COST']].plaintext())
-        self.time = self.xml_int(row[header['TIME']].plaintext())
-        self.kit = self.xml_str(row[header['KIT']].plaintext())
+        self.side = self.xml_ustr(row[header['SIDE']].value)
+        self.power = self.xml_ustr(row[header['POWER']].value)
+        self.home = self.xml_ustr(row[header['HOME']].value)
+        self.clas = self.xml_ustr(row[header['CLASS']].value)
+        self.type = self.xml_ustr(row[header['TYPE']].value)
+        self.name = self.xml_ustr(row[header['NAME']].value)
+        self.year = self.xml_ustr(row[header['YEAR']].value)
+        self.cost = self.xml_int(row[header['COST']].value)
+        self.time = self.xml_int(row[header['TIME']].value)
+        self.kit = self.xml_ustr(row[header['KIT']].value)
         self.cs = self.xml_int(row[header['CS']].value)
         self.row = self.xml_int(row[header['ROW']].value)
         self.col = self.xml_int(row[header['COL']].value)
-        self.option = self.xml_str(row[header['OPTION']].plaintext())
+        self.option = self.xml_ustr(row[header['OPTION']].value)
 
         return header, row
 
+    def __unicode__(self):
+        return u'{sh_name}#{sh_row} {}'.format(self.__dict__, **self.__dict__)
+
     def __str__(self):
-        return '{sh_name}#{sh_row} {}'.format(self.__dict__, **self.__dict__)
+        return str(self.__unicode__())
 
     def __cmp__(self, other):
         if self.cs != other.cs:
@@ -97,11 +102,11 @@ class Unit(object):
                 return cmp(self.col, other.col)
 
     @classmethod
-    def xml_str(cls, v):
+    def xml_ustr(cls, v):
         try:
             return v.strip()
         except:
-            return 'ERROR'
+            return u''
 
     @classmethod
     def xml_int(cls, v):
@@ -141,15 +146,15 @@ class LandUnit(Unit):
         if row[header['ROG']].value:
             self.rog = self.xml_int(row[header['ROG']].value)
         self.mov = self.xml_int(row[header['MOV']].value)
-        self.size = self.xml_str(row[header['SIZE']].plaintext())
-        self.other = self.xml_str(row[header['OTHER']].plaintext())
-        self.abilities = self.xml_str(row[header['ABILITIES']].plaintext())
-        self.used_a = self.xml_str(row[header['USED A']].plaintext())
-        self.aif = self.xml_str(row[header['AIF']].plaintext())
-        self.used_p = self.xml_str(row[header['USED P']].plaintext())
-        self.patif = self.xml_str(row[header['PatiF']].plaintext())
-        self.used_pa = self.xml_str(row[header['USED PA']].plaintext())
-        self.aif_patif = self.xml_str(row[header['AiF + PatiF']].plaintext())
+        self.size = self.xml_ustr(row[header['SIZE']].value)
+        self.other = self.xml_ustr(row[header['OTHER']].value)
+        self.abilities = self.xml_ustr(row[header['ABILITIES']].value)
+        self.used_a = self.xml_ustr(row[header['USED A']].value)
+        self.aif = self.xml_ustr(row[header['AIF']].value)
+        self.used_p = self.xml_ustr(row[header['USED P']].value)
+        self.patif = self.xml_ustr(row[header['PatiF']].value)
+        self.used_pa = self.xml_ustr(row[header['USED PA']].value)
+        self.aif_patif = self.xml_ustr(row[header['AiF + PatiF']].value)
 
 
 class AirUnit(Unit):
@@ -176,20 +181,20 @@ class AirUnit(Unit):
         header, row = super(AirUnit, self).update(sheet, row_no, header)
 
         # set values
-        self.name2 = self.xml_str(row[header['NAME2']].plaintext())
-        self.ata = self.xml_int(row[header['ATA']].plaintext())
-        self.ats = self.xml_int(row[header['ATS']].plaintext())
-        self.tac = self.xml_int(row[header['TAC']].plaintext())
-        self.str = self.xml_int(row[header['STR']].plaintext())
+        self.name2 = self.xml_ustr(row[header['NAME2']].value)
+        self.ata = self.xml_int(row[header['ATA']].value)
+        self.ats = self.xml_int(row[header['ATS']].value)
+        self.tac = self.xml_int(row[header['TAC']].value)
+        self.str = self.xml_int(row[header['STR']].value)
         self.rng = self.xml_int(row[header['RANGE']].value)
-        self.other = self.xml_str(row[header['OTHER']].plaintext())
-        self.used = self.xml_str(row[header['USED']].plaintext())
-        self.cvp_y1 = self.xml_int(row[header['YR1']].plaintext())
-        self.cvp_s1 = self.xml_int(row[header['SIZ1']].plaintext())
-        self.cvp_y2 = self.xml_int(row[header['YR2']].plaintext())
-        self.cvp_s2 = self.xml_int(row[header['SIZ2']].plaintext())
-        self.cvp_y3 = self.xml_int(row[header['YR3']].plaintext())
-        self.cvp_s3 = self.xml_int(row[header['SIZ3']].plaintext())
+        self.other = self.xml_ustr(row[header['OTHER']].value)
+        self.used = self.xml_ustr(row[header['USED']].value)
+        self.cvp_y1 = self.xml_int(row[header['YR1']].value)
+        self.cvp_s1 = self.xml_int(row[header['SIZ1']].value)
+        self.cvp_y2 = self.xml_int(row[header['YR2']].value)
+        self.cvp_s2 = self.xml_int(row[header['SIZ2']].value)
+        self.cvp_y3 = self.xml_int(row[header['YR3']].value)
+        self.cvp_s3 = self.xml_int(row[header['SIZ3']].value)
 
 
 class NavalUnit(Unit):
@@ -213,22 +218,22 @@ class NavalUnit(Unit):
         header, row = super(NavalUnit, self).update(sheet, row_no, header)
 
         # set values
-        self.name2 = self.xml_str(row[header['NAME2']].plaintext())
-        self.att = self.xml_int(row[header['ATT']].plaintext())
-        self.dfs = self.xml_int(row[header['DEF']].plaintext())
-        self.aa = self.xml_int(row[header['AA']].plaintext())
-        self.sb = self.xml_int(row[header['SB']].plaintext())
+        self.name2 = self.xml_ustr(row[header['NAME2']].value)
+        self.att = self.xml_int(row[header['ATT']].value)
+        self.dfs = self.xml_int(row[header['DEF']].value)
+        self.aa = self.xml_int(row[header['AA']].value)
+        self.sb = self.xml_int(row[header['SB']].value)
         self.rng = self.xml_int(row[header['RNG']].value)
-        self.mov = self.xml_int(row[header['MOV']].plaintext())
-        self.cv = self.xml_int(row[header['CV']].plaintext())
-        self.sunk = self.xml_str(row[header['SUNK']].plaintext())
-        self.used = self.xml_str(row[header['USED']].plaintext())
+        self.mov = self.xml_int(row[header['MOV']].value)
+        self.cv = self.xml_int(row[header['CV']].value)
+        self.sunk = self.xml_ustr(row[header['SUNK']].value)
+        self.used = self.xml_ustr(row[header['USED']].value)
 
 ##---MAIN
 
 if __name__ == '__main__':
     MODE = 'Naval'
-    CS = 1
+    CS = 5
     SH = get_sheet(MODE)
     header = Unit.read_header(SH)
     cs_rids = counter_sheet_row_idx_set(SH, CS)
@@ -242,10 +247,11 @@ if __name__ == '__main__':
 
     def pp_cs(cs):
         for u in cs:
-            name = ' '.join([u.name, u.name2]).strip()
-            print '({cs:02d}:{row:02d}-{col:02d}) [{type}] {name}'.format(
-                cs=u.cs, row=u.row, col=u.col, type=u.type, name=name),
-            print '[CV: {}]'.format(u.cv)
+            print u
+            name = ' '.join([u.name, getattr(u, 'name2', '')]).strip()
+            print u'({cs:02d}:{row:02d}-{col:02d}) [{type:s}] {name:s}'.format(
+                cs=u.cs, row=u.row, col=u.col, type=u.type, name=name)#,
+            #print '[CV: {}]'.format(u.cv)
 
     pp_cs(CS)
     print '#' * 20

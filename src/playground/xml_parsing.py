@@ -1,10 +1,11 @@
+# -*- coding: utf-8 -*-
 # XML parsing for the buildFile of the vassal module
+# changelog:
+# * making it unicode safe
 
 ##---IMPORTS
 
-from lxml import etree, objectify
-
-##---CONSTANTS
+from lxml import etree
 
 ##---CLASSES
 
@@ -27,27 +28,26 @@ class GPIDGenerator(object):
         self.gpid_set.add(rval)
         return rval
 
-GPID = GPIDGenerator()
 
 class Trait(object):
     def __init__(self, kind, *params):
-        self.kind = str(kind)
+        self.kind = unicode(kind)
         self.params = params
 
     def definition(self):
-        return ';'.join([self.kind] + [str(p[0]) for p in self.params])
+        return u';'.join([self.kind] + [unicode(p[0]) for p in self.params])
 
     def parameters(self):
-        return ';'.join([str(p[1]) for p in self.params])
+        return u';'.join([unicode(p[1]) for p in self.params])
 
 
 class PieceSlot(object):
     def __init__(self, name, gpid, img, h=0, w=0):
-        self.name = str(name)
-        self.gpid = int(gpid)
-        self.img = str(img)
-        self.height = int(h)
-        self.width = int(w)
+        self.name = unicode(name)
+        self.gpid = unicode(gpid)
+        self.img = unicode(img)
+        self.height = unicode(h)
+        self.width = unicode(w)
         self.traits = []
 
     def get_xml(self):
@@ -55,9 +55,9 @@ class PieceSlot(object):
             'VASSAL.build.widget.PieceSlot',
             attrib={
                 'entryName': self.name,
-                'gpid': str(self.gpid),
-                'height': str(self.height),
-                'width': str(self.width)})
+                'gpid': self.gpid,
+                'height': self.height,
+                'width': self.width})
         rval.text = self.traits_text()
         return rval
 
@@ -68,14 +68,14 @@ class PieceSlot(object):
         tdef = []
         for i, t in enumerate(self.traits):
             tdef.append(t.definition())
-            tdef.append('\\' * i + '\t')
-        tdef.append('piece;;;{:s};{:s}'.format(self.img, self.name))
+            tdef.append(u'\\' * i + u'\t')
+        tdef.append(u'piece;;;{};{}'.format(self.img, self.name))
         tpar = []
         for i, t in enumerate(self.traits):
             tpar.append(t.parameters())
-            tpar.append('\\' * i + '\t')
-        tpar.append('null;0;0;{:d}'.format(self.gpid))
-        return ''.join(['+/null/'] + tdef + ['/'] + tpar)
+            tpar.append(u'\\' * i + u'\t')
+        tpar.append(u'null;0;0;{}'.format(self.gpid))
+        return u''.join([u'+/null/'] + tdef + [u'/'] + tpar)
 
     def add_trait(self, *args, **kwargs):
         self.traits.append(Trait(*args, **kwargs))
@@ -92,9 +92,7 @@ def find_stack(tree, csno=1, kind='LND'):
         return None
 
 
-def write_land_piece(name='test', gpid=None):
-    if gpid is None:
-        gpid = GPID
+def write_land_piece(name, gpid):
     p = PieceSlot('test', gpid.get(), 'BG_W.png')
     p.add_trait('mark', ('MV', 3))
     p.add_trait('mark', ('ST', 4))
@@ -104,11 +102,9 @@ def write_land_piece(name='test', gpid=None):
 ##---MAIN
 
 if __name__ == '__main__':
-    bf = None
-    with open('/home/pmeier/Workspace/WIFvassal/mod/buildFile_base.xml',
-              'r') as f:
-        bf = etree.parse(f)
-    GPID.update_from_tree(bf)
+    bf = etree.parse(
+        open('/home/pmeier/Workspace/WIFvassal/mod/buildFile_base', 'r'))
+    GPID = GPIDGenerator(bf)
 
     print '#' * 20
     stack = find_stack(bf)
@@ -116,4 +112,7 @@ if __name__ == '__main__':
     print etree.tostring(stack, pretty_print=True)
 
     print '#' * 20
-    print write_land_piece()
+    print write_land_piece('test', GPID)
+
+    print '#' * 20
+    print etree.tostring(bf.getroot(), pretty_print=True)

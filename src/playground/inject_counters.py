@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 # counter sheet to vassal
 
 ##---IMPORTS
@@ -9,22 +10,39 @@ from xml_parsing import GPIDGenerator, find_stack, PieceSlot
 
 ##---CONSTANTS
 
-indent = '                        '
-BF_base = '/home/pmeier/Workspace/WIFvassal/mod/buildFile_base.xml'
-BF_new = '/home/pmeier/Workspace/WIFvassal/mod/WiFdab/buildFile'
+BF_base = '/home/pmeier/Workspace/WIFvassal/mod/buildFile_base'
+BF_new = '/home/pmeier/Workspace/WIFvassal/mod/WiFdab/WiFdab_counters'\
+         '/buildFile'
+CSrange = [1, 2, 3, 4, 5, 6, 7, 8, 9, 14, 15, 18, 19, 20, 21, 22, 23, 24]
+
+SHEET = {}
+HEADER = {}
+GPID = None
+BF = None
 
 ##---FUNCTIONS
 
 def start(path=None):
-    global BF, GPID
+    global BF, GPID, HEADER, SHEET
     with open(path or BF_base, 'r') as f:
         BF = etree.parse(f)
     GPID = GPIDGenerator(BF)
+    SHEET['L'] = get_sheet('Land')
+    HEADER['L'] = Unit.read_header(SHEET['L'])
+    SHEET['A'] = get_sheet('Air')
+    HEADER['A'] = Unit.read_header(SHEET['A'])
+    SHEET['N'] = get_sheet('Naval')
+    HEADER['N'] = Unit.read_header(SHEET['N'])
 
 
 def finish(path=None):
     global BF
-    BF.write(path or BF_new, pretty_print=True)
+    BF.write(
+        path or BF_new,
+        encoding='UTF-8',
+        method='xml',
+        xml_declaration=True,
+        pretty_print=True, )
 
 
 def get_control(u):
@@ -68,25 +86,23 @@ def get_type(u):
 
 def inject_land(cs_no):
     # init
-    global BF, GPID
+    global BF, GPID, HEADER, SHEET
     stack = find_stack(BF, cs_no, 'LND')
-    sheet = get_sheet('Land')
-    header = Unit.read_header(sheet)
-    cs_rids = counter_sheet_row_idx_set(sheet, cs_no)
+    cs_rids = counter_sheet_row_idx_set(SHEET['L'], cs_no)
     assert stack is not None and\
-           sheet is not None and\
-           header is not None and\
            cs_rids is not None, 'setup error cs_no: %d' % cs_no
 
     # produce counters and piece slots
     for rid in cs_rids:
         # load unit
         u = LandUnit()
-        u.update(sheet, rid, header)
+        u.update(SHEET['L'], rid, HEADER['L'])
 
         # piece slot
-        img = 'cs{:02d}_{:02d}_{:02d}.png'.format(
-            cs_no, u.row, u.col)
+        try:
+            img = 'cs{:02d}_{:02d}_{:02d}.png'.format(cs_no, u.row, u.col)
+        except:
+            continue
         ps = PieceSlot(u.name, GPID.get(), img)
         ps.add_trait('mark', ('kit', u.kit))
         ps.add_trait('mark', ('cs_col', u.col))
@@ -104,25 +120,23 @@ def inject_land(cs_no):
 
 def inject_air(cs_no):
     # init
-    global BF, GPID
+    global BF, GPID, HEADER, SHEET
     stack = find_stack(BF, cs_no, 'AIR')
-    sheet = get_sheet('Air')
-    header = Unit.read_header(sheet)
-    cs_rids = counter_sheet_row_idx_set(sheet, cs_no)
+    cs_rids = counter_sheet_row_idx_set(SHEET['A'], cs_no)
     assert stack is not None and\
-           sheet is not None and\
-           header is not None and\
            cs_rids is not None, 'setup error cs_no: %d' % cs_no
 
     # produce counters and piece slots
     for rid in cs_rids:
         # load unit
         u = AirUnit()
-        u.update(sheet, rid, header)
+        u.update(SHEET['A'], rid, HEADER['A'])
 
         # piece slot
-        img = 'cs{:02d}_{:02d}_{:02d}.png'.format(
-            cs_no, u.row, u.col)
+        try:
+            img = 'cs{:02d}_{:02d}_{:02d}.png'.format(cs_no, u.row, u.col)
+        except:
+            continue
         ps = PieceSlot(' '.join([u.name, u.name2]).strip(), GPID.get(), img)
         ps.add_trait('mark', ('kit', u.kit))
         ps.add_trait('mark', ('cs_col', u.col))
@@ -158,27 +172,25 @@ def inject_air(cs_no):
 
 def inject_sea(cs_no):
     # init
-    global BF, GPID
+    global BF, GPID, HEADER, SHEET
     stack = find_stack(BF, cs_no, 'SEA')
-    sheet = get_sheet('Naval')
-    header = Unit.read_header(sheet)
-    cs_rids = counter_sheet_row_idx_set(sheet, cs_no)
+    cs_rids = counter_sheet_row_idx_set(SHEET['N'], cs_no)
     assert stack is not None and\
-           sheet is not None and\
-           header is not None and\
            cs_rids is not None, 'setup error cs_no: %d' % cs_no
 
     # produce counters and piece slots
     for rid in cs_rids:
         # load unit
         u = NavalUnit()
-        u.update(sheet, rid, header)
+        u.update(SHEET['N'], rid, HEADER['N'])
         if u.type == 'CONV':
             continue
 
         # piece slot
-        img = 'cs{:02d}_{:02d}_{:02d}.png'.format(
-            cs_no, u.row, u.col)
+        try:
+            img = 'cs{:02d}_{:02d}_{:02d}.png'.format(cs_no, u.row, u.col)
+        except:
+            continue
         ps = PieceSlot(' '.join([u.name, u.name2]).strip(), GPID.get(), img)
         ps.add_trait('mark', ('kit', u.kit))
         ps.add_trait('mark', ('cs_col', u.col))
@@ -201,12 +213,16 @@ def inject_sea(cs_no):
 ##---MAIN
 
 if __name__ == '__main__':
-    # init
-    CS = 1
-
-    # process
     start()
-    inject_land(CS)
-    inject_air(CS)
-    inject_sea(CS)
+    print 'START'
+    for cs in [24]:
+        print 'CS', cs,
+        print '\tland',
+        inject_land(cs)
+        print '\tair',
+        inject_air(cs)
+        print '\tsea',
+        inject_sea(cs)
+        print '\t..done!'
+    print 'FINISH'
     finish()
