@@ -10,23 +10,38 @@ from xml_parsing import GPIDGenerator, find_stack, PieceSlot
 
 ##---CONSTANTS
 
-BF_base = '/home/pmeier/Workspace/WIFvassal/mod/buildFile_base'
-BF_new = '/home/pmeier/Workspace/WIFvassal/mod/WiFdab/WiFdab_counters'\
-         '/buildFile'
+BF_base = '/home/pmeier/Workspace/WIFvassal/mod/'\
+          'buildFile_base.xml'
+BF_base_ex = '/home/pmeier/Workspace/WIFvassal/mod/'\
+             'buildFile_counters_base.xml'
+BF_new = '/home/pmeier/Workspace/WIFvassal/mod/'\
+         'WiFdab/buildFile'
+BF_new_ex = '/home/pmeier/Workspace/WIFvassal/mod/'\
+            'WiFdab/WiFdab_counters/buildFile'
 CSrange = [1, 2, 3, 4, 5, 6, 7, 8, 9, 14, 15, 18, 19, 20, 21, 22, 23, 24]
 
 SHEET = {}
 HEADER = {}
 GPID = None
 BF = None
+EXT = None
 
 ##---FUNCTIONS
 
-def start(path=None):
-    global BF, GPID, HEADER, SHEET
-    with open(path or BF_base, 'r') as f:
+def start(path=None, ext=False):
+    global BF, EXT, GPID, HEADER, SHEET
+    if path is None:
+        if ext is False:
+            path = BF_base
+        else:
+            path = BF_base_ex
+    with open(path, 'r') as f:
         BF = etree.parse(f)
-    GPID = GPIDGenerator(BF)
+    GPID = GPIDGenerator()
+    if 'extensionId' in BF.getroot().attrib:
+        EXT = unicode(BF.getroot().attrib['extensionId'])
+    else:
+        GPID.update_from_tree(BF)
     SHEET['L'] = get_sheet('Land')
     HEADER['L'] = Unit.read_header(SHEET['L'])
     SHEET['A'] = get_sheet('Air')
@@ -35,14 +50,19 @@ def start(path=None):
     HEADER['N'] = Unit.read_header(SHEET['N'])
 
 
-def finish(path=None):
+def finish(path=None, ext=False):
     global BF
+    if path is None:
+        if ext is False:
+            path = BF_base
+        else:
+            path = BF_base_ex
     BF.write(
-        path or BF_new,
+        path,
         encoding='UTF-8',
         method='xml',
         xml_declaration=True,
-        pretty_print=True, )
+        pretty_print=True)
 
 
 def get_control(u):
@@ -84,13 +104,28 @@ def get_type(u):
     return rval
 
 
-def inject_land(cs_no):
+def build_ext_parent(_, cs_no, kind):
+    global BF
+    rval = etree.Element(
+        'VASSAL.build.module.ExtensionElement',
+        attrib={
+            'target': 'VASSAL.build.module.ChartWindow:Counter Sheets/'
+                      'VASSAL.build.widget.TabWidget:tabs/'
+                      'VASSAL.build.widget.MapWidget:CS {:02d}/'
+                      'VASSAL.build.widget.WidgetMap:Counter Sheet 1/'
+                      'VASSAL.build.module.map.SetupStack:{:s}'.
+            format(cs_no, kind)})
+    BF.append(rval)
+    return rval
+
+
+get_parent = find_stack if EXT is None else build_ext_parent
+
+
+def inject_land(cs_no, parent):
     # init
     global BF, GPID, HEADER, SHEET
-    stack = find_stack(BF, cs_no, 'LND')
     cs_rids = counter_sheet_row_idx_set(SHEET['L'], cs_no)
-    assert stack is not None and\
-           cs_rids is not None, 'setup error cs_no: %d' % cs_no
 
     # produce counters and piece slots
     for rid in cs_rids:
@@ -115,16 +150,13 @@ def inject_land(cs_no):
         ps.add_trait('mark', ('STR', u.str))
         ps.add_trait('prototype', (get_type(u), ''))
         ps.add_trait('prototype', ('Control' + get_control(u), ''))
-        stack.append(ps.get_xml())
+        parent.append(ps.get_xml())
 
 
-def inject_air(cs_no):
+def inject_air(cs_no, parent):
     # init
     global BF, GPID, HEADER, SHEET
-    stack = find_stack(BF, cs_no, 'AIR')
     cs_rids = counter_sheet_row_idx_set(SHEET['A'], cs_no)
-    assert stack is not None and\
-           cs_rids is not None, 'setup error cs_no: %d' % cs_no
 
     # produce counters and piece slots
     for rid in cs_rids:
@@ -167,16 +199,13 @@ def inject_air(cs_no):
             ps.add_trait('mark', ('ATA', u.ata))
         ps.add_trait('prototype', (get_type(u), ''))
         ps.add_trait('prototype', ('Control' + get_control(u), ''))
-        stack.append(ps.get_xml())
+        parent.append(ps.get_xml())
 
 
-def inject_sea(cs_no):
+def inject_sea(cs_no, parent):
     # init
     global BF, GPID, HEADER, SHEET
-    stack = find_stack(BF, cs_no, 'SEA')
     cs_rids = counter_sheet_row_idx_set(SHEET['N'], cs_no)
-    assert stack is not None and\
-           cs_rids is not None, 'setup error cs_no: %d' % cs_no
 
     # produce counters and piece slots
     for rid in cs_rids:
@@ -208,21 +237,23 @@ def inject_sea(cs_no):
         ps.add_trait('mark', ('ATT', u.att))
         ps.add_trait('prototype', (get_type(u), ''))
         ps.add_trait('prototype', ('Control' + get_control(u), ''))
-        stack.append(ps.get_xml())
+        parent.append(ps.get_xml())
 
 ##---MAIN
 
 if __name__ == '__main__':
-    start()
+    do_extension = True
+    start(ext=do_extension)
     print 'START'
     for cs in [24]:
         print 'CS', cs,
-        print '\tland',
-        inject_land(cs)
-        print '\tair',
-        inject_air(cs)
+        #print '\tland',
+        #inject_land(cs)
+        #print '\tair',
+        #inject_air(cs)
         print '\tsea',
-        inject_sea(cs)
+        p = get_parent(BF, cs, 'SEA')
+        inject_sea(cs, p)
         print '\t..done!'
     print 'FINISH'
-    finish()
+    finish(ext=do_extension)

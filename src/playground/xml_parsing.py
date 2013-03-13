@@ -24,9 +24,13 @@ class GPIDGenerator(object):
         self.gpid_set.update(tree_gpid_set)
 
     def get(self):
-        rval = max(self.gpid_set) + 1
-        self.gpid_set.add(rval)
-        return rval
+        try:
+            rval = max(self.gpid_set) + 1
+        except:
+            rval = 0
+        finally:
+            self.gpid_set.add(rval)
+            return rval
 
 
 class Trait(object):
@@ -42,9 +46,11 @@ class Trait(object):
 
 
 class PieceSlot(object):
-    def __init__(self, name, gpid, img, h=0, w=0):
+    def __init__(self, name, gpid, img, h=0, w=0, ext=None):
         self.name = unicode(name)
-        self.gpid = unicode(gpid)
+        self.gpid = u'{}{:d}'.format(
+            u'' if ext is None else u'{}:'.format(ext),
+            gpid)
         self.img = unicode(img)
         self.height = unicode(h)
         self.width = unicode(w)
