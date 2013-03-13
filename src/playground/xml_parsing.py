@@ -17,7 +17,7 @@ class GPIDGenerator(object):
 
     def update_from_tree(self, tree):
         tree_gpid_set = set(
-            [int(ps.attrib['gpid'])
+            [int(ps.attrib['gpid'].split(':')[-1])
              for ps in tree.iter('VASSAL.build.widget.PieceSlot')])
         if len(self.gpid_set.intersection(tree_gpid_set)) > 0:
             raise ValueError('gpid set has intersection!!')
@@ -27,7 +27,7 @@ class GPIDGenerator(object):
         try:
             rval = max(self.gpid_set) + 1
         except:
-            rval = 0
+            rval = 1
         finally:
             self.gpid_set.add(rval)
             return rval

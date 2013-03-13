@@ -48,6 +48,7 @@ class Unit(object):
         self.row = None
         self.col = None
         self.option = None
+        self.deleted = None
 
     @staticmethod
     def read_header(sheet):
@@ -83,6 +84,7 @@ class Unit(object):
         self.row = self.xml_int(row[header['ROW']].value)
         self.col = self.xml_int(row[header['COL']].value)
         self.option = self.xml_ustr(row[header['OPTION']].value)
+        self.deleted = self.xml_ustr(row[header['DELETED']].value)
 
         return header, row
 
@@ -104,7 +106,7 @@ class Unit(object):
     @classmethod
     def xml_ustr(cls, v):
         try:
-            return v.strip()
+            return v.strip().replace('/', '\/')
         except:
             return u''
 
