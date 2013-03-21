@@ -1,4 +1,6 @@
 .~lock*
 *~
+/tmp
 /mod/WiFDab/
 /mod/WiFDab_ext/
+/nbproject/private/

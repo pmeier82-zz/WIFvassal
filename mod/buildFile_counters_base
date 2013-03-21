@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<VASSAL.build.module.ModuleExtension anyModule="false" description="" extensionId="345" module="World in Flames" moduleVersion="0.1" nextPieceSlotId="2" vassalVersion="3.2.2" version="0.0">
-    <VASSAL.build.module.ExtensionElement target="VASSAL.build.module.ChartWindow:Counter Sheets/VASSAL.build.widget.TabWidget:tabs/VASSAL.build.widget.MapWidget:CS 01/VASSAL.build.widget.WidgetMap:Counter Sheet 1/VASSAL.build.module.map.SetupStack:LND">
-        <VASSAL.build.widget.PieceSlot entryName="Bülow " gpid="345:0" height="0" width="0">+/null/mark;kit	piece;;;BG_W;Bülow /SiF	null;0;0;</VASSAL.build.widget.PieceSlot>
-    </VASSAL.build.module.ExtensionElement>
-</VASSAL.build.module.ModuleExtension>
