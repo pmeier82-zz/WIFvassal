@@ -70,21 +70,21 @@ class Unit(object):
         # set values
         self.sh_name = sheet.name
         self.sh_row = row_no
-        self.side = self.xml_ustr(row[header['SIDE']].value)
-        self.power = self.xml_ustr(row[header['POWER']].value)
-        self.home = self.xml_ustr(row[header['HOME']].value)
-        self.clas = self.xml_ustr(row[header['CLASS']].value)
-        self.type = self.xml_ustr(row[header['TYPE']].value)
-        self.name = self.xml_ustr(row[header['NAME']].value)
-        self.year = self.xml_ustr(row[header['YEAR']].value)
-        self.cost = self.xml_int(row[header['COST']].value)
-        self.time = self.xml_int(row[header['TIME']].value)
-        self.kit = self.xml_ustr(row[header['KIT']].value)
-        self.cs = self.xml_int(row[header['CS']].value)
-        self.row = self.xml_int(row[header['ROW']].value)
-        self.col = self.xml_int(row[header['COL']].value)
-        self.option = self.xml_ustr(row[header['OPTION']].value)
-        self.deleted = self.xml_ustr(row[header['DELETED']].value)
+        self.side = self.xml_ustr(row[header['SIDE']])
+        self.power = self.xml_ustr(row[header['POWER']])
+        self.home = self.xml_ustr(row[header['HOME']])
+        self.clas = self.xml_ustr(row[header['CLASS']])
+        self.type = self.xml_ustr(row[header['TYPE']])
+        self.name = self.xml_ustr(row[header['NAME']])
+        self.year = self.xml_ustr(row[header['YEAR']])
+        self.cost = self.xml_int(row[header['COST']])
+        self.time = self.xml_int(row[header['TIME']])
+        self.kit = self.xml_ustr(row[header['KIT']])
+        self.cs = self.xml_int(row[header['CS']])
+        self.row = self.xml_int(row[header['ROW']])
+        self.col = self.xml_int(row[header['COL']])
+        self.option = self.xml_ustr(row[header['OPTION']])
+        self.deleted = self.xml_ustr(row[header['DELETED']])
 
         return header, row
 
@@ -104,24 +104,38 @@ class Unit(object):
                 return cmp(self.col, other.col)
 
     @classmethod
-    def xml_ustr(cls, v):
+    def xml_ustr(cls, cell):
         try:
-            return v.strip().replace('/', '\/')
+            rval = {'string': unicode,
+                    'float': lambda x: unicode(int(x)),
+                    'percentage': lambda x: u'{:02.2f}'.format(x),
+                    'currency': lambda x: u'{s}{:.2f}'.format(x),
+                    'boolean': unicode,
+                    'date': unicode,
+                    'time': unicode,
+                   }[cell.value_type](cell.value).strip().replace('/', '\/')
         except:
-            try:
-                return unicode(int(v))
-            except:
-                return u''
+            rval = None
+        finally:
+            return unicode(rval)
 
     @classmethod
-    def xml_int(cls, v):
+    def xml_int(cls, cell):
         try:
-            return int(v)
+            rval = {'string': unicode,
+                    'float': int,
+                   }[cell.value_type](cell.value)
         except:
             try:
-                return int(v[1:-1])
+                rval = int(cell.value[1:-1])
             except:
-                return None
+                rval = None
+        finally:
+            try:
+                rval = int(rval)
+            except:
+                rval = None
+        return rval
 
 
 class LandUnit(Unit):
@@ -147,19 +161,19 @@ class LandUnit(Unit):
         header, row = super(LandUnit, self).update(sheet, row_no, header)
 
         # set values
-        self.str = self.xml_int(row[header['STR']].value)
+        self.str = self.xml_int(row[header['STR']])
         if row[header['ROG']].value:
-            self.rog = self.xml_int(row[header['ROG']].value)
-        self.mov = self.xml_int(row[header['MOV']].value)
-        self.size = self.xml_ustr(row[header['SIZE']].value)
-        self.other = self.xml_ustr(row[header['OTHER']].value)
-        self.abilities = self.xml_ustr(row[header['ABILITIES']].value)
-        self.used_a = self.xml_ustr(row[header['USED A']].value)
-        self.aif = self.xml_ustr(row[header['AIF']].value)
-        self.used_p = self.xml_ustr(row[header['USED P']].value)
-        self.patif = self.xml_ustr(row[header['PatiF']].value)
-        self.used_pa = self.xml_ustr(row[header['USED PA']].value)
-        self.aif_patif = self.xml_ustr(row[header['AiF + PatiF']].value)
+            self.rog = self.xml_int(row[header['ROG']])
+        self.mov = self.xml_int(row[header['MOV']])
+        self.size = self.xml_ustr(row[header['SIZE']])
+        self.other = self.xml_ustr(row[header['OTHER']])
+        self.abilities = self.xml_ustr(row[header['ABILITIES']])
+        self.used_a = self.xml_ustr(row[header['USED A']])
+        self.aif = self.xml_ustr(row[header['AIF']])
+        self.used_p = self.xml_ustr(row[header['USED P']])
+        self.patif = self.xml_ustr(row[header['PatiF']])
+        self.used_pa = self.xml_ustr(row[header['USED PA']])
+        self.aif_patif = self.xml_ustr(row[header['AiF + PatiF']])
 
 
 class AirUnit(Unit):
@@ -186,20 +200,20 @@ class AirUnit(Unit):
         header, row = super(AirUnit, self).update(sheet, row_no, header)
 
         # set values
-        self.name2 = self.xml_ustr(row[header['NAME2']].value)
-        self.ata = self.xml_int(row[header['ATA']].value)
-        self.ats = self.xml_int(row[header['ATS']].value)
-        self.tac = self.xml_int(row[header['TAC']].value)
-        self.str = self.xml_int(row[header['STR']].value)
-        self.rng = self.xml_int(row[header['RANGE']].value)
-        self.other = self.xml_ustr(row[header['OTHER']].value)
-        self.used = self.xml_ustr(row[header['USED']].value)
-        self.cvp_y1 = self.xml_int(row[header['YR1']].value)
-        self.cvp_s1 = self.xml_int(row[header['SIZ1']].value)
-        self.cvp_y2 = self.xml_int(row[header['YR2']].value)
-        self.cvp_s2 = self.xml_int(row[header['SIZ2']].value)
-        self.cvp_y3 = self.xml_int(row[header['YR3']].value)
-        self.cvp_s3 = self.xml_int(row[header['SIZ3']].value)
+        self.name2 = self.xml_ustr(row[header['NAME2']])
+        self.ata = self.xml_int(row[header['ATA']])
+        self.ats = self.xml_int(row[header['ATS']])
+        self.tac = self.xml_int(row[header['TAC']])
+        self.str = self.xml_int(row[header['STR']])
+        self.rng = self.xml_int(row[header['RANGE']])
+        self.other = self.xml_ustr(row[header['OTHER']])
+        self.used = self.xml_ustr(row[header['USED']])
+        self.cvp_y1 = self.xml_int(row[header['YR1']])
+        self.cvp_s1 = self.xml_int(row[header['SIZ1']])
+        self.cvp_y2 = self.xml_int(row[header['YR2']])
+        self.cvp_s2 = self.xml_int(row[header['SIZ2']])
+        self.cvp_y3 = self.xml_int(row[header['YR3']])
+        self.cvp_s3 = self.xml_int(row[header['SIZ3']])
 
 
 class NavalUnit(Unit):
@@ -223,16 +237,16 @@ class NavalUnit(Unit):
         header, row = super(NavalUnit, self).update(sheet, row_no, header)
 
         # set values
-        self.name2 = self.xml_ustr(row[header['NAME2']].value)
-        self.att = self.xml_int(row[header['ATT']].value)
-        self.dfs = self.xml_int(row[header['DEF']].value)
-        self.aa = self.xml_int(row[header['AA']].value)
-        self.sb = self.xml_int(row[header['SB']].value)
-        self.rng = self.xml_int(row[header['RNG']].value)
-        self.mov = self.xml_int(row[header['MOV']].value)
-        self.cv = self.xml_int(row[header['CV']].value)
-        self.sunk = self.xml_ustr(row[header['SUNK']].value)
-        self.used = self.xml_ustr(row[header['USED']].value)
+        self.name2 = self.xml_ustr(row[header['NAME2']])
+        self.att = self.xml_int(row[header['ATT']])
+        self.dfs = self.xml_int(row[header['DEF']])
+        self.aa = self.xml_int(row[header['AA']])
+        self.sb = self.xml_int(row[header['SB']])
+        self.rng = self.xml_int(row[header['RNG']])
+        self.mov = self.xml_int(row[header['MOV']])
+        self.cv = self.xml_int(row[header['CV']])
+        self.sunk = self.xml_ustr(row[header['SUNK']])
+        self.used = self.xml_ustr(row[header['USED']])
 
 ##---MAIN
 

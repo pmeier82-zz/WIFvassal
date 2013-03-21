@@ -59,11 +59,10 @@ class PieceSlot(object):
     def get_xml(self):
         rval = etree.Element(
             'VASSAL.build.widget.PieceSlot',
-            attrib={
-                'entryName': self.name,
-                'gpid': self.gpid,
-                'height': self.height,
-                'width': self.width})
+            entryName=self.name,
+            gpid=self.gpid,
+            height=self.height,
+            width=self.width)
         rval.text = self.traits_text()
         return rval
 
@@ -88,16 +87,6 @@ class PieceSlot(object):
 
 ##---FUNCTIONS
 
-def find_stack(tree, csno=1, kind='LND'):
-    xpath = '/*/VASSAL.build.module.ChartWindow/*/'\
-            'VASSAL.build.widget.MapWidget[@entryName="CS {:02d}"]/*/'\
-            'VASSAL.build.module.map.SetupStack[@name="{:s}"]'
-    try:
-        return tree.xpath(xpath.format(csno, kind))[0]
-    except:
-        return None
-
-
 def write_land_piece(name, gpid):
     p = PieceSlot('test', gpid.get(), 'BG_W.png')
     p.add_trait('mark', ('MV', 3))
@@ -109,11 +98,13 @@ def write_land_piece(name, gpid):
 
 if __name__ == '__main__':
     bf = etree.parse(
-        open('/home/pmeier/Workspace/WIFvassal/mod/buildFile_base', 'r'))
+        open('/home/pmeier/Workspace/WIFvassal/mod/buildFile_base.xml', 'r'))
     GPID = GPIDGenerator(bf)
 
     print '#' * 20
-    stack = find_stack(bf)
+    stack = bf.find('/*/VASSAL.build.module.ChartWindow/*/'\
+                    'VASSAL.build.widget.MapWidget[@entryName="CS 01"]')
+
     print stack
     print etree.tostring(stack, pretty_print=True)
 

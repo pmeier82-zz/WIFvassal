@@ -6,7 +6,7 @@
 from lxml import etree
 from ods_files import counter_sheet_row_idx_set, get_sheet, Unit, LandUnit,\
     AirUnit, NavalUnit
-from xml_parsing import GPIDGenerator, find_stack, PieceSlot
+from xml_parsing import GPIDGenerator, PieceSlot
 
 ##---CONSTANTS
 
