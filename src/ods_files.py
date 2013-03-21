@@ -108,7 +108,10 @@ class Unit(object):
         try:
             return v.strip().replace('/', '\/')
         except:
-            return u''
+            try:
+                return unicode(int(v))
+            except:
+                return u''
 
     @classmethod
     def xml_int(cls, v):
@@ -235,7 +238,7 @@ class NavalUnit(Unit):
 
 if __name__ == '__main__':
     MODE = 'Naval'
-    CS = 5
+    CS = 1
     SH = get_sheet(MODE)
     header = Unit.read_header(SH)
     cs_rids = counter_sheet_row_idx_set(SH, CS)

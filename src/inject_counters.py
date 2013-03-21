@@ -193,7 +193,7 @@ def get_cs_parent(cs_no):
         slotWidth='350',
         title='Choose Boards')
     mw_wm_bp_setup = etree.SubElement(mw_wm_bp, 'setup')
-    mw_wm_bp_setup.text = 'Counter Sheet 1BoardPicker\t\t0\t0'
+    mw_wm_bp_setup.text = 'Counter Sheet {}BoardPicker\t\t0\t0'.format(cs_no)
     mw_wm_bp_bd = etree.SubElement(
         mw_wm_bp,
         'VASSAL.build.module.map.boardPicker.Board',
