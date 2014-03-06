@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="41"
+   height="29"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.48.4 r9939"
+   sodipodi:docname="symb_at.svg"
+   inkscape:export-filename="/home/pmeier/Workspace/WIFvassal/res/symbols/symb_at.png"
+   inkscape:export-xdpi="90"
+   inkscape:export-ydpi="90">
+  <defs
+     id="defs4" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="7.9999999"
+     inkscape:cx="-11.819067"
+     inkscape:cy="16.062842"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0"
+     inkscape:window-width="1680"
+     inkscape:window-height="992"
+     inkscape:window-x="-2"
+     inkscape:window-y="-3"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-137.85262,-616.93811)">
+    <rect
+       style="opacity:0.98000004;fill:none;stroke:#000000;stroke-width:2;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       id="rect2985"
+       width="39"
+       height="26.999998"
+       x="138.85262"
+       y="617.93811"
+       inkscape:export-filename="/home/pmeier/Workspace/WIFvassal/res/symbols/symb_at.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <rect
+       style="opacity:0.90999995;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+       id="rect3005"
+       width="33.781845"
+       height="2.644093"
+       x="-360.40875"
+       y="-502.81638"
+       ry="0"
+       transform="matrix(0.59604907,-0.80294801,-0.70510487,-0.70910304,0,0)"
+       inkscape:export-filename="/home/pmeier/Workspace/WIFvassal/res/symbols/symb_at.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <rect
+       style="opacity:0.90999995;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+       id="rect3005-1"
+       width="33.781845"
+       height="2.644093"
+       x="-587.52393"
+       y="-245.64407"
+       ry="0"
+       transform="matrix(-0.59604907,-0.80294801,0.70510487,-0.70910304,0,0)"
+       inkscape:export-filename="/home/pmeier/Workspace/WIFvassal/res/symbols/symb_at.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <rect
+       style="opacity:0.90999995;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+       id="rect3948"
+       width="24"
+       height="2"
+       x="146.35262"
+       y="632.93811" />
+  </g>
+</svg>
