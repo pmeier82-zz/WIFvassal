@@ -12,6 +12,8 @@ from vassal_xml import GPIDGenerator, PieceSlot
 
 ## CONSTANTS
 
+CW_KIF_ONLY = True
+
 BF_base = "/home/pmeier/Documents/Games/buildFile_base"
 BF_new = "/home/pmeier/Documents/Games/buildFile_new"
 SHEET = {}
@@ -22,9 +24,9 @@ BF = None
 CONTROL_NUM = {
     "CH": 2,
     "CC": 3,
-    "CWblue": 4,
-    "CW": 5,
-    "FR": 6,
+    "CW": 4,
+    "FR": 5,
+    "FF": 6,
     "GE": 7,
     "IT": 8,
     "JP": 9,
@@ -288,8 +290,9 @@ ENTITY_COLOURS = {
     "Rumania": ("Rum", "blu", "red", "yel", "blk", "blk"),
     "Siam": ("Sia", "red", "red", "red", "red", "blk"),
     "Nat Spain": ("SN", "red", "red", "red", "blk", "blk"),
+    "Spain": ("Sp", "red", "red", "red", "blk", "blk"),
     "Rep Spain": ("SR", "red", "red", "red", "blk", "blk"),
-    "Sweden": ("Swe", "blu", "blu", "blu", "blk", "blk"),
+    "Sweden": ("Swe", "blu", "blu", "#005bab", "blk", "blk"),
     "Switzerland": ("Swi", "blk", "blk", "whi", "blk", "blk"),
     "Turkey": ("Tur", "whi", "whi", "whi", "whi", "blk"),
     "Ukraine": ("Ukr", "red", "red", "red", "red", "blk"),
@@ -494,6 +497,13 @@ def get_size(u):
     return rval
 
 
+def get_col(col):
+    if col.startswith("#"):
+        return col
+    else:
+        return COL_CODE.get(col, "#000000")
+
+
 def break_name(name):
     rval = []
     for part in name.split():
@@ -654,10 +664,24 @@ def get_units_parent(rebuild=False):
             )
 
             # naval
-            land_tab = ET.SubElement(
+            naval_tab = ET.SubElement(
                 parent_power,
-                "VASSAL.build.widget.TabWidget",
+                "VASSAL.build.widget.ListWidget",
                 entryName="NAVAL",
+                divider="250"
+            )
+            for naval_type in ["SUB", "TRS", "AMPH", "ASW", "CX", "CV", "CVL", "BB", "CA", "CL"]:
+                ET.SubElement(
+                    naval_tab,
+                    "VASSAL.build.widget.ListWidget",
+                    entryName="<<" + naval_type,
+                    divider="150"
+                )
+            other_tab = ET.SubElement(
+                naval_tab,
+                "VASSAL.build.widget.ListWidget",
+                entryName="<<" + "OTHER",
+                divider="150"
             )
 
             # other
@@ -779,6 +803,9 @@ def inject_land():
             ps.add_trait("mark", ("val_year", u.year))
             ps.add_trait("mark", ("val_class", u.clas))
             ps.add_trait("mark", ("val_type", u_type))
+            ps.add_trait("mark", ("val_cost", u.cost))
+            ps.add_trait("mark", ("val_time", u.time))
+            # land values
             ps.add_trait("mark", ("val_mv", u.mov))
             if u.rog:
                 ps.add_trait("mark", ("val_ro", u.rog))
@@ -795,17 +822,17 @@ def inject_land():
                 col_left = col_right = col_top = "blk"
             if is_minor is True:
                 ps.add_trait("mark", ("val_left", tag))
-                ps.add_trait("mark", ("col_left", COL_CODE[col_left]))
+                ps.add_trait("mark", ("col_left", get_col(col_left)))
                 if u.name:
                     ps.add_trait("mark", ("val_right", u.name))
-                    ps.add_trait("mark", ("col_right", COL_CODE[col_right]))
+                    ps.add_trait("mark", ("col_right", get_col(col_right)))
             else:
                 if u.name:
                     ps.add_trait("mark", ("val_left", u.name))
-                    ps.add_trait("mark", ("col_left", COL_CODE[col_left]))
+                    ps.add_trait("mark", ("col_left", get_col(col_left)))
             if get_size(u):
                 ps.add_trait("mark", ("val_top", get_size(u)))
-                ps.add_trait("mark", ("col_top", COL_CODE[col_top]))
+                ps.add_trait("mark", ("col_top", get_col(col_top)))
 
             # counter background and symbol
             if u_type == "Ski":
@@ -829,15 +856,15 @@ def inject_land():
                     col_symb_text = "red"
                 if "red" in u.color2.lower() and col_symb_text == "red":
                     col_symb_text = "whi"
-                ps.add_trait("mark", ("col_symb_text", COL_CODE[col_symb_text]))
+                ps.add_trait("mark", ("col_symb_text", get_col(col_symb_text)))
             else:
                 if u_type.lower() in ["arm", "mech", "mot", "inf"]:
                     if u.home in ["AUS", "CAN", "IND"]:
                         ps.add_trait("mark", ("symb_text", u.home[:1].upper()))
-                        ps.add_trait("mark", ("col_symb_text", COL_CODE[col_symb_text]))
+                        ps.add_trait("mark", ("col_symb_text", get_col(col_symb_text)))
                     if u.home in ["NZ", "SA"]:
                         ps.add_trait("mark", ("symb_text", u.home[:2].upper()))
-                        ps.add_trait("mark", ("col_symb_text", COL_CODE[col_symb_text]))
+                        ps.add_trait("mark", ("col_symb_text", get_col(col_symb_text)))
 
             # style and colour
             val1 = "#000000"
@@ -910,14 +937,12 @@ def inject_air():
         try:
             # init
             print_item = "."
-            u_clas = get_clas(u)
             u_type = get_type(u)
             print_item = "({})".format(u_type)
             tag, col_symb, col_symb_text, col_left, col_top, col_right = ENTITY_COLOURS[u.home]
 
             # where to place it
             is_minor = False
-            hook = None
             if get_power(u) == "Minors":
                 is_minor = True
                 par_minors = par_units.find("VASSAL.build.widget.BoxWidget[@entryName=\"Minors\"]")
@@ -945,11 +970,21 @@ def inject_air():
             ps.add_trait("mark", ("val_year", u.year))
             ps.add_trait("mark", ("val_class", u.clas))
             ps.add_trait("mark", ("val_type", u_type))
+            ps.add_trait("mark", ("val_cost", u.cost))
+            ps.add_trait("mark", ("val_time", u.time))
+            # air values
             ps.add_trait("mark", ("val_ata", u.ata if u.ata is not None else "*"))
             ps.add_trait("mark", ("val_ats", u.ats if u.ats is not None else "*"))
             ps.add_trait("mark", ("val_tac", u.tac if u.tac is not None else "*"))
             ps.add_trait("mark", ("val_str", u.str if u.str is not None else "*"))
             ps.add_trait("mark", ("val_rng", u.rng))
+            if u_type == "CVP":
+                if u.cvp_y1 is not None:
+                    ps.add_trait("mark", ("sz1,yr1", u.cvp_s1, u.cvp_y1))
+                if u.cvp_y2 is not None:
+                    ps.add_trait("mark", ("sz2,yr2", u.cvp_s2, u.cvp_y2))
+                if u.cvp_y3 is not None:
+                    ps.add_trait("mark", ("sz3,yr3", u.cvp_s3, u.cvp_y3))
 
             # labels
             if u_type == "FTR":
@@ -962,7 +997,7 @@ def inject_air():
                         ps.add_trait("mark", ("val_center3", u.name2))
                 else:
                     ps.add_trait("mark", ("val_top", tag))
-                    ps.add_trait("mark", ("col_top", COL_CODE[col_left]))
+                    ps.add_trait("mark", ("col_top", get_col(col_left)))
                     ps.add_trait("mark", ("val_center3", u.name))
                 if u.info is not None:
                     if "2E" in u.info:
@@ -1015,7 +1050,7 @@ def inject_air():
                     ps.add_trait("mark", ("col_tag", col))
                     ps.add_trait("mark", ("val_center1", tag))
                 except:
-                    col = COL_CODE[col_left]
+                    col = get_col(col_left)
                     ps.add_trait("mark", ("col_tag_top", col))
                     ps.add_trait("mark", ("val_top", tag))
 
@@ -1053,9 +1088,9 @@ def inject_air():
                 "VWEAP": "NAV",
             }[u_type]
 
-            ps.add_trait("prototype", ("AIRrng" + base, ""))
             if not is_ll:
                 ps.add_trait("prototype", ("UNITll", ""))
+            ps.add_trait("prototype", ("AIRrng" + base, ""))
             ps.add_trait("prototype", ("AIRvalues", ""))
             ps.add_trait("prototype", ("AIRbase", ""))
 
@@ -1069,8 +1104,117 @@ def inject_air():
     print "(done)"
 
 
-def inject_naval(cs_no):
-    pass
+def inject_naval():
+    # init
+    global BF, GPID, HEADER, SHEET
+    par_units = get_units_parent()
+    print "INJECT NAVAL"
+
+    # fill containers
+    print "reading counters",
+    for u in gen_filtered_rowset(sheet=SHEET["N"], header=HEADER["N"],
+                                 filt=lambda x: x.type not in ["CONV", "TANK"] and cw_kif_only(x)):
+        try:
+            # init
+            print_item = "."
+            u_type = get_type(u)
+            print_item = "({})".format(u_type)
+            tag, col_symb, col_symb_text, col_left, col_top, col_right = ENTITY_COLOURS[u.home]
+
+            # where to place it
+            is_minor = False
+            if get_power(u) == "Minors":
+                is_minor = True
+                par_minors = par_units.find("VASSAL.build.widget.BoxWidget[@entryName=\"Minors\"]")
+                par_power = par_minors.find("VASSAL.build.widget.TabWidget[@entryName=\"{}\"]".format(u.power))
+                if par_power is None:
+                    par_power = get_minor_proto(u.power)
+                    par_minors.append(par_power)
+                hook = par_power.find("VASSAL.build.widget.ListWidget[@entryName=\"NAVAL\"]")
+            else:
+                par_power = par_units.find("VASSAL.build.widget.TabWidget[@entryName=\"{}\"]".format(u.power))
+                par_air = par_power.find("VASSAL.build.widget.ListWidget[@entryName=\"NAVAL\"]")
+                par_type = par_air.find("VASSAL.build.widget.ListWidget[@entryName=\"<<{}\"]".format(u_type))
+                if par_type is not None:
+                    hook = par_type
+                else:
+                    hook = par_air.find("VASSAL.build.widget.ListWidget[@entryName=\"<<OTHER\"]")
+
+            # piece slot, trait order in R E V E R S E !!
+            ps = PieceSlot(u.name or u.year, GPID.get())
+            ps.add_trait("prototype", ("ROTATE", "")) # last!
+
+            # game values and info
+            ps.add_trait("mark", ("val_info", ",".join(u.info or [])))
+            ps.add_trait("mark", ("val_kit", u.kit))
+            ps.add_trait("mark", ("val_year", u.year))
+            ps.add_trait("mark", ("val_class", u.clas))
+            ps.add_trait("mark", ("val_type", u_type))
+            ps.add_trait("mark", ("val_cost", u.cost))
+            ps.add_trait("mark", ("val_time", u.time))
+            # naval values
+            ps.add_trait("mark", ("val_mov", u.mov if u.aa is not None else "0"))
+            ps.add_trait("mark", ("val_rng", u.rng if u.aa is not None else "0"))
+            ps.add_trait("mark", ("val_atk", u.atk if u.atk is not None else "0"))
+            ps.add_trait("mark", ("val_dfs", u.dfs if u.dfs is not None else "0"))
+            ps.add_trait("mark", ("val_aa", u.aa if u.aa is not None else "0"))
+            if u.cv is not None:
+                ps.add_trait("mark", ("val_sb", u.cv))
+                if u_type == "FROG":
+                    if "Blue" in u.name2:
+                        ps.add_trait("mark", ("val_cv_num", 8))
+                    if "Violet" in u.name2:
+                        ps.add_trait("mark", ("val_cv_num", 9))
+                else:
+                    ps.add_trait("mark", ("val_cv_num", u.cv))
+            else:
+                ps.add_trait("mark", ("val_sb", u.sb or "0"))
+
+            # labels
+            if u.name is not None:
+                ps.add_trait("mark", ("val_name", u.name))
+            if u.color.lower() == "black":
+                ps.add_trait("mark", ("col_text", "#ff0000"))
+            if tag is not None:
+                try:
+                    col = {
+                        "AUS": "#ff0000",
+                        "CAN": "#00a2ff",
+                        "IND": "#99cc33",
+                        "NZ": "#ffffff",
+                        "SA": "#fbc834",
+                    }[tag]
+                except:
+                    col = get_col(col_left)
+                ps.add_trait("mark", ("col_tag", col))
+                ps.add_trait("mark", ("val_tag", tag))
+
+            # range and extras
+            if u_type == "ASW":
+                if "pink" in u.info:
+                    ps.add_trait("mark", ("val_asw_num", 1))
+                if "red" in u.info:
+                    ps.add_trait("mark", ("val_asw_num", 2))
+
+            # counter background and stripes
+            ps.add_trait("mark", ("cntr_back_num", CNTR_BACK_COL_NUM.get(u.color.lower(), 1)))
+
+            # naval prototypes
+            if u.name2 is not None and "LL-FR" in u.name2:
+                ps.add_trait("marker", ("ll_stripe_num", "5"))
+            else:
+                ps.add_trait("prototype", ("UNITll", ""))
+            ps.add_trait("prototype", ("NAVALvalues", ""))
+            ps.add_trait("prototype", ("NAVALbase", ""))
+
+            # add to xml tree
+            hook.append(ps.get_xml())
+        except Exception, ex:
+            print_item = "!"
+            raise
+        finally:
+            print print_item,
+    print "(done)"
 
 
 def tidy_tree():
@@ -1109,6 +1253,7 @@ if __name__ == '__main__':
     # inject counters
     inject_land()
     inject_air()
+    inject_naval()
 
     # finish by writing file back to the archive
     tidy_tree()

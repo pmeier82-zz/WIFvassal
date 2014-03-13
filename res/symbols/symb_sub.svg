@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="407.83664"
+   height="147.01268"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.48.4 r9939"
+   inkscape:export-filename="/home/pmeier/Workspace/WIFvassal/res/symbols/symb_sub.png"
+   inkscape:export-xdpi="8.46"
+   inkscape:export-ydpi="8.46"
+   sodipodi:docname="New document 1">
+  <defs
+     id="defs4" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="1.979899"
+     inkscape:cx="243.87304"
+     inkscape:cy="106.44884"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0"
+     inkscape:window-width="1680"
+     inkscape:window-height="992"
+     inkscape:window-x="-2"
+     inkscape:window-y="-3"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-94.642122,-489.32622)">
+    <path
+       style="fill:#000000"
+       d="m 314.1513,542.32622 c -3.06232,0.0233 -1.5,-0.11125 -1.5,18 m 0,0 0,18 95.07332,0 c 81.58805,0 95.02747,0.2013 94.75,1.41917 -0.45903,2.01483 -24.91192,23.53129 -27.32332,24.04219 -2.69714,0.57144 -350.32968,32.58244 -353.5,32.5513 -2.31337,-0.0227 -3.4152,-2.13309 -14.75918,-28.26861 -6.74255,-15.53423 -12.255045,-28.58155 -12.249995,-28.99405 0.005,-0.4125 38.034175,-0.75 84.509175,-0.75 l 84.5,0 0,-13.98095 0,-13.98095 2.72919,-0.68498 c 1.50105,-0.37674 11.51355,-2.55625 22.25,-4.84335 l 19.52081,-4.15837 0.26688,-25.6757 0.26688,-25.6757 3.48312,0 3.48312,0 0,26.5 c 0,22.88889 1.31075,26.47858 -1.5,26.5"
+       id="path3011"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="ccccssssscscccsscccccsc"
+       inkscape:export-filename="/home/pmeier/Workspace/WIFvassal/res/symbols/symb_sub.png"
+       inkscape:export-xdpi="13.24"
+       inkscape:export-ydpi="13.24" />
+  </g>
+</svg>

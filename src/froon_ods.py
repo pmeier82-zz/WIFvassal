@@ -256,7 +256,7 @@ class AirCounter(Counter):
             u"N": False,
         }[xml_ustr(row_data[header["USED1"]])]
         self.color = xml_ustr(row_data[header["COLOR"]])
-        # ait counter values
+        # air counter values
         self.ata = xml_int(row_data[header["ATA"]])
         self.ats = xml_int(row_data[header["ATS"]])
         self.tac = xml_int(row_data[header["TAC"]])
@@ -275,7 +275,7 @@ class NavalCounter(Counter):
         # super
         super(NavalCounter, self).__init__()
         # naval counter values
-        self.att = None
+        self.atk = None
         self.dfs = None
         self.aa = None
         self.sb = None
@@ -298,9 +298,12 @@ class NavalCounter(Counter):
             u"Y": True,
             u"N": False,
         }[xml_ustr(row_data[header["USED2"]])]
+        self.color = xml_ustr(row_data[header["COLOR"]])
+        # ait counter values
         # naval counter values
         self.type = xml_ustr(row_data[header["T2"]])
-        self.att = xml_int(row_data[header["ATT"]])
+        self.cost2 = xml_ustr(row_data[header["COST2"]])
+        self.atk = xml_int(row_data[header["ATT"]])
         self.dfs = xml_int(row_data[header["DEF"]])
         self.aa = xml_int(row_data[header["AA"]])
         self.sb = xml_int(row_data[header["SB"]])
