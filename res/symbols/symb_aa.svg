@@ -14,8 +14,8 @@
    id="svg2"
    version="1.1"
    inkscape:version="0.48.4 r9939"
-   sodipodi:docname="symb_at.svg"
-   inkscape:export-filename="/home/pmeier/Workspace/WIFvassal/res/symbols/symb_at.png"
+   sodipodi:docname="symb_aa.svg"
+   inkscape:export-filename="/home/pmeier/Workspace/WIFvassal/res/symbols/symb_aa.png"
    inkscape:export-xdpi="90"
    inkscape:export-ydpi="90">
   <defs
@@ -28,7 +28,7 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="7.9999999"
-     inkscape:cx="-11.819067"
+     inkscape:cx="-32.756567"
      inkscape:cy="16.062842"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
@@ -60,7 +60,7 @@
      id="layer1"
      transform="translate(-137.85262,-616.93811)">
     <rect
-       style="opacity:0.98000004;fill:none;stroke:#000000;stroke-width:2;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       style="opacity:1;fill:none;stroke:#000000;stroke-width:2;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
        id="rect2985"
        width="39"
        height="26.999998"
@@ -70,7 +70,7 @@
        inkscape:export-xdpi="90"
        inkscape:export-ydpi="90" />
     <rect
-       style="opacity:0.90999995;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+       style="opacity:1;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
        id="rect3005"
        width="33.781845"
        height="2.644093"
@@ -82,7 +82,7 @@
        inkscape:export-xdpi="90"
        inkscape:export-ydpi="90" />
     <rect
-       style="opacity:0.90999995;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+       style="opacity:1;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
        id="rect3005-1"
        width="33.781845"
        height="2.644093"
@@ -94,7 +94,7 @@
        inkscape:export-xdpi="90"
        inkscape:export-ydpi="90" />
     <rect
-       style="opacity:0.90999995;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+       style="opacity:1;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
        id="rect3948"
        width="24"
        height="2"

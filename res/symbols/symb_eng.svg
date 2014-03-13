@@ -28,7 +28,7 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="7.9195959"
-     inkscape:cx="-3.137134"
+     inkscape:cx="0.96661074"
      inkscape:cy="6.65708"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
@@ -65,18 +65,45 @@
        width="39.000172"
        height="27"
        x="139.35262"
-       y="617.43811" />
-    <text
-       xml:space="preserve"
-       style="font-size:33.65690613px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:DejaVu Sans Mono;-inkscape-font-specification:DejaVu Sans Mono Bold"
-       x="632.46661"
-       y="-143.63649"
-       id="text2983"
-       sodipodi:linespacing="125%"
-       transform="matrix(0,0.98144067,-1.0189103,0,0,0)"><tspan
-         sodipodi:role="line"
-         id="tspan2985"
-         x="632.46661"
-         y="-143.63649">E</tspan></text>
+       y="617.43811"
+       inkscape:export-filename="/home/pmeier/Workspace/WIFvassal/res/symbols/symb_eng.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <g
+       id="g3812"
+       transform="translate(-5.7220459e-6,-0.87976074)"
+       inkscape:export-filename="/home/pmeier/Workspace/WIFvassal/res/symbols/symb_eng.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90">
+      <rect
+         transform="matrix(0,-1,1,0,0,0)"
+         y="144.35271"
+         x="-627.31787"
+         height="29"
+         width="3"
+         id="rect2986"
+         style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none" />
+      <rect
+         y="624.31787"
+         x="144.35271"
+         height="15"
+         width="3"
+         id="rect2986-8"
+         style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none" />
+      <rect
+         y="624.31787"
+         x="170.35271"
+         height="15"
+         width="3"
+         id="rect2986-8-6"
+         style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none" />
+      <rect
+         y="624.31787"
+         x="157.35271"
+         height="12"
+         width="3"
+         id="rect2986-8-6-5"
+         style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none" />
+    </g>
   </g>
 </svg>

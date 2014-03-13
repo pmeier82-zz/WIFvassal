@@ -14,8 +14,8 @@
    id="svg2"
    version="1.1"
    inkscape:version="0.48.4 r9939"
-   sodipodi:docname="symb_garr.svg"
-   inkscape:export-filename="/home/pmeier/Workspace/WIFvassal/res/symbols/symb_mar.png"
+   sodipodi:docname="symb_ski.svg"
+   inkscape:export-filename="/home/pmeier/Workspace/WIFvassal/res/symbols/symb_ski.png"
    inkscape:export-xdpi="90"
    inkscape:export-ydpi="90">
   <defs
@@ -76,9 +76,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="2.8284271"
-     inkscape:cx="69.682614"
-     inkscape:cy="9.6639997"
+     inkscape:zoom="7.9999999"
+     inkscape:cx="22.442188"
+     inkscape:cy="7.7436429"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -109,14 +109,15 @@
      id="layer1"
      transform="translate(-137.84375,-616.9375)">
     <g
-       id="g4023">
+       id="g4023"
+       style="opacity:1">
       <rect
          y="617.93811"
          x="138.85262"
          height="26.999998"
          width="39"
          id="rect2985"
-         style="opacity:0.98000004;fill:none;stroke:#000000;stroke-width:2;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+         style="opacity:0.98000003999999996;fill:none;stroke:#000000;stroke-width:2;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
       <path
          inkscape:connector-curvature="0"
          id="path3849"
@@ -129,18 +130,19 @@
          style="fill:#ffffff;stroke:#000000;stroke-width:1.99999988000000006;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;fill-opacity:1" />
     </g>
     <path
-       style="opacity:0.98000004;fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none"
-       d="m 144.85262,624.93811 27,0 0,13 -27,0 z"
+       style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none;opacity:1"
+       d="m 146.85262,624.93811 23,0 0,13 -23,0 z"
        id="rect3912"
        inkscape:connector-curvature="0" />
     <g
-       id="g3841"
-       transform="matrix(1.0219327,0,0,0.89619413,-4.5528622,65.54649)">
+       id="g3776"
+       transform="translate(-39.875002,5.6250038)"
+       style="opacity:1">
       <g
-         transform="translate(61.250001,-5.383148)"
+         transform="matrix(0.85161061,0,0,0.74682844,114.6342,150.21647)"
          id="g3813">
         <rect
-           style="opacity:0.98000004;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+           style="opacity:0.98000003999999996;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
            id="rect3005"
            width="3"
            height="7"
@@ -148,7 +150,7 @@
            y="-409.84091"
            transform="matrix(-0.5,0.8660254,-0.8660254,-0.5,0,0)" />
         <rect
-           style="opacity:0.98000004;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+           style="opacity:0.98000003999999996;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
            id="rect3005-9"
            width="2.8883076"
            height="13.254207"
@@ -157,10 +159,10 @@
            transform="matrix(0.89951511,0.43688966,-0.56585808,0.82450266,0,0)" />
       </g>
       <g
-         transform="translate(52.019997,-5.3831469)"
+         transform="matrix(0.85161061,0,0,0.74682844,106.77383,150.21647)"
          id="g3813-6">
         <rect
-           style="opacity:0.98000004;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+           style="opacity:0.98000003999999996;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
            id="rect3005-5"
            width="3"
            height="7"
@@ -168,7 +170,7 @@
            y="-409.84091"
            transform="matrix(-0.5,0.8660254,-0.8660254,-0.5,0,0)" />
         <rect
-           style="opacity:0.98000004;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+           style="opacity:0.98000003999999996;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
            id="rect3005-9-4"
            width="2.8883076"
            height="13.254207"

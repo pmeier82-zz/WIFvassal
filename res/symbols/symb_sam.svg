@@ -15,7 +15,7 @@
    version="1.1"
    inkscape:version="0.48.4 r9939"
    sodipodi:docname="symb_sam.svg"
-   inkscape:export-filename="/home/pmeier/Workspace/WIFvassal/res/symbols/symb_aaa.png"
+   inkscape:export-filename="/home/pmeier/Workspace/WIFvassal/res/symbols/symb_sam.png"
    inkscape:export-xdpi="90"
    inkscape:export-ydpi="90">
   <defs
@@ -43,7 +43,7 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="7.9999999"
-     inkscape:cx="26.812501"
+     inkscape:cx="5.8750007"
      inkscape:cy="1.6872318"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
@@ -65,7 +65,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
+        <dc:title></dc:title>
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -103,7 +103,7 @@
        x="157.85262"
        y="617.5625" />
     <path
-       style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;opacity:1"
        d="m 158.35262,619.66309 c -8.50284,1.96161 -5.54012,13.74173 -6.25,26"
        id="path4023"
        inkscape:connector-curvature="0"
@@ -113,6 +113,6 @@
        inkscape:connector-curvature="0"
        id="path4025"
        d="m 158.35262,619.66309 c 8.50284,1.96161 5.54012,13.74173 6.25,26"
-       style="fill:none;stroke:#000000;stroke-width:0.99999994px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+       style="fill:none;stroke:#000000;stroke-width:0.99999994000000003px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;opacity:1" />
   </g>
 </svg>

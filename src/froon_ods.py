@@ -10,11 +10,11 @@ from ezodf import opendoc
 ## CONSTANTS
 
 #COUNTER_FILE = "/home/pmeier/Workspace/WIFvassal/res/WiF-AiF-PatiF-Counters.ods"
-COUNTER_FILE = "/home/pmeier/Dropbox/Stuff/games/wif/aid-counters-fr.ods"
+COUNTER_FILE = "/home/pmeier/Dropbox/Stuff/games/wif/aid-counters.ods"
 ROW_HEADER = 3
-ROW_LAST_LAND = 2643
-ROW_LAST_AIR = 2065
-ROW_LAST_NAVAL = 2812
+ROW_LAST_LAND = 2641
+ROW_LAST_AIR = 2063
+ROW_LAST_NAVAL = 2809
 
 ## FUNCTIONS
 
@@ -82,15 +82,17 @@ def gen_filtered_rowset(sheet, header=None, filt=None):
         "Air": AirCounter,
         "Naval": NavalCounter
     }[MODE]
-    for rid in xrange(ROW_HEADER, last):
+    for rid in xrange(ROW_HEADER + 1, last):
         try:
             u = cnt_cls()
             u.update(sheet, rid, header)
-            if filt is not None:
-                if filt(u):
-                    yield u
-        except:
-            pass
+            if filt is not None and not filt(u):
+                continue
+            yield u
+        except Exception, ex:
+            print
+            print ex
+            print
 
 ## CLASSES
 
@@ -136,7 +138,7 @@ class Counter(object):
             u"C": u"C",
             u"L": u"D",
             u"X": u"F",
-        }[xml_ustr(row_data[header["SIDE"]])]
+        }.get(xml_ustr(row_data[header["SIDE"]]))
         self.power = xml_ustr(row_data[header["POWER"]])
         self.home = xml_ustr(row_data[header["HOME"]])
         self.clas = xml_ustr(row_data[header["CLASS"]])
@@ -212,7 +214,7 @@ class LandCounter(Counter):
         self.used = {
             u"Y": True,
             u"N": False,
-        }[xml_ustr(row_data[header["USED PA"]])]
+        }.get(xml_ustr(row_data[header["USED PA"]]))
         self.color = xml_ustr(row_data[header["BACK COLOR"]])
         self.color2 = xml_ustr(row_data[header["FORE COLOR"]])
         # land counter values
@@ -253,6 +255,7 @@ class AirCounter(Counter):
             u"Y": True,
             u"N": False,
         }[xml_ustr(row_data[header["USED1"]])]
+        self.color = xml_ustr(row_data[header["COLOR"]])
         # ait counter values
         self.ata = xml_int(row_data[header["ATA"]])
         self.ats = xml_int(row_data[header["ATS"]])

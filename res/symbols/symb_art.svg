@@ -14,7 +14,7 @@
    id="svg2"
    version="1.1"
    inkscape:version="0.48.4 r9939"
-   sodipodi:docname="symbol.svg">
+   sodipodi:docname="symb_art.svg">
   <defs
      id="defs4" />
   <sodipodi:namedview
@@ -25,7 +25,7 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="7.9195959"
-     inkscape:cx="-3.137134"
+     inkscape:cx="-24.287203"
      inkscape:cy="-3.4444455"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
@@ -57,21 +57,27 @@
      id="layer1"
      transform="translate(-138.34375,-616.4375)">
     <rect
-       style="opacity:0.98000004;fill:none;stroke:#000000;stroke-width:2;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       style="opacity:1;fill:none;stroke:#000000;stroke-width:2;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
        id="rect2985"
        width="39.000172"
        height="27"
        x="139.35262"
-       y="617.43811" />
+       y="617.43811"
+       inkscape:export-filename="/home/pmeier/Workspace/WIFvassal/res/symbols/symb_art.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
     <path
        sodipodi:type="arc"
-       style="opacity:0.90999995;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+       style="opacity:1;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
        id="path2983"
        sodipodi:cx="-36.428627"
        sodipodi:cy="6.9660473"
        sodipodi:rx="7.2604713"
        sodipodi:ry="4.987628"
-       d="m -29.168156,6.9660473 a 7.2604713,4.987628 0 1 1 -14.520942,0 7.2604713,4.987628 0 1 1 14.520942,0 z"
-       transform="matrix(0.61979447,0,0,0.90223249,181.43096,624.65312)" />
+       d="m -29.168156,6.9660473 c 0,2.7545909 -3.250623,4.9876277 -7.260471,4.9876277 -4.009848,0 -7.260471,-2.2330368 -7.260471,-4.9876277 0,-2.7545909 3.250623,-4.987628 7.260471,-4.987628 4.009848,0 7.260471,2.2330371 7.260471,4.987628 z"
+       transform="matrix(0.61979447,0,0,0.90223249,181.43096,624.65312)"
+       inkscape:export-filename="/home/pmeier/Workspace/WIFvassal/res/symbols/symb_art.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
   </g>
 </svg>

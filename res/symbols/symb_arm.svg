@@ -14,8 +14,8 @@
    id="svg2"
    version="1.1"
    inkscape:version="0.48.4 r9939"
-   sodipodi:docname="symb_cav.svg"
-   inkscape:export-filename="/home/pmeier/Workspace/WIFvassal/res/symbols/symb_cav.png"
+   sodipodi:docname="symb_arm.svg"
+   inkscape:export-filename="/home/pmeier/Workspace/WIFvassal/res/symbols/symb_arm.png"
    inkscape:export-xdpi="90"
    inkscape:export-ydpi="90">
   <defs
@@ -28,7 +28,7 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="7.9999999"
-     inkscape:cx="9.2434331"
+     inkscape:cx="18.305933"
      inkscape:cy="16.062842"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
@@ -41,7 +41,9 @@
      inkscape:window-height="992"
      inkscape:window-x="-2"
      inkscape:window-y="-3"
-     inkscape:window-maximized="1" />
+     inkscape:window-maximized="1"
+     showguides="true"
+     inkscape:guide-bbox="true" />
   <metadata
      id="metadata7">
     <rdf:RDF>
@@ -60,19 +62,25 @@
      id="layer1"
      transform="translate(-137.85262,-616.93811)">
     <rect
-       style="opacity:0.98000004;fill:none;stroke:#000000;stroke-width:2;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       style="opacity:1;fill:none;stroke:#000000;stroke-width:2;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
        id="rect2985"
        width="39"
        height="26.999998"
        x="138.85262"
-       y="617.93811" />
+       y="617.93811"
+       inkscape:export-filename="/home/pmeier/Workspace/WIFvassal/res/symbols/symb_arm.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
     <rect
-       style="opacity:0.98000004;fill:none;stroke:#000000;stroke-width:2;stroke-linecap:square;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+       style="fill:none;stroke:#000000;stroke-width:2;stroke-linecap:square;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
        id="rect3772"
        width="25"
        height="15"
        x="145.85262"
        y="623.93811"
-       ry="7.5" />
+       ry="4.75"
+       inkscape:export-filename="/home/pmeier/Workspace/WIFvassal/res/symbols/symb_arm.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
   </g>
 </svg>

@@ -14,8 +14,8 @@
    id="svg2"
    version="1.1"
    inkscape:version="0.48.4 r9939"
-   sodipodi:docname="symb_para.svg"
-   inkscape:export-filename="/home/pmeier/Workspace/WIFvassal/res/symbols/symb_inf.png"
+   sodipodi:docname="symb_acav.svg"
+   inkscape:export-filename="/home/pmeier/Workspace/WIFvassal/res/symbols/symb_acav.png"
    inkscape:export-xdpi="90"
    inkscape:export-ydpi="90">
   <defs
@@ -51,7 +51,7 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="2.8284271"
-     inkscape:cx="-92.63649"
+     inkscape:cx="-52.861733"
      inkscape:cy="5.5981423"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
@@ -83,32 +83,33 @@
      id="layer1"
      transform="translate(-137.85262,-616.93811)">
     <g
-       id="g3958">
+       id="g3958"
+       style="opacity:1">
       <rect
          y="617.93811"
          x="138.85262"
          height="26.999998"
          width="39"
          id="rect2985"
-         style="opacity:0.90999999;fill:none;stroke:#000000;stroke-width:2;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+         style="opacity:0.90999998999999998;fill:none;stroke:#000000;stroke-width:2;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
       <path
          inkscape:connector-curvature="0"
          id="path3851"
          d="m 138.85262,644.93811 39,-27"
-         style="fill:none;stroke:#000000;stroke-width:1.99999988000000006;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;opacity:0.90999999" />
+         style="fill:none;stroke:#000000;stroke-width:1.99999988000000006;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;opacity:0.90999998999999998" />
       <rect
          y="624.93811"
          x="139.85262"
          height="13"
          width="37"
          id="rect3918"
-         style="opacity:0.90999995;fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none" />
+         style="opacity:0.90999995000000000;fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none" />
       <text
          sodipodi:linespacing="125%"
          id="text3920"
          y="640.6781"
          x="145.85762"
-         style="font-size:35px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;opacity:0.90999995;fill:#000000;fill-opacity:1;stroke:none;font-family:FreeSans;-inkscape-font-specification:FreeSans"
+         style="font-size:35px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;opacity:0.90999995000000000;fill:#000000;fill-opacity:1;stroke:none;font-family:FreeSans;-inkscape-font-specification:FreeSans"
          xml:space="preserve"><tspan
            y="640.6781"
            x="145.85762"

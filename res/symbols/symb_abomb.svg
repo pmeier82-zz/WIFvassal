@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="196.80438"
+   height="63.976208"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.48.4 r9939"
+   sodipodi:docname="symb_abomb.svg"
+   inkscape:export-filename="/home/pmeier/Workspace/WIFvassal/res/symbols/symb_abomb.png"
+   inkscape:export-xdpi="26.981106"
+   inkscape:export-ydpi="26.981106">
+  <defs
+     id="defs4" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="1.4"
+     inkscape:cx="342.11272"
+     inkscape:cy="-51.70274"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:window-width="1680"
+     inkscape:window-height="992"
+     inkscape:window-x="-2"
+     inkscape:window-y="-3"
+     inkscape:window-maximized="1"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0" />
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(145.93468,-820.18522)">
+    <path
+       style="fill:#000000"
+       d="m -113.91369,884.00718 c -9.36227,-0.0548 -23.00823,-0.3866 -32.02099,0.13163 l 0.71394,-32.16903 c 0.42078,-18.95978 -1.04789,-30.65973 -0.35687,-31.35076 0.70489,-0.70488 11.28113,-0.33221 26.83685,-0.35892 25.492649,-0.0438 32.995136,1.01195 39.350346,5.53726 l 2.90161,2.06613 5.67199,-3.07208 6.029123,-2.89351 35.715277,-0.14767 c 19.8396674,-0.082 39.42276,0.46567 43.51763,0.99709 14.53218,1.88594 27.93302,11.0372 34.03024,23.23881 3.32356,6.65104 3.26097,8.18691 -0.65276,16.01758 -4.64793,9.29966 -16.32106,17.52743 -27.82269,19.61074 -2.75,0.49811 -23.0213303,1.22799 -45.04741,1.62194 l -40.04741,0.71629 -6.30232,-3.1814 c -5.87453,-2.96546 -6.046073,-4.33317 -8.10802,-1.54725 -20.085115,5.96317 -12.739282,4.91886 -34.408536,4.78315 z m 26.753832,-7.13903 c 2.107942,-0.31531 3.199359,-1.12131 3.496489,-1.60208 0.29713,-0.48077 -6.703263,-4.45903 -16.32808,-9.45789 l -17.499661,-9.08885 -11.50444,0 -11.50444,0 c 0,6.94015 0,13.88031 0,20.82046 l 8.75,0.63828 c 4.8125,0.35105 23.1193,0.57938 24.50825,0.62673 6.28588,0.21431 13.653805,-0.97514 20.081882,-1.93665 z m 79.4995537,1.19337 18.1603103,-0.65781 0,-10.84219 0,-10.84219 -36.5,0 -36.5,0 0,11.5 0,11.5 18.33969,0 c 10.08683,0 26.51183,-0.29601 36.4999997,-0.65781 z M -66.874204,829.01178 c -0.22575,-0.22574 -9.1214,4.22861 -19.768119,9.89855 l -19.357667,10.309 14.249996,0.27746 14.25,0.27745 0,3.44509 0,3.44509 -14.022596,0.27745 -14.02259,0.27746 19.272586,10.0291 19.2726,10.0291 0.26812,-23.92765 c 0.14746,-13.16021 0.0834,-24.11235 -0.14233,-24.3381 z m 93.07584,45.53227 c 10.46994,-3.88921 21.53584,-17.43974 19.2188,-23.534 -4.03257,-10.60646 -17.11688,-21.15012 -28.54871,-23.00525 l -3.6989,-0.60025 0.66077,18.90739 c 0.36342,10.39906 0.66203,21.75564 0.66358,25.23684 l 0.003,6.32946 3.25,-0.70099 c 1.7875,-0.38554 5.59073,-1.57048 8.45163,-2.6332 z m -16.7016303,-35.32472 0,-12.5 -23.2499997,-0.004 c -12.7875,-0.002 -28.9875,-0.29668 -36,-0.65432 l -13.285714,0.4212 0.535714,12.0829 0,13.15432 36,0 35.9999997,0 0,-12.5 z m -108.9495207,0.83639 18.172621,-9.66361 -2.86155,-1.52182 c -5.192798,-2.76161 -15.567033,-4.07699 -32.361546,-4.1032 -9.075,-0.0142 -18.1875,0.25318 -20.25,0.59409 l -3.75,0.61983 0,11.86916 0,11.86916 11.43893,0 11.43893,0 z"
+       id="path2996"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="ccscsscccsssssscsccsssccccsssscccccccsscscccccccccsccsscsccscccccscccccccccssscccccc"
+       inkscape:export-filename="/home/pmeier/Workspace/WIFvassal/res/symbols/symb_abomb.png"
+       inkscape:export-xdpi="29.542233"
+       inkscape:export-ydpi="29.542233" />
+    <path
+       style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+       d=""
+       id="path3055"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="/home/pmeier/Workspace/WIFvassal/res/symbols/symb_abomb.png"
+       inkscape:export-xdpi="29.542233"
+       inkscape:export-ydpi="29.542233" />
+  </g>
+</svg>

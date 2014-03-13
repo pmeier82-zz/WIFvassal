@@ -19,6 +19,20 @@ HEADER = {}
 GPID = None
 BF = None
 
+CONTROL_NUM = {
+    "CH": 2,
+    "CC": 3,
+    "CWblue": 4,
+    "CW": 5,
+    "FR": 6,
+    "GE": 7,
+    "IT": 8,
+    "JP": 9,
+    "RU": 10,
+    "US": 11,
+    "OT": 12,
+}
+
 CNTR_BACK_COL_NUM = {
     "black": 2,
     "white": 3,
@@ -100,6 +114,7 @@ CNTR_FORE_COL_NUM = {
     "light pink": 26,
     "lt pink": 26,
     "red": 27,
+    "pale blue / red": 27,
     "dark red": 28,
     "dk red": 28,
     "violet": 29,
@@ -108,6 +123,7 @@ CNTR_FORE_COL_NUM = {
     "yellow": 31,
     "light yellow": 32,
     "lt yellow": 32,
+    "pale yellow": 32,
 }
 
 TYPE_NUM_LAND = {
@@ -138,37 +154,229 @@ TYPE_NUM_LAND = {
     "Para": 26,
     "Ski": 27,
     "Cav": 28,
-    "Art": 29,
-    "SP": 30,
-    "AT": 31,
-    "TD": 32,
-    "AA": 33,
-    "AAA": 34,
-    "SAM": 35,
-    "FTR": 36,
-    "LND": 37,
-    "NAV": 38,
-    "ATR": 39,
-    "CVP": 40,
-    "BOMB": 41,
-    "SUB": 42,
-    "AMPH": 43,
-    "TRS": 44,
-    "ASW": 45,
-    "CX": 46,
-    "CV": 47,
-    "CVL": 48,
-    "BB": 49,
-    "CA": 50,
-    "CL": 51,
-    "FROG": 52,
-    "LEAD": 53,
-    "SYNTH": 54,
+    "Cdo": 29,
+    "Art": 30,
+    "SP": 31,
+    "AT": 32,
+    "TD": 33,
+    "AA": 34,
+    "AAA": 35,
+    "SAM": 36,
 }
 
-CNTR_NO_HOME = {
-    "China": None,
+COL_NUM = {
+    "blk": 2,
+    "red": 3,
+    "blu": 4,
+    "whi": 5,
+    "gre": 6,
+    "yel": 7,
 }
+
+COL_CODE = {
+    "blk": "#000000",
+    "red": "#ff0000",
+    "blu": "#00a2ff",
+    "whi": "#ffffff",
+    "gre": "#99cc33",
+    "yel": "#ffff00",
+}
+
+CBV_COLOURS = {
+    ## CW
+    "Athens": ("blu", "blu"),
+    "Oslo": ("blu", "whi"),
+    ## FR
+    "Algiers": ("red", "red"),
+    "Damascus": ("gre", "red"),
+    "Dakar": ("red", "red"),
+    "Antanarivo": ("gre", "whi"),
+    "Morocco": ("red", "red"),
+    ## GE
+    "Ost SS": ("whi", "red"),
+    "Frank SS": ("whi", "red"),
+    "Vlassov": ("blk", "blk"),
+    "Zagreb": ("blu", "red"),
+    "Croat": ("blu", "red"),
+    "SS America": ("blu", "blu"),
+    "SS Pacific": ("blu", "blu"),
+    "I Slovak": ("red", "blu"),
+    "SS Nordland": ("blu", "blu"),
+    "SS Holland": ("whi", "whi"),
+    "SS Lettiland": ("whi", "whi"),
+    "SS Russland": ("red", "red"),
+    "SS Weissr.": ("whi", "whi"),
+    "SS Freiwill.": ("red", "red"),
+    "SS Kama": ("blu", "blu"),
+    ## IT
+    "Cairo": ("blk", "red"),
+    "Madrid": ("red", "red"),
+    ## JP
+    "INA": ("whi", "yel"),
+    "Saigon": ("yel", "yel"),
+    "Manila": ("red", "whi"),
+    "Batavia": ("whi", "whi"),
+    "Nanking": ("blu", "blu"),
+    "Vladivostok": ("red", "red"),
+    "Calcutta": ("whi", "whi"),
+    "Malaya INA": ("whi", "yel"),
+    ## Spain
+    "I Hispan.": ("blu", "blu"),
+    "II Hispan.": ("blu", "blu"),
+    "III Hispan.": ("red", "red"),
+    ## US
+    "Naples": ("red", "gre"),
+    "Rome": ("red", "red"),
+    ## RU
+    "Sofia": ("red", "red"),
+    "Bucharest": ("blu", "red"),
+}
+
+ENTITY_COLOURS = {
+    # home : abbrev, col_symb, col_symb_text, col_left, col_top, col_right
+
+    ## MINORS
+    "Afghanistan": ("Afg", "red", "red", "whi", "whi", "whi"),
+    "Albania": ("Alb", "red", "blk", "red", "red", "blk"),
+    "Arabia": ("Ara", "blk", "blk", "blk", "blk", "blk"),
+    "Argentina": ("Arg", "blu", "blu", "whi", "blu", "blk"),
+    "Austria": ("Aut", "red", "red", "red", "red", "blk"),
+    "Belgium": ("Bel", "red", "red", "red", "red", "red"),
+    "Be. Congo": ("Be. Congo", "red", "gre", "red", "red", "red"),
+    "Bolivia": ("Bol", "yel", "yel", "yel", "yel", "blk"),
+    "Brazil": ("Bra", "blu", "blu", "blu", "blu", "blk"),
+    "Bulgaria": ("Bul", "red", "red", "gre", "gre", "blk"),
+    "Cent. America": ("CA", "blk", "blk", "whi", "whi", "blk"),
+    "Chile": ("Chi", "blu", "blu", "whi", "whi", "blk"),
+    "Colombia": ("Col", "blu", "blu", "red", "red", "blk"),
+    "Costa Rica": ("C.R.", "whi", "whi", "blu", "blu", "blk"),
+    "Cuba": ("Cub", "red", "red", "whi", "whi", "blk"),
+    "Czechoslovakia": ("Cze", "whi", "whi", "whi", "blk", "blk"),
+    "Denmark": ("Den", "red", "red", "red", "blk", "blk"),
+    "Dom. Rep.": ("D.R.", "red", "red", "red", "red", "blk"),
+    "Ecuador": ("Ecu", "red", "whi", "blu", "blu", "blk"),
+    "El Salvador": ("E.S.", "blk", "blk", "whi", "whi", "blk"),
+    "Ethiopia": ("Eth", "yel", "yel", "gre", "yel", "blk"),
+    "Finland": ("Fin", "whi", "blu", "blu", "blu", "blk"),
+    "Greece": ("Gre", "whi", "whi", "blu", "whi", "whi"),
+    "Guatemala": ("Gua", "whi", "whi", "blu", "blu", "blk"),
+    "Haiti": ("Hai", "whi", "whi", "whi", "whi", "blk"),
+    "Honduras": ("Hon", "blk", "whi", "blu", "blu", "blk"),
+    "Hungary": ("Hun", "gre", "red", "red", "blk", "blk"),
+    "Indonesia": ("Indo", "whi", "whi", "whi", "whi", "blk"),
+    "Iraq": ("Irq", "blk", "red", "red", "blk", "blk"),
+    "Ireland": ("Ire", "red", "red", "red", "blk", "blk"),
+    "Israel": ("Isr", "blu", "blu", "blu", "blu", "blk"),
+    "Jordan": ("Jor", "red", "red", "gre", "gre", "blk"),
+    "North Korea": ("N.Ko.", "whi", "whi", "blu", "blu", "blk"),
+    "South Korea": ("S.Ko", "blu", "blu", "whi", "whi", "blk"),
+    "Lebanon": ("Leb", "blu", "blu", "red", "red", "blk"),
+    "Liberia": ("Lib", "whi", "whi", "blk", "blk", "blk"),
+    "Mexico": ("Mex", "gre", "gre", "gre", "gre", "blk"),
+    "Mongolia": ("Mon", "red", "red", "blk", "blk", "blk"),
+    "Netherlands": ("Net", "whi", "whi", "red", "whi", "blk"),
+    "NEI": ("NEI", "whi", "whi", "red", "whi", "blk"),
+    "Nicaragua": ("Nic", "blu", "blu", "blu", "blu", "blk"),
+    "Norway": ("Nor", "blu", "blu", "blu", "blu", "blk"),
+    "Pakistan": ("Pak", "whi", "whi", "whi", "whi", "blk"),
+    "Panama": ("Pan", "whi", "whi", "red", "red", "blk"),
+    "Paraguay": ("Par", "whi", "whi", "whi", "whi", "blk"),
+    "Persia": ("Prs", "red", "red", "red", "blk", "blk"),
+    "Peru": ("Per", "blk", "blk", "red", "red", "blk"),
+    "Poland": ("Pol", "red", "red", "whi", "blk", "blk"),
+    "Portugal": ("Por", "red", "red", "gre", "blk", "blk"),
+    "Rumania": ("Rum", "blu", "red", "yel", "blk", "blk"),
+    "Siam": ("Sia", "red", "red", "red", "red", "blk"),
+    "Nat Spain": ("SN", "red", "red", "red", "blk", "blk"),
+    "Rep Spain": ("SR", "red", "red", "red", "blk", "blk"),
+    "Sweden": ("Swe", "blu", "blu", "blu", "blk", "blk"),
+    "Switzerland": ("Swi", "blk", "blk", "whi", "blk", "blk"),
+    "Turkey": ("Tur", "whi", "whi", "whi", "whi", "blk"),
+    "Ukraine": ("Ukr", "red", "red", "red", "red", "blk"),
+    "Uruguay": ("Uru", "blu", "blu", "whi", "whi", "blk"),
+    "Venezuela": ("Ven", "blu", "blu", "blu", "blu", "blk"),
+    "Vietnam": ("Vie", "red", "red", "red", "red", "blk"),
+    "Yugoslavia": ("Yug", "red", "red", "blu", "blu", "blk"),
+
+    ## CHINA
+    "Comm China": (None, "blk", "whi", "blk", "blk", "blk"),
+    "Nat China": (None, "blk", "red", "blk", "blk", "blk"),
+    "Warlords": (None, "red", "red", "blk", "blk", "blk"),
+
+    ## CW TERR
+    "A. E. Sudan": (None, "red", "gre", "blk", "blk", "blk"),
+    "Aden": (None, "red", "gre", "blk", "blk", "blk"),
+    "Br. Guyana": (None, "blk", "red", "blk", "blk", "blk"),
+    "Br. Somali": (None, "blu", "blu", "blk", "blk", "blk"),
+    "Burma": (None, "whi", "blu", "blk", "blk", "blk"),
+    "Egypt": ("Egy", "red", "red", "blk", "blk", "blk"),
+    "Eritrea": (None, "gre", "yel", "blk", "blk", "blk"),
+    "Kenya": (None, "whi", "gre", "blk", "blk", "blk"),
+    "Libya": (None, "blk", "whi", "blk", "blk", "blk"),
+    "Nigeria": (None, "gre", "gre", "blk", "blk", "blk"),
+    "Nth. Ireland": (None, "red", "red", "blk", "blk", "blk"),
+    "Nth. Rhod.": (None, "red", "yel", "blk", "blk", "blk"),
+    "Palestine": (None, "gre", "red", "blk", "blk", "blk"),
+    "Rhodesia": (None, "whi", "whi", "blk", "blk", "blk"),
+    "Sierra Leone": (None, "gre", "blu", "blk", "blk", "blk"),
+    "Tanganyika": (None, "gre", "blu", "blk", "blk", "blk"),
+    "Uganda": (None, "blk", "red", "blk", "blk", "blk"),
+
+    ## CW DOMINIONS
+    "AUS": ("AUS", "red", "blu", "blk", "blk", "blk"),
+    "CAN": ("CAN", "red", "blu", "blk", "blk", "blk"),
+    "IND": ("IND", "red", "red", "blk", "blk", "blk"),
+    "NZ": ("NZ", "red", "whi", "blk", "blk", "blk"),
+    "SA": ("SA", "red", "blu", "blk", "blk", "blk"),
+    "UK": (None, "blk", "whi", "blk", "blk", "blk"),
+
+    ## FR TERR
+    "Algeria": (None, "red", "whi", "blk", "blk", "blk"),
+    "Cameroons": (None, "yel", "gre", "blk", "blk", "blk"),
+    "Fr. Guyana": (None, "blk", "red", "blk", "blk", "blk"),
+    "Fr. Somali": (None, "blu", "blu", "blk", "blk", "blk"),
+    "Fr. Sudan": (None, "gre", "red", "blk", "blk", "blk"),
+    "Gabon": (None, "blu", "gre", "blk", "blk", "blk"),
+    "Indo-China": (None, "yel", "yel", "blk", "blk", "blk"),
+    "Ivory Coast": (None, "red", "gre", "blk", "blk", "blk"),
+    "Madagascar": (None, "gre", "whi", "blk", "blk", "blk"),
+    "Mid. Congo": (None, "gre", "yel", "blk", "blk", "blk"),
+    "Morocco": (None, "blk", "gre", "blk", "blk", "blk"),
+    "New Caled.": (None, "red", "gre", "blk", "blk", "blk"),
+    "Niger": (None, "gre", "red", "blk", "blk", "blk"),
+    "Senegal": (None, "red", "gre", "blk", "blk", "blk"),
+    "Syria": ("Syr", "red", "gre", "blk", "blk", "blk"),
+    "Tunisia": (None, "red", "red", "blk", "blk", "blk"),
+
+    ## FRANCE
+    "France": (None, "blk", "red", "blk", "blk", "blk"),
+
+    ## GERMANY
+    "Germany": (None, "blk", "red", "blk", "blk", "blk"),
+
+    ## IT TERR
+    "It. Somali": (None, "blu", "blu", "blk", "blk", "blk"),
+    "AOI": (None, "gre", "red", "blk", "blk", "blk"),
+
+    ## ITALY
+    "Italy": (None, "blk", "red", "blk", "blk", "blk"),
+
+    ## JP TERR
+    "Formosa": (None, "whi", "blu", "blk", "blk", "blk"),
+    "Korea": (None, "blu", "red", "blk", "blk", "blk"),
+    "Manchuria": (None, "whi", "red", "blk", "blk", "blk"),
+    "Philippines": ("Phi", "red", "red", "blk", "blk", "blk"),
+
+    ## JAPAN
+    "Japan": (None, "blk", "red", "blk", "blk", "blk"),
+
+    ## RUSSIA
+    "USSR": (None, "blk", "red", "blk", "blk", "blk"),
+
+    ## USA
+    "USA": (None, "blk", "red", "blk", "blk", "blk"),
+}
+
 
 ## FUNCTIONS
 
@@ -225,7 +433,7 @@ def get_power(*args):
             "Japan": "JP",
             "USSR": "RU",
             "USA": "US"
-        }.get(pwr)
+        }[pwr]
     except KeyError:
         if pwr == "China":
             return {
@@ -249,13 +457,20 @@ def get_type(u):
         u"FLAK (AAA)": "AAA",
         u"FLAK (SAM)": "SAM",
         u"WARLORDS": "WAR",
+        u"Fl.Pz.": "PARA",
     }.get(u.type, u.type)
-    if u.clas == "ART":
-        if u.info is not None and "self-prop" in u.info:
-            if u.type == "ART":
-                rval = "SP"
-            if u.type == "AT":
-                rval = "TD"
+    if hasattr(u, "size"):
+        if u.size == "Div":
+            try:
+                return {
+                    u"MTN / CAV": "Mtn",
+                    u"MTN / MAR": "Cdo",
+                    u"MAR / PARA": "Cdo",
+                    u"ENG ARM": "Eng",
+                }[rval]
+            except:
+                if u.clas not in ["SUPP", "ART"]:
+                    rval = rval[0].upper() + rval[1:].lower()
     return rval
 
 
@@ -279,9 +494,34 @@ def get_size(u):
     return rval
 
 
-def get_units_parent(remove_units=False):
+def break_name(name):
+    rval = []
+    for part in name.split():
+        parts = {
+            "Liberator": ["Liber-", "ator"],
+            "Beaufighter": ["Beau-", "fighter"],
+            "Sturmovik": ["Sturm-", "ovik"],
+            "Maryland": ["Mary-", "land"],
+            "Baltimore": ["Balti-", "more"],
+            "Marauder": ["Mar-", "auder"],
+            "Mitchell": ["Mit-", "chell"],
+            "Peacemaker": ["Peace-", "maker"],
+            "Invader": ["Inva-", "der"],
+            "Dominator": ["Domi-", "nator"],
+        }.get(part, part)
+        if isinstance(parts, (str, unicode)):
+            rval.append(parts)
+        else:
+            for item in parts:
+                rval.append(item)
+    return rval
+
+
+def get_units_parent(rebuild=False):
     # init
     global BF
+
+    print "finding unit parent"
 
     # main tab widget in game pieces
     game_pieces = BF.find(
@@ -292,10 +532,11 @@ def get_units_parent(remove_units=False):
         raise ValueError("could not find PieceWindow[@name=\"Game Pieces\"]")
 
     # units box widget
-    unt_box = game_pieces.find(
-        "VASSAL.build.widget.BoxWidget[@entryName=\"Units\"]"
-    )
-    if unt_box is not None and remove_units is True:
+    unt_box = game_pieces.find("VASSAL.build.widget.BoxWidget[@entryName=\"Units\"]")
+
+    # build if not present or rebuild if flaged
+    if unt_box is None or (unt_box is not None and rebuild is True):
+        print "rebuilding unit parent!!"
         game_pieces.remove(unt_box)
         game_pieces \
             .find("VASSAL.build.widget.BoxWidget[@entryName=\"General\"]") \
@@ -303,318 +544,551 @@ def get_units_parent(remove_units=False):
             ET.Element(
                 "VASSAL.build.widget.BoxWidget",
                 entryName="Units"
+            ))
+        unt_box = game_pieces.find("VASSAL.build.widget.BoxWidget[@entryName=\"Units\"]")
+
+        # major powers
+        for power_name in [
+            "China",
+            "Commonwealth",
+            "France",
+            "Germany",
+            "Italy",
+            "Japan",
+            "USSR",
+            "USA",
+        ]:
+            parent_power = ET.SubElement(
+                unt_box,
+                "VASSAL.build.widget.TabWidget",
+                entryName=power_name
             )
+
+            # land
+            land_tab = ET.SubElement(
+                parent_power,
+                "VASSAL.build.widget.TabWidget",
+                entryName="LAND",
+            )
+            arm_tab = ET.SubElement(
+                land_tab,
+                "VASSAL.build.widget.ListWidget",
+                entryName="ARM",
+                divider="250"
+            )
+            for arm_type in ["HQA", "ARM", "Arm", "MECH", "Mech", "Eng"]:
+                ET.SubElement(
+                    arm_tab,
+                    "VASSAL.build.widget.ListWidget",
+                    entryName="<<" + arm_type,
+                    divider="150"
+                )
+            cav_tab = ET.SubElement(
+                land_tab,
+                "VASSAL.build.widget.ListWidget",
+                entryName="CAV",
+                divider="250"
+            )
+            for cav_type in ["ACV", "CAV", "Cav", "MTN"]:
+                ET.SubElement(
+                    cav_tab,
+                    "VASSAL.build.widget.ListWidget",
+                    entryName="<<" + cav_type,
+                    divider="150"
+                )
+            inf_tab = ET.SubElement(
+                land_tab,
+                "VASSAL.build.widget.ListWidget",
+                entryName="INF",
+                divider="250"
+            )
+            for inf_type in [
+                "HQI", "MOT", "Mot", "INF", "Inf", "GARR", "Garr",
+                "MTN", "Mtn", "MAR", "Mar", "PARA", "Para",
+                "Eng", "Ski", "TERR", "MIL"]:
+                ET.SubElement(
+                    inf_tab,
+                    "VASSAL.build.widget.ListWidget",
+                    entryName="<<" + inf_type,
+                    divider="150"
+                )
+            art_tab = ET.SubElement(
+                land_tab,
+                "VASSAL.build.widget.ListWidget",
+                entryName="ART",
+                divider="250"
+            )
+            for art_type in ["ART", "AT", "AA", "FLAK"]:
+                ET.SubElement(
+                    art_tab,
+                    "VASSAL.build.widget.ListWidget",
+                    entryName="<<" + art_type,
+                    divider="150"
+                )
+            other_tab = ET.SubElement(
+                land_tab,
+                "VASSAL.build.widget.ListWidget",
+                entryName="OTHER",
+                divider="250"
+            )
+
+            # air
+            air_tab = ET.SubElement(
+                parent_power,
+                "VASSAL.build.widget.ListWidget",
+                entryName="AIR",
+                divider="250"
+            )
+            for air_type in ["FTR", "LND", "NAV", "ATR", "CVP", "BOMB"]:
+                ET.SubElement(
+                    air_tab,
+                    "VASSAL.build.widget.ListWidget",
+                    entryName="<<" + air_type,
+                    divider="150"
+                )
+            other_tab = ET.SubElement(
+                air_tab,
+                "VASSAL.build.widget.ListWidget",
+                entryName="<<" + "OTHER",
+                divider="150"
+            )
+
+            # naval
+            land_tab = ET.SubElement(
+                parent_power,
+                "VASSAL.build.widget.TabWidget",
+                entryName="NAVAL",
+            )
+
+            # other
+            land_tab = ET.SubElement(
+                parent_power,
+                "VASSAL.build.widget.TabWidget",
+                entryName="OTHER",
+            )
+
+        # minors
+        parent_power = ET.SubElement(
+            unt_box,
+            "VASSAL.build.widget.BoxWidget",
+            entryName="Minors"
         )
-    return game_pieces.find(
-        "VASSAL.build.widget.BoxWidget[@entryName=\"Units\"]"
+
+    # return
+    return game_pieces.find("VASSAL.build.widget.BoxWidget[@entryName=\"Units\"]")
+
+
+def get_minor_proto(power_name):
+    rval = ET.Element(
+        "VASSAL.build.widget.TabWidget",
+        entryName=power_name
     )
+    # land
+    land_tab = ET.SubElement(
+        rval,
+        "VASSAL.build.widget.ListWidget",
+        entryName="LAND",
+        divider="250"
+    )
+    land_div = ET.SubElement(
+        land_tab,
+        "VASSAL.build.widget.ListWidget",
+        entryName=">>DIV",
+        divider="150"
+    )
+    type_hvy = ET.SubElement(
+        land_tab,
+        "VASSAL.build.widget.ListWidget",
+        entryName=">>HVY",
+        divider="150"
+    )
+    # air
+    land_tab = ET.SubElement(
+        rval,
+        "VASSAL.build.widget.ListWidget",
+        entryName="AIR",
+        divider="250"
+    )
+    # naval
+    land_tab = ET.SubElement(
+        rval,
+        "VASSAL.build.widget.ListWidget",
+        entryName="NAVAL",
+        divider="250"
+    )
+    return rval
 
 
-def inject_land_major(power=None):
+def cw_kif_only(u):
+    if u.power == "Commonwealth":
+        return u.kit == "KiF"
+    else:
+        return True
+
+
+def inject_land():
+    """run over all counters and put them in the right place"""
+
     # init
     global BF, GPID, HEADER, SHEET
-    parent = get_units_parent()
-    print "injecting land counters for", power
-
-    # power box widget (build new if not present)
-    parent_power = parent.find(
-        "VASSAL.build.widget.TabWidget[@entryName=\"{}\"]".format(power)
-    )
-    if parent_power is None:
-        if get_power(u) != "Minor":
-            # build it and append
-            parent_power = ET.SubElement(
-                parent,
-                "VASSAL.build.widget.TabWidget",
-                entryName=power
-            )
-        else:
-            # build it and append
-            parent_minors = ET.SubElement(
-                parent,
-                "VASSAL.build.widget.BoxWidget",
-                entryName="Minors"
-            )
-
-    # land tab (builds new if not present
-    parent_land = parent_power.find("VASSAL.build.widget.TabWidget[@entryName=\"Land\"]")
-    if parent_land is None:
-        parent_land = ET.SubElement(
-            parent_power,
-            "VASSAL.build.widget.TabWidget",
-            entryName="Land"
-        )
-
-    # containers and keys
-    cntr_keys = ["ARM", "CAV", "INF", "ART", "SUPP"]
-    cntr = {key: {} for key in cntr_keys}
-    cntr_unused = {key: {} for key in cntr_keys}
-    cntr_unused["FORT"] = {}
+    par_units = get_units_parent()
+    print "INJECT LAND"
 
     # fill containers
     print "reading counters",
-    for u in gen_filtered_rowset(
-            sheet=SHEET["L"],
-            header=HEADER["L"],
-            filt=lambda u: u.power == power):
+    for u in gen_filtered_rowset(sheet=SHEET["L"], header=HEADER["L"],
+                                 filt=lambda x: x.type not in ["LEAD", "FORT", "FACT", "PART"] and cw_kif_only(x)):
         try:
-            # unused?
-            cont = cntr
-            if u.clas not in cntr.keys() or not u.used:
-                cont = cntr_unused
-
-            # where to add?
+            # init
+            print_item = "."
             u_clas = get_clas(u)
             u_type = get_type(u)
-            if u_type not in cont[u_clas]:
-                cont[u_clas][u_type] = []
-            cont[u_clas][u_type].append(u)
-        except Exception, ex:
-            # print "error reading row:", u.sh_row, str(ex)
-            continue
-        finally:
-            print ".",
-    print "!"
+            print_item = "({})".format(u_type)
+            tag, col_symb, col_symb_text, col_left, col_top, col_right = ENTITY_COLOURS[u.home]
 
-    # build piece slots
-    print "building piece slots",
-    for u_clas in cntr_keys:
-        # build class tab
-        # if u_clas == "UNUSED": continue
-        clas_tab = ET.SubElement(
-            parent_land,
-            "VASSAL.build.widget.TabWidget",
-            entryName=u_clas
-        )
-        for u_type in sorted(cntr[u_clas].keys()):
-            type_tab = ET.SubElement(
-                clas_tab,
-                "VASSAL.build.widget.ListWidget",
-                entryName=u_type,
-                divider="250"
-            )
-            type_div_tab = ET.SubElement(
-                type_tab,
-                "VASSAL.build.widget.ListWidget",
-                entryName="Divisions",
-                divider="150"
-            )
-            type_hvy_tab = ET.SubElement(
-                type_tab,
-                "VASSAL.build.widget.ListWidget",
-                entryName="Heavies",
-                divider="150"
-            )
-            for u in sorted(cntr[u_clas][u_type]):
-                try:
-                    # piece slot, trait order in reverse!!
-                    ps = PieceSlot(u.name or u.year, GPID.get())
-                    ps.add_trait("prototype", ("TRANSFORM", "")) # last!
+            # where to place it
+            is_minor = False
+            hook = None
+            if get_power(u) == "Minors":
+                is_minor = True
+                par_minors = par_units.find("VASSAL.build.widget.BoxWidget[@entryName=\"Minors\"]")
+                par_power = par_minors.find("VASSAL.build.widget.TabWidget[@entryName=\"{}\"]".format(u.power))
+                if par_power is None:
+                    par_power = get_minor_proto(u.power)
+                    par_minors.append(par_power)
+                hook = par_power.find("VASSAL.build.widget.ListWidget[@entryName=\"LAND\"]")
+            else:
+                par_power = par_units.find("VASSAL.build.widget.TabWidget[@entryName=\"{}\"]".format(u.power))
+                par_land = par_power.find("VASSAL.build.widget.TabWidget[@entryName=\"LAND\"]")
+                par_clas = par_land.find("VASSAL.build.widget.ListWidget[@entryName=\"{}\"]".format(u_clas))
+                if par_clas is not None:
+                    par_type = par_clas.find("VASSAL.build.widget.ListWidget[@entryName=\"<<{}\"]".format(
+                        {"AAA": "FLAK", "SAM": "FLAK"}.get(u_type, u_type)))
+                    if par_type is not None:
+                        hook = par_type
+                if hook is None:
+                    hook = par_land.find("VASSAL.build.widget.ListWidget[@entryName=\"OTHER\"]")
 
-                    # counter colours and symbol
-                    ps.add_trait("mark", ("cntr_back_num", CNTR_BACK_COL_NUM.get(u.color.lower(), 1)))
-                    ps.add_trait("mark", ("symb_back_num", CNTR_FORE_COL_NUM.get(u.color2.lower(), 1)))
-                    # ps.add_trait("mark", ("symb_fore_num", u.info))
-                    if u.info is not None and "mot" in map(unicode.lower, u.info) or u.type.lower() == "mot":
-                        ps.add_trait("mark", ("symb_wheels_num", 1))
-                    if u.info is not None and "hvy" in map(unicode.lower, u.info):
+            # piece slot, trait order in R E V E R S E !!
+            ps = PieceSlot(u.name or u.year, GPID.get())
+            ps.add_trait("prototype", ("ROTATE", "")) # last!
+
+            # game values and info
+            ps.add_trait("mark", ("val_info", ",".join(u.info or [])))
+            ps.add_trait("mark", ("val_kit", u.kit))
+            ps.add_trait("mark", ("val_year", u.year))
+            ps.add_trait("mark", ("val_class", u.clas))
+            ps.add_trait("mark", ("val_type", u_type))
+            ps.add_trait("mark", ("val_mv", u.mov))
+            if u.rog:
+                ps.add_trait("mark", ("val_ro", u.rog))
+            ps.add_trait("mark", ("val_cf", u.str or 0))
+
+            # labels
+            if u.info is not None and "SS" in u.info:
+                col_left = col_right = col_top = "whi"
+            if u.name is not None and "siberian" in u.name:
+                col_left = col_top = "whi"
+            if u.name is not None and u.name == "GGFF":
+                col_left = col_right = col_top = col_symb = "yel"
+            if not is_minor:
+                col_left = col_right = col_top = "blk"
+            if is_minor is True:
+                ps.add_trait("mark", ("val_left", tag))
+                ps.add_trait("mark", ("col_left", COL_CODE[col_left]))
+                if u.name:
+                    ps.add_trait("mark", ("val_right", u.name))
+                    ps.add_trait("mark", ("col_right", COL_CODE[col_right]))
+            else:
+                if u.name:
+                    ps.add_trait("mark", ("val_left", u.name))
+                    ps.add_trait("mark", ("col_left", COL_CODE[col_left]))
+            if get_size(u):
+                ps.add_trait("mark", ("val_top", get_size(u)))
+                ps.add_trait("mark", ("col_top", COL_CODE[col_top]))
+
+            # counter background and symbol
+            if u_type == "Ski":
+                col_symb = "blu"
+            if u.home == "Comm China" and u.clas == "SUPP":
+                col_symb = "red"
+            if u.info is not None and "SS" in u.info:
+                col_symb = "whi"
+            if u.info is not None and "CBV" in u.info and str(u.name) in CBV_COLOURS:
+                col_symb = CBV_COLOURS[u.name][0]
+                col_symb_text = CBV_COLOURS[u.name][1]
+            ps.add_trait("mark", ("cntr_back_num", CNTR_BACK_COL_NUM.get(u.color.lower(), 1)))
+            ps.add_trait("mark", ("symb_back_num", CNTR_FORE_COL_NUM.get(u.color2.lower(), 1)))
+            if u.info is not None and "mot" in map(unicode.lower, u.info) or u_type.lower() == "mot":
+                ps.add_trait("mark", ("symb_wheels_num", COL_NUM[col_symb]))
+            if u.size == "H":
+                ps.add_trait("mark", ("symb_heavy_num", COL_NUM[col_symb]))
+            if u_type in ["MIL", "TERR", "WAR"]:
+                ps.add_trait("mark", ("symb_text", u.type[0].upper()))
+                if u.color2 == "white" and col_symb_text == "whi":
+                    col_symb_text = "red"
+                if "red" in u.color2.lower() and col_symb_text == "red":
+                    col_symb_text = "whi"
+                ps.add_trait("mark", ("col_symb_text", COL_CODE[col_symb_text]))
+            else:
+                if u_type.lower() in ["arm", "mech", "mot", "inf"]:
+                    if u.home in ["AUS", "CAN", "IND"]:
+                        ps.add_trait("mark", ("symb_text", u.home[:1].upper()))
+                        ps.add_trait("mark", ("col_symb_text", COL_CODE[col_symb_text]))
+                    if u.home in ["NZ", "SA"]:
+                        ps.add_trait("mark", ("symb_text", u.home[:2].upper()))
+                        ps.add_trait("mark", ("col_symb_text", COL_CODE[col_symb_text]))
+
+            # style and colour
+            val1 = "#000000"
+            val1_bg = "#ffffff"
+            val2 = "#000000"
+            val2_bg = "#ffffff"
+            if u.color.lower() == "black":
+                val1 = "#ff0000"
+                val1_bg = "#808080"
+                val2 = "#ff0000"
+                val2_bg = "#808080"
+            if u.info is not None:
+                if "WP" in u.info:
+                    val1 = "#ffffff"
+                    val1_bg = "#000000"
+                    val2 = "#ffffff"
+                    val2_bg = "#000000"
+                    if u.color.lower() == "black":
+                        val1 = "#ffffff"
+                        val1_bg = "#808080"
+                        val2 = "#ffffff"
+                        val2_bg = "#808080"
+                elif u.clas == "ART":
+                    if "hvy" in map(unicode.lower, u.info):
                         ps.add_trait("mark", ("symb_aa_hvy_num", 1))
-                    if u.size == "H":
-                        ps.add_trait("mark", ("symb_heavy_num", 1))
-
-                    # generic information
-                    ps.add_trait("mark", ("INFO", ",".join(u.info or [])))
-                    ps.add_trait("mark", ("KIT", u.kit))
-                    ps.add_trait("mark", ("YEAR", u.year))
-
-                    # labels
-                    size = get_size(u)
-                    ps.add_trait("mark", ("SIZE", size))
-                    # decorate for size
-                    ps.add_trait("mark", ("CLASS", u.clas))
-                    type = get_type(u)
-                    if u.size == "Div" and u.clas not in ["ART", "SUPP"]:
-                        type = type[0] + type[1:].lower()
-                    ps.add_trait("mark", ("TYPE", type))
-                    ps.add_trait("mark", ("MVA", u.mov))
-                    ps.add_trait("mark", ("ROG", u"-" if u.rog is None else u"({})".format(u.rog)))
-                    ps.add_trait("mark", ("LCF", u.str or 0))
-                    # values
-                    if u.info is None:
-                        ps.add_trait("mark", ("val_style", "color: #000000"))
-                        ps.add_trait("mark", ("val_bg_style", "color: #ffffff"))
-                        ps.add_trait("prototype", ("LANDvalues", ""))
+                    val1 = "#ffffff"
+                    val1_bg = "#000000"
+                    if "grey" in u.info:
+                        ps.add_trait("mark", ("art_num", 1))
+                    elif "pink" in u.info:
+                        ps.add_trait("mark", ("art_num", 2))
+                    elif "red" in u.info:
+                        ps.add_trait("mark", ("art_num", 3))
                     else:
-                        if "WP" in u.info:
-                            ps.add_trait("mark", ("val_style", "color: #ffffff"))
-                            ps.add_trait("mark", ("val_bg_style", "color: #000000"))
-                            ps.add_trait("prototype", ("LANDvalues", ""))
-                        elif u.clas == "ART":
-                            if "grey" in u.info:
-                                ps.add_trait("mark", ("art_num", 2))
-                                ps.add_trait("prototype", ("LANDart", ""))
-                            elif "pink" in u.info:
-                                ps.add_trait("mark", ("art_num", 3))
-                                ps.add_trait("prototype", ("LANDart", ""))
-                            elif "red" in u.info:
-                                ps.add_trait("mark", ("art_num", 4))
-                                ps.add_trait("prototype", ("LANDart", ""))
-                            else:
-                                ps.add_trait("mark", ("val_style", "color: #000000"))
-                                ps.add_trait("mark", ("val_bg_style", "color: #ffffff"))
-                                ps.add_trait("prototype", ("LANDvalues", ""))
-                        else:
-                            ps.add_trait("mark", ("val_style", "color: #000000"))
-                            ps.add_trait("mark", ("val_bg_style", "color: #ffffff"))
-                            ps.add_trait("prototype", ("LANDvalues", ""))
-                    ps.add_trait("prototype", ("LANDbase", ""))
+                        val1 = "#000000"
+                        val1_bg = "#ffffff"
+            ps.add_trait("mark", ("col_valL", val1))
+            ps.add_trait("mark", ("col_valL_bg", val1_bg))
+            ps.add_trait("mark", ("col_valR", val2))
+            ps.add_trait("mark", ("col_valR_bg", val2_bg))
+            ps.add_trait("prototype", ("UNITll", ""))
+            ps.add_trait("prototype", ("LANDvalues", ""))
+            if u.clas == "ART":
+                ps.add_trait("prototype", ("LANDart", ""))
+            if u.home == "Comm China" and u.clas == "SUPP":
+                col_symb = "red"
+            ps.add_trait("prototype", ("LAND" + col_symb, ""))
+            ps.add_trait("prototype", ("LANDbase", ""))
 
-                    # add piece
-                    tab = {
-                        None: type_tab,
-                        "Div": type_div_tab,
-                        "H": type_hvy_tab,
-                    }[u.size].append(ps.get_xml())
-                finally:
-                    print ".",
-            if len(type_div_tab) == 0:
-                type_tab.remove(type_div_tab)
-            if len(type_hvy_tab) == 0:
-                type_tab.remove(type_hvy_tab)
-    print "!"
-    print
+            # add to xml tree
+            hook.append(ps.get_xml())
+        except Exception, ex:
+            print_item = "!"
+            raise
+        finally:
+            print print_item,
+    print "(done)"
 
 
-def inject_air(cs_no):
+def inject_air():
     # init
     global BF, GPID, HEADER, SHEET
-    cs_rids = counter_sheet_row_idx_set(SHEET['A'], cs_no)
-    parent = get_cs_parent(cs_no)
+    par_units = get_units_parent()
+    print "INJECT AIR"
 
-    # produce counters and piece slots
-    for rid in cs_rids:
+    # fill containers
+    print "reading counters",
+    for u in gen_filtered_rowset(sheet=SHEET["A"], header=HEADER["A"],
+                                 filt=lambda x: x.type not in ["PILOT"] and cw_kif_only(x)):
         try:
-            # load unit
-            u = AirCounter()
-            u.update(SHEET['A'], rid, HEADER['A'])
-            assert u.type not in ['PILOT'], 'skipped for type {}'.format(u.type)
-            assert not u.deleted, 'deleted!'
+            # init
+            print_item = "."
+            u_clas = get_clas(u)
+            u_type = get_type(u)
+            print_item = "({})".format(u_type)
+            tag, col_symb, col_symb_text, col_left, col_top, col_right = ENTITY_COLOURS[u.home]
 
-            # piece slot
-            img = 'cs{:02d}_{:02d}_{:02d}.png'.format(cs_no, u.row, u.col)
-            ps = PieceSlot(
-                ' '.join([u.name, u.name2]).strip(), GPID.get(), img, ext=EXT)
-            ps.add_trait('mark', ('kit', u.kit))
-            ps.add_trait('mark', ('cs_col', u.col))
-            ps.add_trait('mark', ('cs_row', u.row))
-            ps.add_trait('mark', ('cs_no', u.cs))
-            ps.add_trait('mark', ('YEAR', u.year))
-            if u.cvp_y1 is not None:
-                ps.add_trait('mark', ('CVP_Y1', u.cvp_y1))
-            if u.cvp_y1 is not None:
-                ps.add_trait('mark', ('CVP_Y2', u.cvp_y2))
-            if u.cvp_y1 is not None:
-                ps.add_trait('mark', ('CVP_Y3', u.cvp_y3))
-            if u.cvp_s1 is not None:
-                ps.add_trait('mark', ('CVP_S1', u.cvp_s1))
-            if u.cvp_s2 is not None:
-                ps.add_trait('mark', ('CVP_S2', u.cvp_s2))
-            if u.cvp_s3 is not None:
-                ps.add_trait('mark', ('CVP_S3', u.cvp_s3))
-            if u.str is not None:
-                ps.add_trait('mark', ('STR', u.str))
-            if u.str is not None:
-                ps.add_trait('mark', ('STR', u.str))
-            if u.tac is not None:
-                ps.add_trait('mark', ('TAC', u.tac))
-            if u.ats is not None:
-                ps.add_trait('mark', ('ATS', u.ats))
-            if u.ata is not None:
-                ps.add_trait('mark', ('ATA', u.ata))
-            ps.add_trait('prototype', (get_type(u), ''))
-            ps.add_trait('prototype', ('Control' + get_power(u), ''))
+            # where to place it
+            is_minor = False
+            hook = None
+            if get_power(u) == "Minors":
+                is_minor = True
+                par_minors = par_units.find("VASSAL.build.widget.BoxWidget[@entryName=\"Minors\"]")
+                par_power = par_minors.find("VASSAL.build.widget.TabWidget[@entryName=\"{}\"]".format(u.power))
+                if par_power is None:
+                    par_power = get_minor_proto(u.power)
+                    par_minors.append(par_power)
+                hook = par_power.find("VASSAL.build.widget.ListWidget[@entryName=\"AIR\"]")
+            else:
+                par_power = par_units.find("VASSAL.build.widget.TabWidget[@entryName=\"{}\"]".format(u.power))
+                par_air = par_power.find("VASSAL.build.widget.ListWidget[@entryName=\"AIR\"]")
+                par_type = par_air.find("VASSAL.build.widget.ListWidget[@entryName=\"<<{}\"]".format(u_type))
+                if par_type is not None:
+                    hook = par_type
+                else:
+                    hook = par_air.find("VASSAL.build.widget.ListWidget[@entryName=\"<<OTHER\"]")
 
-            # at start stack
-            loc_str = '{}-{}'.format(u.row, u.col)
-            ats = etree.SubElement(
-                parent,
-                'VASSAL.build.module.map.SetupStack',
-                location=loc_str,
-                name=loc_str,
-                useGridLocation='true',
-                x='0',
-                y='0')
-            ats.append(ps.get_xml())
+            # piece slot, trait order in R E V E R S E !!
+            ps = PieceSlot(u.name or u.year, GPID.get())
+            ps.add_trait("prototype", ("ROTATE", "")) # last!
+
+            # game values and info
+            ps.add_trait("mark", ("val_info", ",".join(u.info or [])))
+            ps.add_trait("mark", ("val_kit", u.kit))
+            ps.add_trait("mark", ("val_year", u.year))
+            ps.add_trait("mark", ("val_class", u.clas))
+            ps.add_trait("mark", ("val_type", u_type))
+            ps.add_trait("mark", ("val_ata", u.ata if u.ata is not None else "*"))
+            ps.add_trait("mark", ("val_ats", u.ats if u.ats is not None else "*"))
+            ps.add_trait("mark", ("val_tac", u.tac if u.tac is not None else "*"))
+            ps.add_trait("mark", ("val_str", u.str if u.str is not None else "*"))
+            ps.add_trait("mark", ("val_rng", u.rng))
+
+            # labels
+            if u_type == "FTR":
+                name = break_name(u.name)
+                if not is_minor:
+                    ps.add_trait("mark", ("val_top", name[0]))
+                    if len(name) > 1:
+                        ps.add_trait("mark", ("val_top2", name[1]))
+                    if u.name2 is not None:
+                        ps.add_trait("mark", ("val_center3", u.name2))
+                else:
+                    ps.add_trait("mark", ("val_top", tag))
+                    ps.add_trait("mark", ("col_top", COL_CODE[col_left]))
+                    ps.add_trait("mark", ("val_center3", u.name))
+                if u.info is not None:
+                    if "2E" in u.info:
+                        ps.add_trait("mark", ("col_valTL", "#fbc834"))
+                        ps.add_trait("mark", ("col_valTL_bg", "#808080"))
+                    if "NF" in u.info:
+                        ps.add_trait("mark", ("valTL_bg_num", 2))
+                        if not "2E" in u.info:
+                            ps.add_trait("mark", ("col_valTL", "#ffffff"))
+            if u_type in ["ATR", "LND"]:
+                name = break_name(u.name)
+                if len(name) == 1:
+                    ps.add_trait("mark", ("val_bottom", name[0]))
+                if len(name) == 2:
+                    ps.add_trait("mark", ("val_bottom", name[0]))
+                    ps.add_trait("mark", ("val_center2", name[1]))
+                if u.name2 is not None:
+                    name2 = break_name(u.name2)
+                    if len(name2) == 1:
+                        ps.add_trait("mark", ("val_center2", name2[0]))
+                    if len(name2) == 2:
+                        ps.add_trait("mark", ("val_center1", name2[0]))
+                        ps.add_trait("mark", ("val_center2", name2[1]))
+            if u.color.lower() == "black":
+                ps.add_trait("mark", ("col_text", "#ff0000"))
+                ps.add_trait("mark", ("col_valTL", "#ff0000"))
+                ps.add_trait("mark", ("col_valTR", "#ff0000"))
+                ps.add_trait("mark", ("col_valBL", "#ff0000"))
+            if u_type in ["NAV", "CVP"]:
+                name = break_name(u.name)
+
+                if len(name) > 1:
+                    ps.add_trait("mark", ("val_top2", name[0]))
+                    ps.add_trait("mark", ("val_bottom", name[1]))
+                    if u.name2 is not None:
+                        ps.add_trait("mark", ("val_top", u.name2))
+                else:
+                    ps.add_trait("mark", ("val_bottom", name[0]))
+                    if u.name2 is not None:
+                        ps.add_trait("mark", ("val_top2", u.name2))
+            if tag is not None:
+                try:
+                    col = {
+                        "AUS": "#ff0000",
+                        "CAN": "#00a2ff",
+                        "IND": "#99cc33",
+                        "NZ": "#ffffff",
+                        "SA": "#fbc834",
+                    }[tag]
+                    ps.add_trait("mark", ("col_tag", col))
+                    ps.add_trait("mark", ("val_center1", tag))
+                except:
+                    col = COL_CODE[col_left]
+                    ps.add_trait("mark", ("col_tag_top", col))
+                    ps.add_trait("mark", ("val_top", tag))
+
+            # range and extras
+            rng_num = 1
+            if u.info is not None and ("ATR" in u.info or "XATR" in u.info):
+                rng_num = 3
+            if u.info is not None and "EX" in u.info:
+                rng_num = 5
+            if len(str(u.rng)) > 1:
+                rng_num += 1
+            ps.add_trait("mark", ("val_rng_num", rng_num))
+
+            # counter background and stripes
+            ps.add_trait("mark", ("cntr_back_num", CNTR_BACK_COL_NUM.get(u.color.lower(), 1)))
+            if u.info is not None and "FB" in u.info:
+                ps.add_trait("mark", ("h_stripe_num", 2))
+            is_ll = False
+            if u.info is not None:
+                for item in u.info:
+                    if item.startswith("LL-"):
+                        rec = item[3:]
+                        ps.add_trait("mark", ("ll_stripe_num", CONTROL_NUM[rec]))
+                        is_ll = True
+                        break
+
+            # air prototypes
+            base = {
+                "FTR": "FTR",
+                "LND": "LND",
+                "ATR": "LND",
+                "NAV": "NAV",
+                "CVP": "NAV",
+                "ABOMB": "FTR",
+                "VWEAP": "NAV",
+            }[u_type]
+
+            ps.add_trait("prototype", ("AIRrng" + base, ""))
+            if not is_ll:
+                ps.add_trait("prototype", ("UNITll", ""))
+            ps.add_trait("prototype", ("AIRvalues", ""))
+            ps.add_trait("prototype", ("AIRbase", ""))
+
+            # add to xml tree
+            hook.append(ps.get_xml())
         except Exception, ex:
-            print 'skipping row:', u.sh_row, str(ex)
-            continue
+            print_item = "!"
+            raise
+        finally:
+            print print_item,
+    print "(done)"
 
 
 def inject_naval(cs_no):
-    # init
-    global BF, GPID, HEADER, SHEET
-    cs_rids = counter_sheet_row_idx_set(SHEET['N'], cs_no)
-    parent = get_cs_parent(cs_no)
-
-    # produce counters and piece slots
-    for rid in cs_rids:
-        try:
-            # load unit
-            u = NavalCounter()
-            u.update(SHEET['N'], rid, HEADER['N'])
-            assert u.type not in ['CONV'], 'skipped for type {}'.format(u.type)
-            assert not u.deleted, 'deleted!'
-
-            # piece slot
-            img = 'cs{:02d}_{:02d}_{:02d}.png'.format(cs_no, u.row, u.col)
-            ps = PieceSlot(
-                ' '.join([u.name, u.name2]).strip(), GPID.get(), img, ext=EXT)
-            ps.add_trait('mark', ('kit', u.kit))
-            ps.add_trait('mark', ('cs_col', u.col))
-            ps.add_trait('mark', ('cs_row', u.row))
-            ps.add_trait('mark', ('cs_no', u.cs))
-            ps.add_trait('mark', ('YEAR', u.year))
-            ps.add_trait('mark', ('RNG', u.rng))
-            ps.add_trait('mark', ('MOV', u.mov))
-            if u.cv is not None:
-                ps.add_trait('mark', ('CV', u.cv))
-            if u.sb is not None:
-                ps.add_trait('mark', ('SB', u.sb))
-            ps.add_trait('mark', ('AA', u.aa))
-            ps.add_trait('mark', ('DEF', u.dfs))
-            ps.add_trait('mark', ('ATT', u.att))
-            ps.add_trait('prototype', (get_type(u), ''))
-            ps.add_trait('prototype', ('Control' + get_power(u), ''))
-            # at start stack
-            loc_str = '{}-{}'.format(u.row, u.col)
-            ats = etree.SubElement(
-                parent,
-                'VASSAL.build.module.map.SetupStack',
-                location=loc_str,
-                name=loc_str,
-                useGridLocation='true',
-                x='0',
-                y='0')
-            ats.append(ps.get_xml())
-        except Exception, ex:
-            print 'skipping row:', u.sh_row, str(ex)
-        continue
+    pass
 
 
-def build_WIF_FE(csrange=None):
-    if csrange is None:
-        csrange = CSrange
-    print 'START'
-    for cs in csrange:
-        print 'CS', cs
-        print 'land'
-        inject_land_major(cs)
-        print 'air'
-        inject_air(cs)
-        print 'naval'
-        inject_naval(cs)
-        print '..done!'
-    print 'FINISH'
+def tidy_tree():
+    def recursively_empty(e):
+        if e.text:
+            return False
+        return all((recursively_empty(c) for c in e.iterchildren()))
+
+    print "tidy up"
+    par_units = get_units_parent()
+    for action, elem in ET.iterwalk(par_units):
+        if elem.tag == "VASSAL.build.widget.ListWidget":
+            parent = elem.getparent()
+            if recursively_empty(elem):
+                parent.remove(elem)
+
+    print "done!"
+    print
 
 ##---MAIN
 
@@ -629,17 +1103,14 @@ if __name__ == '__main__':
         fp.write(arc.read("buildFile"))
     start()
 
-    # new build file
+    # remove old units tab
     get_units_parent(True)
-    inject_land_major("China")
-    inject_land_major("Commonwealth")
-    inject_land_major("France")
-    inject_land_major("Germany")
-    inject_land_major("Italy")
-    inject_land_major("Japan")
-    inject_land_major("USSR")
-    inject_land_major("USA")
+
+    # inject counters
+    inject_land()
+    inject_air()
 
     # finish by writing file back to the archive
+    tidy_tree()
     finish(buildfile_new=os.path.join(WORKING_DIR, "buildFile"))
     print "ALL DONE!"
