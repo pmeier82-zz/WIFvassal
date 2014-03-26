@@ -4,7 +4,6 @@
 ## IMPORTS
 
 from lxml import etree as ET
-# from xml.etree import cElementTree as ET
 from froon_ods import (
     get_sheet, read_header, gen_filtered_rowset,
     Counter, LandCounter, AirCounter, NavalCounter)
@@ -129,7 +128,7 @@ CNTR_FORE_COL_NUM = {
 }
 
 TYPE_NUM_LAND = {
-    "SUPP": 2,
+    "SUP": 2,
     "HQA": 3,
     "HQI": 4,
     "ARM": 5,
@@ -137,20 +136,20 @@ TYPE_NUM_LAND = {
     "MOT": 7,
     "INF": 8,
     "MIL": 9,
-    "TERR": 10,
-    "GARR": 11,
+    "TER": 10,
+    "GAR": 11,
     "MTN": 12,
     "MAR": 13,
     "PARA": 14,
     "CAV": 15,
-    "ACAV": 16,
+    "ACV": 16,
     "WAR": 17,
     "Arm": 18,
     "Mech": 19,
     "Mot": 20,
     "Eng": 21,
     "Inf": 22,
-    "Garr": 23,
+    "Gar": 23,
     "Mtn": 24,
     "Mar": 25,
     "Para": 26,
@@ -164,6 +163,7 @@ TYPE_NUM_LAND = {
     "AA": 34,
     "AAA": 35,
     "SAM": 36,
+    "PART": 37,
 }
 
 COL_NUM = {
@@ -237,6 +237,9 @@ CBV_COLOURS = {
 ENTITY_COLOURS = {
     # home : abbrev, col_symb, col_symb_text, col_left, col_top, col_right
 
+    ## PARTITSANS
+    "Partisan": (None, "red", "red", "blk", "blk", "blk"),
+
     ## MINORS
     "Afghanistan": ("Afg", "red", "red", "whi", "whi", "whi"),
     "Albania": ("Alb", "red", "blk", "red", "red", "blk"),
@@ -306,7 +309,7 @@ ENTITY_COLOURS = {
     "Nat China": (None, "blk", "red", "blk", "blk", "blk"),
     "Warlords": (None, "red", "red", "blk", "blk", "blk"),
 
-    ## CW TERR
+    ## CW TER
     "A. E. Sudan": (None, "red", "gre", "blk", "blk", "blk"),
     "Aden": (None, "red", "gre", "blk", "blk", "blk"),
     "Br. Guyana": (None, "blk", "red", "blk", "blk", "blk"),
@@ -333,7 +336,7 @@ ENTITY_COLOURS = {
     "SA": ("SA", "red", "blu", "blk", "blk", "blk"),
     "UK": (None, "blk", "whi", "blk", "blk", "blk"),
 
-    ## FR TERR
+    ## FR TER
     "Algeria": (None, "red", "whi", "blk", "blk", "blk"),
     "Cameroons": (None, "yel", "gre", "blk", "blk", "blk"),
     "Fr. Guyana": (None, "blk", "red", "blk", "blk", "blk"),
@@ -357,14 +360,14 @@ ENTITY_COLOURS = {
     ## GERMANY
     "Germany": (None, "blk", "red", "blk", "blk", "blk"),
 
-    ## IT TERR
+    ## IT TER
     "It. Somali": (None, "blu", "blu", "blk", "blk", "blk"),
     "AOI": (None, "gre", "red", "blk", "blk", "blk"),
 
     ## ITALY
     "Italy": (None, "blk", "red", "blk", "blk", "blk"),
 
-    ## JP TERR
+    ## JP TER
     "Formosa": (None, "whi", "blu", "blk", "blk", "blk"),
     "Korea": (None, "blu", "red", "blk", "blk", "blk"),
     "Manchuria": (None, "whi", "red", "blk", "blk", "blk"),
@@ -418,7 +421,7 @@ def finish(buildfile_new=None):
     print
 
 
-def get_power(*args):
+def get_control(*args):
     if len(args) == 1:
         if isinstance(args[0], Counter):
             pwr, hom = args[0].power, args[0].home
@@ -447,11 +450,20 @@ def get_power(*args):
             return "Minors"
 
 
-def get_clas(u):
-    return u.clas
+def get_clas(unit):
+    return unit.clas
 
 
-def get_type(u):
+def get_kit(unit):
+    return {
+        "PiFG": "PiF",
+        "WiFC": "WiF",
+        "WIFC": "WiF",
+        "SIF": "SiF",
+    }.get(unit.kit, unit.kit)
+
+
+def get_type(unit):
     ## FIXME: handle double types
     rval = {
         u"HQ-I": "HQI",
@@ -461,9 +473,12 @@ def get_type(u):
         u"FLAK (SAM)": "SAM",
         u"WARLORDS": "WAR",
         u"Fl.Pz.": "PARA",
-    }.get(u.type, u.type)
-    if hasattr(u, "size"):
-        if u.size == "Div":
+        u"GARR": "GAR",
+        u"TERR": "TER",
+        u"PART HQ-I": "PART",
+    }.get(unit.type, unit.type)
+    if hasattr(unit, "size"):
+        if unit.size == "Div":
             try:
                 return {
                     u"MTN / CAV": "Mtn",
@@ -472,27 +487,25 @@ def get_type(u):
                     u"ENG ARM": "Eng",
                 }[rval]
             except:
-                if u.clas not in ["SUPP", "ART"]:
+                if unit.clas not in ["SUPP", "ART"]:
                     rval = rval[0].upper() + rval[1:].lower()
     return rval
 
 
-def get_size(u):
-    if u.size is not None and "div" in u.size.lower():
+def get_size(unit):
+    u_type = get_type(unit)
+    if unit.size is not None and "div" in unit.size.lower():
         return "XX"
-    if "hq" in u.type.lower():
+    if "hq" in u_type.lower():
         return "XXXXX"
     rval = "XXX"
-    if get_power(u) == "RU":
-        if u.type not in ["CAV", "MAR", "MTN", "PARA"]:
+    if unit.power == "USSR":
+        if u_type not in ["CAV", "MAR", "MTN", "PARA"]:
             rval += "X"
-    if get_power(u) in ["China", "Japan", "Poland"]:
-        if u.type in ["INF", "GARR", "MIL", "MOT"]:
+    if unit.power in ["China", "Japan", "Poland"]:
+        if u_type in ["INF", "GAR", "MIL", "MOT"]:
             rval += "X"
-    if get_power(u) == "JP":
-        if u.type in ["INF", "GARR", "MIL", "MOT"]:
-            rval += "X"
-    if u.power in ["Arabia", "Liberia"]:
+    if unit.power in ["Arabia", "Liberia"]:
         rval += "X"
     return rval
 
@@ -542,20 +555,37 @@ def get_units_parent(rebuild=False):
         raise ValueError("could not find PieceWindow[@name=\"Game Pieces\"]")
 
     # units box widget
-    unt_box = game_pieces.find("VASSAL.build.widget.BoxWidget[@entryName=\"Units\"]")
+    units_parent = game_pieces.find("VASSAL.build.widget.BoxWidget[@entryName=\"Units\"]")
 
-    # build if not present or rebuild if flaged
-    if unt_box is None or (unt_box is not None and rebuild is True):
+    # build if not present or rebuild if flagged
+    if units_parent is None or (units_parent is not None and rebuild is True):
+
+        # the structure we want in the end looks like this:
+        # UNITS[tab]
+        #  |-POWER_NAME[dropdown]
+        #  |  |-KIT1 [tab]
+        #  |  |  |-UNIT_TYPE1[list]
+        #  |  |  |  |-GAME_PIECE1
+        #  |  |  |  |-GAME_PIECE2
+        #  |  |  |-UNIT_TYPE2[list]
+        #  |  |  |  |-GAME_PIECE3
+        #  |  |  |  |-GAME_PIECE4
+        #  *  *  *  *
+        #
+
         print "rebuilding unit parent!!"
-        game_pieces.remove(unt_box)
+        if units_parent is not None:
+            game_pieces.remove(units_parent)
+
+        # build unit parent
         game_pieces \
-            .find("VASSAL.build.widget.BoxWidget[@entryName=\"General\"]") \
+            .find("VASSAL.build.widget.BoxWidget[@entryName=\"Markers\"]") \
             .addnext(
             ET.Element(
                 "VASSAL.build.widget.BoxWidget",
                 entryName="Units"
             ))
-        unt_box = game_pieces.find("VASSAL.build.widget.BoxWidget[@entryName=\"Units\"]")
+        units_parent = game_pieces.find("VASSAL.build.widget.BoxWidget[@entryName=\"Units\"]")
 
         # major powers
         for power_name in [
@@ -568,179 +598,100 @@ def get_units_parent(rebuild=False):
             "USSR",
             "USA",
         ]:
-            parent_power = ET.SubElement(
-                unt_box,
+            # build power parent
+            power_parent = ET.SubElement(
+                units_parent,
                 "VASSAL.build.widget.TabWidget",
                 entryName=power_name
             )
+            build_power_entry(power_parent)
 
-            # land
-            land_tab = ET.SubElement(
-                parent_power,
-                "VASSAL.build.widget.TabWidget",
-                entryName="LAND",
-            )
-            arm_tab = ET.SubElement(
-                land_tab,
-                "VASSAL.build.widget.ListWidget",
-                entryName="ARM",
-                divider="250"
-            )
-            for arm_type in ["HQA", "ARM", "Arm", "MECH", "Mech", "Eng"]:
-                ET.SubElement(
-                    arm_tab,
-                    "VASSAL.build.widget.ListWidget",
-                    entryName="<<" + arm_type,
-                    divider="150"
-                )
-            cav_tab = ET.SubElement(
-                land_tab,
-                "VASSAL.build.widget.ListWidget",
-                entryName="CAV",
-                divider="250"
-            )
-            for cav_type in ["ACV", "CAV", "Cav", "MTN"]:
-                ET.SubElement(
-                    cav_tab,
-                    "VASSAL.build.widget.ListWidget",
-                    entryName="<<" + cav_type,
-                    divider="150"
-                )
-            inf_tab = ET.SubElement(
-                land_tab,
-                "VASSAL.build.widget.ListWidget",
-                entryName="INF",
-                divider="250"
-            )
-            for inf_type in [
-                "HQI", "MOT", "Mot", "INF", "Inf", "GARR", "Garr",
-                "MTN", "Mtn", "MAR", "Mar", "PARA", "Para",
-                "Eng", "Ski", "TERR", "MIL"]:
-                ET.SubElement(
-                    inf_tab,
-                    "VASSAL.build.widget.ListWidget",
-                    entryName="<<" + inf_type,
-                    divider="150"
-                )
-            art_tab = ET.SubElement(
-                land_tab,
-                "VASSAL.build.widget.ListWidget",
-                entryName="ART",
-                divider="250"
-            )
-            for art_type in ["ART", "AT", "AA", "FLAK"]:
-                ET.SubElement(
-                    art_tab,
-                    "VASSAL.build.widget.ListWidget",
-                    entryName="<<" + art_type,
-                    divider="150"
-                )
-            other_tab = ET.SubElement(
-                land_tab,
-                "VASSAL.build.widget.ListWidget",
-                entryName="OTHER",
-                divider="250"
-            )
-
-            # air
-            air_tab = ET.SubElement(
-                parent_power,
-                "VASSAL.build.widget.ListWidget",
-                entryName="AIR",
-                divider="250"
-            )
-            for air_type in ["FTR", "LND", "NAV", "ATR", "CVP", "BOMB"]:
-                ET.SubElement(
-                    air_tab,
-                    "VASSAL.build.widget.ListWidget",
-                    entryName="<<" + air_type,
-                    divider="150"
-                )
-            other_tab = ET.SubElement(
-                air_tab,
-                "VASSAL.build.widget.ListWidget",
-                entryName="<<" + "OTHER",
-                divider="150"
-            )
-
-            # naval
-            naval_tab = ET.SubElement(
-                parent_power,
-                "VASSAL.build.widget.ListWidget",
-                entryName="NAVAL",
-                divider="250"
-            )
-            for naval_type in ["SUB", "TRS", "AMPH", "ASW", "CX", "CV", "CVL", "BB", "CA", "CL"]:
-                ET.SubElement(
-                    naval_tab,
-                    "VASSAL.build.widget.ListWidget",
-                    entryName="<<" + naval_type,
-                    divider="150"
-                )
-            other_tab = ET.SubElement(
-                naval_tab,
-                "VASSAL.build.widget.ListWidget",
-                entryName="<<" + "OTHER",
-                divider="150"
-            )
-
-            # other
-            land_tab = ET.SubElement(
-                parent_power,
-                "VASSAL.build.widget.TabWidget",
-                entryName="OTHER",
-            )
-
-        # minors
-        parent_power = ET.SubElement(
-            unt_box,
+        # minor countries
+        ET.SubElement(
+            units_parent,
             "VASSAL.build.widget.BoxWidget",
-            entryName="Minors"
-        )
+            entryName="Minors")
+
+        # partisans
+        partisan_parent = ET.SubElement(
+            units_parent,
+            "VASSAL.build.widget.ListWidget",
+            entryName="Partisans",
+            divider="250")
+        for kit_name in [
+            "WiF", "AiF", "PatiF",
+            "PiF", "AfA", "AsA", "SiF", "MiF", "LiF", "CVPiF", "PoliF",
+            "CLiF", "CoiF", "FiF", "KiF"
+        ]:
+            ET.SubElement(
+                partisan_parent,
+                "VASSAL.build.widget.ListWidget",
+                entryName="<<" + kit_name,
+                divider="150")
 
     # return
     return game_pieces.find("VASSAL.build.widget.BoxWidget[@entryName=\"Units\"]")
 
 
-def get_minor_proto(power_name):
-    rval = ET.Element(
-        "VASSAL.build.widget.TabWidget",
-        entryName=power_name
-    )
-    # land
-    land_tab = ET.SubElement(
-        rval,
-        "VASSAL.build.widget.ListWidget",
-        entryName="LAND",
-        divider="250"
-    )
-    land_div = ET.SubElement(
-        land_tab,
-        "VASSAL.build.widget.ListWidget",
-        entryName=">>DIV",
-        divider="150"
-    )
-    type_hvy = ET.SubElement(
-        land_tab,
-        "VASSAL.build.widget.ListWidget",
-        entryName=">>HVY",
-        divider="150"
-    )
-    # air
-    land_tab = ET.SubElement(
-        rval,
-        "VASSAL.build.widget.ListWidget",
-        entryName="AIR",
-        divider="250"
-    )
-    # naval
-    land_tab = ET.SubElement(
-        rval,
-        "VASSAL.build.widget.ListWidget",
-        entryName="NAVAL",
-        divider="250"
-    )
-    return rval
+def get_hook(unit, units_parent=None):
+    if units_parent is None:
+        units_parent = get_units_parent()
+    is_minor = False
+    if get_control(unit) == "Minors":
+        is_minor = True
+        u_power = unit.power
+        if u_power is None and get_type(unit) == "PART":
+            partisan_parent = units_parent.find("VASSAL.build.widget.ListWidget[@entryName=\"Partisans\"]")
+            print partisan_parent.getchildren()
+            hook = partisan_parent.find("VASSAL.build.widget.ListWidget[@entryName=\"<<{}\"]".format(get_kit(unit)))
+            return hook, is_minor
+        else:
+            minors_parent = units_parent.find("VASSAL.build.widget.BoxWidget[@entryName=\"Minors\"]")
+            power_parent = minors_parent.find("VASSAL.build.widget.TabWidget[@entryName=\"{}\"]".format(u_power))
+            if power_parent is None:
+                power_parent = ET.SubElement(
+                    minors_parent,
+                    "VASSAL.build.widget.TabWidget",
+                    entryName=u_power)
+                build_power_entry(power_parent)
+    else:
+        power_parent = units_parent.find("VASSAL.build.widget.TabWidget[@entryName=\"{}\"]".format(unit.power))
+    kit_parent = power_parent.find("VASSAL.build.widget.ListWidget[@entryName=\"{}\"]".format(get_kit(unit)))
+    hook = kit_parent.find("VASSAL.build.widget.ListWidget[@entryName=\"<<{}\"]".format(get_type(unit)))
+    if hook is None:
+        hook = kit_parent.find("VASSAL.build.widget.ListWidget[@entryName=\"<<Misc.\"]")
+    return hook, is_minor
+
+
+def build_power_entry(node):
+    for kit_name in [
+        "WiF", "AiF", "PatiF",
+        "PiF", "AfA", "AsA", "SiF", "MiF", "LiF", "CVPiF", "PoliF",
+        "CLiF", "CoiF", "FiF", "KiF"
+    ]:
+        kit_parent = ET.SubElement(
+            node,
+            "VASSAL.build.widget.ListWidget",
+            entryName=kit_name,
+            divider="250")
+        for type_name in [
+            "HQA", "ARM", "Arm", "MECH", "Mech", # ARM class
+            "ACV", "CAV", "Cav", # CAV class
+            "HQI", "MOT", "Mot", "INF", "Inf", "GAR", "Gar",
+            "MTN", "Mtn", "MAR", "Mar", "PARA", "Para",
+            "Eng", "Ski", "TER", "MIL", # INF class
+            "ART", "AT", "AA", "AAA", "SAM", # ART class
+            "FTR", "LND", "NAV", "ATR", "CVP", "BOMB", # AIR class
+            "SUB", # SUB class
+            "TRS", "AMPH", "ASW", "CX", "CV", "CVL",
+            "BB", "CA", "CL", # SHIP class
+            "Misc.", # MISC entry
+        ]:
+            ET.SubElement(
+                kit_parent,
+                "VASSAL.build.widget.ListWidget",
+                entryName="<<" + type_name,
+                divider="150")
 
 
 def cw_kif_only(u):
@@ -750,48 +701,25 @@ def cw_kif_only(u):
         return True
 
 
-def inject_land():
+def inject_land(units_parent=None):
     """run over all counters and put them in the right place"""
 
     # init
     global BF, GPID, HEADER, SHEET
-    par_units = get_units_parent()
     print "INJECT LAND"
+    if units_parent is None:
+        units_parent = get_units_parent(False)
 
     # fill containers
     print "reading counters",
-    for u in gen_filtered_rowset(sheet=SHEET["L"], header=HEADER["L"],
-                                 filt=lambda x: x.type not in ["LEAD", "FORT", "FACT", "PART"] and cw_kif_only(x)):
+    for u in gen_filtered_rowset(sheet=SHEET["L"], header=HEADER["L"]):
         try:
             # init
             print_item = "."
-            u_clas = get_clas(u)
             u_type = get_type(u)
             print_item = "({})".format(u_type)
-            tag, col_symb, col_symb_text, col_left, col_top, col_right = ENTITY_COLOURS[u.home]
-
-            # where to place it
-            is_minor = False
-            hook = None
-            if get_power(u) == "Minors":
-                is_minor = True
-                par_minors = par_units.find("VASSAL.build.widget.BoxWidget[@entryName=\"Minors\"]")
-                par_power = par_minors.find("VASSAL.build.widget.TabWidget[@entryName=\"{}\"]".format(u.power))
-                if par_power is None:
-                    par_power = get_minor_proto(u.power)
-                    par_minors.append(par_power)
-                hook = par_power.find("VASSAL.build.widget.ListWidget[@entryName=\"LAND\"]")
-            else:
-                par_power = par_units.find("VASSAL.build.widget.TabWidget[@entryName=\"{}\"]".format(u.power))
-                par_land = par_power.find("VASSAL.build.widget.TabWidget[@entryName=\"LAND\"]")
-                par_clas = par_land.find("VASSAL.build.widget.ListWidget[@entryName=\"{}\"]".format(u_clas))
-                if par_clas is not None:
-                    par_type = par_clas.find("VASSAL.build.widget.ListWidget[@entryName=\"<<{}\"]".format(
-                        {"AAA": "FLAK", "SAM": "FLAK"}.get(u_type, u_type)))
-                    if par_type is not None:
-                        hook = par_type
-                if hook is None:
-                    hook = par_land.find("VASSAL.build.widget.ListWidget[@entryName=\"OTHER\"]")
+            tag, col_symb, col_symb_text, col_left, col_top, col_right = ENTITY_COLOURS[u.home or "Partisan"]
+            hook, is_minor = get_hook(u, units_parent)
 
             # piece slot, trait order in R E V E R S E !!
             ps = PieceSlot(u.name or u.year, GPID.get())
@@ -799,7 +727,7 @@ def inject_land():
 
             # game values and info
             ps.add_trait("mark", ("val_info", ",".join(u.info or [])))
-            ps.add_trait("mark", ("val_kit", u.kit))
+            ps.add_trait("mark", ("val_kit", get_kit(u)))
             ps.add_trait("mark", ("val_year", u.year))
             ps.add_trait("mark", ("val_class", u.clas))
             ps.add_trait("mark", ("val_type", u_type))
@@ -812,20 +740,23 @@ def inject_land():
             ps.add_trait("mark", ("val_cf", u.str or 0))
 
             # labels
-            if u.info is not None and "SS" in u.info:
-                col_left = col_right = col_top = "whi"
             if u.name is not None and "siberian" in u.name:
                 col_left = col_top = "whi"
             if u.name is not None and u.name == "GGFF":
                 col_left = col_right = col_top = col_symb = "yel"
             if not is_minor:
                 col_left = col_right = col_top = "blk"
+                if u.info is not None and "SS" in u.info:
+                    col_left = col_right = col_top = "whi"
             if is_minor is True:
-                ps.add_trait("mark", ("val_left", tag))
-                ps.add_trait("mark", ("col_left", get_col(col_left)))
-                if u.name:
+                if u_type == "PART":
                     ps.add_trait("mark", ("val_right", u.name))
-                    ps.add_trait("mark", ("col_right", get_col(col_right)))
+                else:
+                    ps.add_trait("mark", ("val_left", tag))
+                    ps.add_trait("mark", ("col_left", get_col(col_left)))
+                    if u.name:
+                        ps.add_trait("mark", ("val_right", u.name))
+                        ps.add_trait("mark", ("col_right", get_col(col_right)))
             else:
                 if u.name:
                     ps.add_trait("mark", ("val_left", u.name))
@@ -835,23 +766,24 @@ def inject_land():
                 ps.add_trait("mark", ("col_top", get_col(col_top)))
 
             # counter background and symbol
+            ps.add_trait("mark", ("cntr_back_num", CNTR_BACK_COL_NUM.get(u.color.lower(), 1)))
+            ps.add_trait("mark", ("symb_back_num", CNTR_FORE_COL_NUM.get(u.color2.lower(), 1)))
             if u_type == "Ski":
                 col_symb = "blu"
             if u.home == "Comm China" and u.clas == "SUPP":
                 col_symb = "red"
-            if u.info is not None and "SS" in u.info:
-                col_symb = "whi"
-            if u.info is not None and "CBV" in u.info and str(u.name) in CBV_COLOURS:
-                col_symb = CBV_COLOURS[u.name][0]
-                col_symb_text = CBV_COLOURS[u.name][1]
-            ps.add_trait("mark", ("cntr_back_num", CNTR_BACK_COL_NUM.get(u.color.lower(), 1)))
-            ps.add_trait("mark", ("symb_back_num", CNTR_FORE_COL_NUM.get(u.color2.lower(), 1)))
-            if u.info is not None and "mot" in map(unicode.lower, u.info) or u_type.lower() == "mot":
-                ps.add_trait("mark", ("symb_wheels_num", COL_NUM[col_symb]))
+            if u.info is not None:
+                if "SS" in u.info:
+                    col_symb = "whi"
+                if "CBV" in u.info and str(u.name) in CBV_COLOURS:
+                    col_symb = CBV_COLOURS[u.name][0]
+                    col_symb_text = CBV_COLOURS[u.name][1]
+                if "mot" in map(unicode.lower, u.info) or u_type.lower() == "mot":
+                    ps.add_trait("mark", ("symb_wheels_num", COL_NUM[col_symb]))
             if u.size == "H":
                 ps.add_trait("mark", ("symb_heavy_num", COL_NUM[col_symb]))
-            if u_type in ["MIL", "TERR", "WAR"]:
-                ps.add_trait("mark", ("symb_text", u.type[0].upper()))
+            if u_type in ["MIL", "TER", "WAR", "PART"]:
+                ps.add_trait("mark", ("symb_text", u_type[0].upper()))
                 if u.color2 == "white" and col_symb_text == "whi":
                     col_symb_text = "red"
                 if "red" in u.color2.lower() and col_symb_text == "red":
@@ -868,30 +800,21 @@ def inject_land():
 
             # style and colour
             val1 = "#000000"
-            val1_bg = "#ffffff"
             val2 = "#000000"
-            val2_bg = "#ffffff"
             if u.color.lower() == "black":
                 val1 = "#ff0000"
-                val1_bg = "#808080"
                 val2 = "#ff0000"
-                val2_bg = "#808080"
             if u.info is not None:
                 if "WP" in u.info:
                     val1 = "#ffffff"
-                    val1_bg = "#000000"
                     val2 = "#ffffff"
-                    val2_bg = "#000000"
-                    if u.color.lower() == "black":
-                        val1 = "#ffffff"
-                        val1_bg = "#808080"
-                        val2 = "#ffffff"
-                        val2_bg = "#808080"
-                elif u.clas == "ART":
+                    if u.color.lower() == "white":
+                        val1 = "#eeeeee"
+                        val2 = "#eeeeee"
+                if u.clas == "ART":
                     if "hvy" in map(unicode.lower, u.info):
                         ps.add_trait("mark", ("symb_aa_hvy_num", 1))
                     val1 = "#ffffff"
-                    val1_bg = "#000000"
                     if "grey" in u.info:
                         ps.add_trait("mark", ("art_num", 1))
                     elif "pink" in u.info:
@@ -900,12 +823,9 @@ def inject_land():
                         ps.add_trait("mark", ("art_num", 3))
                     else:
                         val1 = "#000000"
-                        val1_bg = "#ffffff"
             ps.add_trait("mark", ("col_valL", val1))
-            ps.add_trait("mark", ("col_valL_bg", val1_bg))
             ps.add_trait("mark", ("col_valR", val2))
-            ps.add_trait("mark", ("col_valR_bg", val2_bg))
-            ps.add_trait("prototype", ("UNITll", ""))
+            ps.add_trait("prototype", ("UNITlendlease", ""))
             ps.add_trait("prototype", ("LANDvalues", ""))
             if u.clas == "ART":
                 ps.add_trait("prototype", ("LANDart", ""))
@@ -924,41 +844,24 @@ def inject_land():
     print "(done)"
 
 
-def inject_air():
+def inject_air(units_parent=None):
     # init
     global BF, GPID, HEADER, SHEET
-    par_units = get_units_parent()
     print "INJECT AIR"
+    if units_parent is None:
+        units_parent = get_units_parent(False)
 
     # fill containers
     print "reading counters",
     for u in gen_filtered_rowset(sheet=SHEET["A"], header=HEADER["A"],
-                                 filt=lambda x: x.type not in ["PILOT"] and cw_kif_only(x)):
+                                 filt=lambda x: x.type not in ["PILOT"]):
         try:
             # init
             print_item = "."
             u_type = get_type(u)
             print_item = "({})".format(u_type)
             tag, col_symb, col_symb_text, col_left, col_top, col_right = ENTITY_COLOURS[u.home]
-
-            # where to place it
-            is_minor = False
-            if get_power(u) == "Minors":
-                is_minor = True
-                par_minors = par_units.find("VASSAL.build.widget.BoxWidget[@entryName=\"Minors\"]")
-                par_power = par_minors.find("VASSAL.build.widget.TabWidget[@entryName=\"{}\"]".format(u.power))
-                if par_power is None:
-                    par_power = get_minor_proto(u.power)
-                    par_minors.append(par_power)
-                hook = par_power.find("VASSAL.build.widget.ListWidget[@entryName=\"AIR\"]")
-            else:
-                par_power = par_units.find("VASSAL.build.widget.TabWidget[@entryName=\"{}\"]".format(u.power))
-                par_air = par_power.find("VASSAL.build.widget.ListWidget[@entryName=\"AIR\"]")
-                par_type = par_air.find("VASSAL.build.widget.ListWidget[@entryName=\"<<{}\"]".format(u_type))
-                if par_type is not None:
-                    hook = par_type
-                else:
-                    hook = par_air.find("VASSAL.build.widget.ListWidget[@entryName=\"<<OTHER\"]")
+            hook, is_minor = get_hook(u, units_parent)
 
             # piece slot, trait order in R E V E R S E !!
             ps = PieceSlot(u.name or u.year, GPID.get())
@@ -966,7 +869,7 @@ def inject_air():
 
             # game values and info
             ps.add_trait("mark", ("val_info", ",".join(u.info or [])))
-            ps.add_trait("mark", ("val_kit", u.kit))
+            ps.add_trait("mark", ("val_kit", get_kit(u)))
             ps.add_trait("mark", ("val_year", u.year))
             ps.add_trait("mark", ("val_class", u.clas))
             ps.add_trait("mark", ("val_type", u_type))
@@ -1089,7 +992,7 @@ def inject_air():
             }[u_type]
 
             if not is_ll:
-                ps.add_trait("prototype", ("UNITll", ""))
+                ps.add_trait("prototype", ("UNITlendlease", ""))
             ps.add_trait("prototype", ("AIRrng" + base, ""))
             ps.add_trait("prototype", ("AIRvalues", ""))
             ps.add_trait("prototype", ("AIRbase", ""))
@@ -1104,41 +1007,24 @@ def inject_air():
     print "(done)"
 
 
-def inject_naval():
+def inject_naval(units_parent=None):
     # init
     global BF, GPID, HEADER, SHEET
-    par_units = get_units_parent()
     print "INJECT NAVAL"
+    if units_parent is None:
+        units_parent = get_units_parent(False)
 
     # fill containers
     print "reading counters",
     for u in gen_filtered_rowset(sheet=SHEET["N"], header=HEADER["N"],
-                                 filt=lambda x: x.type not in ["CONV", "TANK"] and cw_kif_only(x)):
+                                 filt=lambda x: x.type not in ["CONV", "TANK"]):
         try:
             # init
             print_item = "."
             u_type = get_type(u)
             print_item = "({})".format(u_type)
             tag, col_symb, col_symb_text, col_left, col_top, col_right = ENTITY_COLOURS[u.home]
-
-            # where to place it
-            is_minor = False
-            if get_power(u) == "Minors":
-                is_minor = True
-                par_minors = par_units.find("VASSAL.build.widget.BoxWidget[@entryName=\"Minors\"]")
-                par_power = par_minors.find("VASSAL.build.widget.TabWidget[@entryName=\"{}\"]".format(u.power))
-                if par_power is None:
-                    par_power = get_minor_proto(u.power)
-                    par_minors.append(par_power)
-                hook = par_power.find("VASSAL.build.widget.ListWidget[@entryName=\"NAVAL\"]")
-            else:
-                par_power = par_units.find("VASSAL.build.widget.TabWidget[@entryName=\"{}\"]".format(u.power))
-                par_air = par_power.find("VASSAL.build.widget.ListWidget[@entryName=\"NAVAL\"]")
-                par_type = par_air.find("VASSAL.build.widget.ListWidget[@entryName=\"<<{}\"]".format(u_type))
-                if par_type is not None:
-                    hook = par_type
-                else:
-                    hook = par_air.find("VASSAL.build.widget.ListWidget[@entryName=\"<<OTHER\"]")
+            hook, is_minor = get_hook(u, units_parent)
 
             # piece slot, trait order in R E V E R S E !!
             ps = PieceSlot(u.name or u.year, GPID.get())
@@ -1146,7 +1032,7 @@ def inject_naval():
 
             # game values and info
             ps.add_trait("mark", ("val_info", ",".join(u.info or [])))
-            ps.add_trait("mark", ("val_kit", u.kit))
+            ps.add_trait("mark", ("val_kit", get_kit(u)))
             ps.add_trait("mark", ("val_year", u.year))
             ps.add_trait("mark", ("val_class", u.clas))
             ps.add_trait("mark", ("val_type", u_type))
@@ -1201,9 +1087,9 @@ def inject_naval():
 
             # naval prototypes
             if u.name2 is not None and "LL-FR" in u.name2:
-                ps.add_trait("marker", ("ll_stripe_num", "5"))
+                ps.add_trait("mark", ("ll_stripe_num", "4"))
             else:
-                ps.add_trait("prototype", ("UNITll", ""))
+                ps.add_trait("prototype", ("UNITlendlease", ""))
             ps.add_trait("prototype", ("NAVALvalues", ""))
             ps.add_trait("prototype", ("NAVALbase", ""))
 
@@ -1223,13 +1109,13 @@ def tidy_tree():
             return False
         return all((recursively_empty(c) for c in e.iterchildren()))
 
-    print "tidy up"
+    print "tidy up..",
     par_units = get_units_parent()
     for action, elem in ET.iterwalk(par_units):
-        if elem.tag == "VASSAL.build.widget.ListWidget":
-            parent = elem.getparent()
-            if recursively_empty(elem):
-                parent.remove(elem)
+        # if elem.tag == "VASSAL.build.widget.ListWidget":
+        parent = elem.getparent()
+        if recursively_empty(elem):
+            parent.remove(elem)
 
     print "done!"
     print
@@ -1248,12 +1134,12 @@ if __name__ == '__main__':
     start()
 
     # remove old units tab
-    get_units_parent(True)
+    parent = get_units_parent(True)
 
     # inject counters
-    inject_land()
-    inject_air()
-    inject_naval()
+    inject_land(parent)
+    inject_air(parent)
+    inject_naval(parent)
 
     # finish by writing file back to the archive
     tidy_tree()

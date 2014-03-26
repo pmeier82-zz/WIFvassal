@@ -6,7 +6,6 @@
 ## IMPORTS
 
 from lxml import etree as ET
-# from xml.etree import cElementTree as ET
 
 ## CLASSES
 
